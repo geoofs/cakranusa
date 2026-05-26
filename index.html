@@ -120,9 +120,71 @@
       color: #f4d77a;
       letter-spacing: 10px;
       text-shadow:
-        0 0 15px rgba(212, 175, 55, 0.5),
-        0 0 40px rgba(0, 0, 0, 0.6);
+        0 0 10px rgba(255, 215, 120, 0.6),
+        0 0 20px rgba(212, 175, 55, 0.7),
+        0 0 40px rgba(212, 175, 55, 0.5),
+        0 0 70px rgba(255, 223, 120, 0.35);
       margin-bottom: 20px;
+      animation: glowBlink 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .hero h1::after {
+      content: '✦';
+      position: absolute;
+      top: -18px;
+      right: -25px;
+      font-size: 1.4rem;
+      color: #fff6d6;
+      animation: sparkle 2s linear infinite;
+      opacity: 0.9;
+    }
+
+    .hero h1::before {
+      content: '✦';
+      position: absolute;
+      bottom: 5px;
+      left: -30px;
+      font-size: 1rem;
+      color: #ffe9a6;
+      animation: sparkle 2.8s linear infinite;
+    }
+
+    @keyframes glowBlink {
+      0%, 100% {
+        text-shadow:
+          0 0 10px rgba(255, 215, 120, 0.6),
+          0 0 20px rgba(212, 175, 55, 0.7),
+          0 0 40px rgba(212, 175, 55, 0.5),
+          0 0 70px rgba(255, 223, 120, 0.35);
+        transform: scale(1);
+      }
+
+      50% {
+        text-shadow:
+          0 0 18px rgba(255, 240, 180, 0.95),
+          0 0 35px rgba(255, 215, 0, 0.95),
+          0 0 60px rgba(255, 215, 0, 0.7),
+          0 0 90px rgba(255, 240, 180, 0.55);
+        transform: scale(1.02);
+      }
+    }
+
+    @keyframes sparkle {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(360deg);
+      }
     }
 
     .hero p {
