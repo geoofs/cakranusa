@@ -2025,8 +2025,29 @@ function showPage(pageId){
   closeCultureSheet();
 
   document.getElementById(pageId).style.display='block';
+const mapDiv = document.getElementById('cakralandMap');
+  mapDiv.style.display = 'none';
+
+  closeCultureSheet();
+
+  document.getElementById(pageId).style.display='block';
 
   window.scrollTo(0,0);
+
+  if(pageId === 'cakralandPage'){
+
+      // tampilkan map lagi
+      mapDiv.style.display = 'block';
+
+      setTimeout(()=>{
+          if(cakralandMap){
+              cakralandMap.invalidateSize();
+          }
+      },200);
+
+  }
+
+
   document.getElementById(pageId).style.display='block';
 
   window.scrollTo(0,0);
@@ -2272,6 +2293,7 @@ history.pushState(
   "",
   "#budaya"
 );
+window.scrollTo(0,0);
 
   document.getElementById('cakralandPage').style.display='none';
 
@@ -2494,6 +2516,14 @@ window.addEventListener("popstate", function(){
     document.getElementById("budayaPage").style.display = "none";
 
     document.getElementById("cakralandPage").style.display = "block";
+
+    window.scrollTo(0,0);
+
+    setTimeout(()=>{
+      if(cakralandMap){
+        cakralandMap.invalidateSize();
+      }
+    },200);
 
     return;
   }
