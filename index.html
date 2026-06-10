@@ -1700,10 +1700,6 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
   <section class="budaya-view">
 
-    <button class="back-btn" onclick="closeBudayaPage()">
-      ← Kembali
-    </button>
-
     <h1 id="budayaJudul"></h1>
 
     <div id="budayaIsi"></div>
@@ -2101,6 +2097,11 @@ function renderBudaya(){
 
 }
 window.openBudaya = async function(gdoc,nama){
+history.pushState(
+  { page: "budaya" },
+  "",
+  "#budaya"
+);
 
   document.getElementById('cakralandPage').style.display='none';
 
@@ -2298,6 +2299,20 @@ function stopDrag(){
 overlay.addEventListener("click",()=>{
 
   setSheetPosition(100);
+
+});
+window.addEventListener("popstate", function(){
+
+  if(
+    document.getElementById("budayaPage").style.display === "block"
+  ){
+
+    document.getElementById("budayaPage").style.display = "none";
+
+    document.getElementById("cakralandPage").style.display = "block";
+
+    return;
+  }
 
 });
 </script>
