@@ -1308,8 +1308,8 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   background:#ffffff;
 
   padding:
-  120px
-  12%
+  100px
+  4%
   80px;
 
   color:#000;
@@ -1354,6 +1354,26 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   line-height:2;
 
   color:#111;
+}
+#budayaVideo{
+  width:100%;
+  max-width:900px;
+  margin:0 0 40px 0;
+}
+
+#budayaVideo iframe{
+  width:100%;
+  height:500px;
+  border:none;
+  border-radius:20px;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+@media(max-width:768px){
+
+  #budayaVideo iframe{
+    height:240px;
+  }
+
 }
   </style>
 </head>
@@ -1702,6 +1722,8 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
     <h1 id="budayaJudul"></h1>
 
+    <div id="budayaVideo"></div>
+
     <div id="budayaIsi"></div>
 
   </section>
@@ -2021,7 +2043,8 @@ const budayaData = [
   provinsi:"Jawa Barat",
   kategori:"CERITA RAKYAT",
   gambar:"SANGKURIANG.png",
-  gdoc:"1-DnFCOEyvUZIydW4MCIBlxzFcuw1HWEPD0FMlOvlokA"
+  gdoc:"1-DnFCOEyvUZIydW4MCIBlxzFcuw1HWEPD0FMlOvlokA",
+  youtube:"X6IrY6aHGXo"
 },
 
 {
@@ -2081,7 +2104,7 @@ function renderBudaya(){
     sheetBody.innerHTML += `
       <div
         class="budaya-card"
-        onclick="openBudaya('${item.gdoc}','${item.nama}')"
+        onclick="openBudaya('${item.gdoc}','${item.nama}','${item.youtube || ""}')"
       >
 
         <img src="${item.gambar}">
@@ -2096,7 +2119,7 @@ function renderBudaya(){
   });
 
 }
-window.openBudaya = async function(gdoc,nama){
+window.openBudaya = async function(gdoc,nama,youtube){
 history.pushState(
   { page: "budaya" },
   "",
@@ -2110,6 +2133,20 @@ history.pushState(
   document.getElementById('budayaJudul').innerText =
   nama;
 
+if(youtube){
+
+  document.getElementById('budayaVideo').innerHTML = `
+    <iframe
+      src="https://www.youtube.com/embed/${youtube}"
+      allowfullscreen>
+    </iframe>
+  `;
+
+}else{
+
+  document.getElementById('budayaVideo').innerHTML = '';
+
+}
   document.getElementById('budayaIsi').innerHTML =
   "Memuat konten...";
 
