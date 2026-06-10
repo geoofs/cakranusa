@@ -1304,14 +1304,20 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   gap:20px;
 }
 .budaya-view{
+  position:relative;
+  overflow:hidden;
+
   min-height:100vh;
-  background:#ffffff;
 
-  padding:
-  100px
-  4%
-  80px;
+  background:linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #fffcf4 20%,
+    #f7e7a6 60%,
+    #d4af37 100%
+  );
 
+  padding:100px 4% 80px;
   color:#000;
 }
 
@@ -1374,6 +1380,136 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     height:240px;
   }
 
+}
+.gold-bubbles{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.gold-bubbles span{
+  position:absolute;
+  bottom:-100px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255,255,255,.9),
+      rgba(255,230,140,.8) 30%,
+      rgba(212,175,55,.7) 70%,
+      rgba(212,175,55,.15) 100%
+    );
+
+  box-shadow:
+    0 0 12px rgba(212,175,55,.5),
+    0 0 25px rgba(255,215,0,.25);
+
+  animation:bubbleUp linear infinite;
+}
+
+/* ukuran berbeda */
+
+.gold-bubbles span:nth-child(1){
+  width:18px;
+  height:18px;
+  left:8%;
+  animation-duration:12s;
+}
+
+.gold-bubbles span:nth-child(2){
+  width:28px;
+  height:28px;
+  left:18%;
+  animation-duration:16s;
+}
+
+.gold-bubbles span:nth-child(3){
+  width:14px;
+  height:14px;
+  left:32%;
+  animation-duration:10s;
+}
+
+.gold-bubbles span:nth-child(4){
+  width:35px;
+  height:35px;
+  left:48%;
+  animation-duration:18s;
+}
+
+.gold-bubbles span:nth-child(5){
+  width:20px;
+  height:20px;
+  left:63%;
+  animation-duration:13s;
+}
+
+.gold-bubbles span:nth-child(6){
+  width:30px;
+  height:30px;
+  left:76%;
+  animation-duration:17s;
+}
+
+.gold-bubbles span:nth-child(7){
+  width:16px;
+  height:16px;
+  left:88%;
+  animation-duration:11s;
+}
+
+.gold-bubbles span:nth-child(8){
+  width:24px;
+  height:24px;
+  left:95%;
+  animation-duration:15s;
+}
+
+@keyframes bubbleUp{
+
+  0%{
+    transform:
+      translateY(0)
+      translateX(0)
+      scale(.6);
+
+    opacity:0;
+  }
+
+  15%{
+    opacity:.8;
+  }
+
+  50%{
+    opacity:.7;
+
+    transform:
+      translateY(-45vh)
+      translateX(25px)
+      scale(1);
+  }
+
+  100%{
+    transform:
+      translateY(-120vh)
+      translateX(-25px)
+      scale(1.2);
+
+    opacity:0;
+  }
+}
+.gold-bubbles{
+  mix-blend-mode:screen;
+}
+#budayaJudul,
+#budayaVideo,
+#budayaIsi{
+  position:relative;
+  z-index:2;
 }
   </style>
 </head>
@@ -1719,6 +1855,17 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <div id="budayaPage" style="display:none;">
 
   <section class="budaya-view">
+
+<div class="gold-bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
     <h1 id="budayaJudul"></h1>
 
