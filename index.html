@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CAKRANUSA</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-<link
-rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
     * {
@@ -29,7 +27,6 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       position: relative;
     }
 
-    /* Overlay gelap */
     body::before {
       content: "";
       position: fixed;
@@ -39,12 +36,10 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       pointer-events: none;
     }
 
-    /* Gradasi emas bawah */
     body::after {
       display: none;
     }
 
-    /* gradasi emas tetap di depan wallpaper dan tidak ikut scroll */
     .fixed-gradient-layer {
       position: fixed;
       top: 0;
@@ -68,9 +63,9 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       height: 100vh;
       background: linear-gradient(
         to top,
-        rgba(212,175,55,0.92) 0%,
-        rgba(255,245,210,0.18) 24%,
-        rgba(255,255,255,0) 48%
+        rgba(212, 175, 55, 0.92) 0%,
+        rgba(255, 245, 210, 0.18) 24%,
+        rgba(255, 255, 255, 0) 48%
       );
       background-repeat: no-repeat;
       background-size: 100% 100vh;
@@ -95,7 +90,6 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       background-attachment: fixed;
     }
 
-    /* HEADER */
     header {
       isolation: isolate;
       margin: 0;
@@ -168,7 +162,6 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       text-shadow: 0 0 10px rgba(212, 175, 55, 0.9);
     }
 
-    /* HERO CENTER */
     .hero {
       position: relative;
       z-index: 4;
@@ -259,33 +252,6 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
     }
 
-    @media (max-width: 768px) {
-      header {
-        justify-content: center;
-        padding: 0;
-      }
-
-      .nav-box {
-        gap: 18px;
-        padding: 18px 22px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero h1 {
-        font-size: 3.2rem;
-        letter-spacing: 5px;
-      }
-
-      .hero p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-      }
-    }
-  
-
-    /* SLIDE BARU DI BAWAH GRADASI */
-    /* posisi section baru tetap di bawah area hero + gradasi */
     .gold-section {
       margin-top: 0;
       position: relative;
@@ -302,6 +268,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       align-items: center;
       justify-content: center;
       padding: 80px 6%;
+      padding-bottom: 80px;
       overflow: hidden;
     }
 
@@ -328,13 +295,13 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       max-width: 680px;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.25));
       animation: floatingImage 5s ease-in-out infinite;
     }
 
     @keyframes floatingImage {
       0%, 100% {
-        transform: translateY(0px);
+        transform: translateY(0);
       }
 
       50% {
@@ -355,7 +322,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       font-size: 3.8rem;
       margin-bottom: 20px;
       letter-spacing: 3px;
-      text-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       animation: fadeSlideRight 1.2s ease;
     }
 
@@ -374,7 +341,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     .gold-text p {
       font-size: 1.05rem;
       line-height: 1.9;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255, 255, 255, 0.92);
       max-width: 620px;
       margin-bottom: 38px;
     }
@@ -389,12 +356,12 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       min-width: 190px;
       padding: 24px 28px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.18);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       box-shadow:
-        0 10px 24px rgba(0,0,0,0.16),
-        inset 0 1px 0 rgba(255,255,255,0.15);
+        0 10px 24px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
       transition: transform 0.35s ease, box-shadow 0.35s ease;
       cursor: default;
     }
@@ -402,8 +369,8 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     .stat-card:hover {
       transform: translateY(-10px) scale(1.03);
       box-shadow:
-        0 18px 34px rgba(0,0,0,0.22),
-        0 0 18px rgba(255,235,170,0.35);
+        0 18px 34px rgba(0, 0, 0, 0.22),
+        0 0 18px rgba(255, 235, 170, 0.35);
     }
 
     .stat-number {
@@ -412,19 +379,17 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       color: #fff8dd;
       line-height: 1;
       margin-bottom: 10px;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.18);
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
     }
 
     .stat-label {
       font-size: 0.92rem;
       letter-spacing: 1.2px;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .particles {
       position: absolute;
-      top: 0;
-      left: 0;
       inset: 0;
       overflow: hidden;
       pointer-events: none;
@@ -436,7 +401,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       display: block;
       width: 6px;
       height: 6px;
-      background: rgba(255,255,255,0.4);
+      background: rgba(255, 255, 255, 0.4);
       border-radius: 50%;
       animation: particleFloat linear infinite;
     }
@@ -482,25 +447,1178 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       }
     }
 
+    .wave-container {
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 220px;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .wave {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: bottom center;
+      background-size: cover;
+    }
+
+    .wave-1 {
+      bottom: 95px;
+      height: 70px;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,60 C180,10 360,110 540,60 C720,10 900,110 1080,60 C1260,10 1380,90 1440,60 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
+    }
+
+    .wave-2 {
+      bottom: 72px;
+      height: 80px;
+      opacity: 0.3;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,70 C200,120 400,20 600,70 C800,120 1000,20 1200,70 C1320,95 1380,95 1440,70 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
+    }
+
+    .wave-3 {
+      bottom: 48px;
+      height: 95px;
+      opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,65 C240,0 480,120 720,65 C960,10 1200,120 1440,65 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
+    }
+
+    .wave-4 {
+      bottom: 22px;
+      height: 110px;
+      opacity: 0.75;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,80 C180,130 360,20 540,80 C720,130 900,20 1080,80 C1260,130 1380,20 1440,80 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
+    }
+
+    .wave-5 {
+      bottom: 0;
+      height: 130px;
+      opacity: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,75 C180,130 360,20 540,75 C720,130 900,20 1080,75 C1260,130 1380,30 1440,75 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
+    }
+
+    .white-section {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 90px 8% 120px;
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #fffaf0 15%,
+        #f8e9b0 40%,
+        #e7c96d 70%,
+        #d4af37 100%
+      );
+    }
+
+    .white-content {
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto 50px;
+    }
+
+    .white-content h2 {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      color: #08142b;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .culture-tagline {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(8, 20, 43, 0.75);
+      font-weight: 500;
+    }
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(160px, 1fr));
+      gap: 18px;
+    }
+
+    .culture-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: 30px;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      transition: 0.35s ease;
+      text-decoration: none;
+    }
+
+    .culture-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .culture-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .culture-name {
+      background: linear-gradient(
+        to right,
+        #b8860b,
+        #d4af37,
+        #f2d675,
+        #d4af37,
+        #b8860b
+      );
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 70px;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .folklore-section {
+      position: relative;
+      padding: 120px 7%;
+      background:
+        linear-gradient(rgba(212, 175, 55, 0.82), rgba(212, 175, 55, 0.82)),
+        url("CERITA-RAKYAT.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .folklore-container {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .spotlight-label {
+      color: #08142b;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .folklore-left h2 {
+      margin-top: 10px;
+      margin-bottom: 18px;
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      line-height: 1.1;
+      color: #001f54;
+    }
+
+    .folklore-left p {
+      color: #08142b;
+      line-height: 1.9;
+      margin-bottom: 35px;
+    }
+
+    .story-scrollbar {
+      margin-top: 35px;
+      width: 100%;
+    }
+
+    .story-scroll-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(8, 20, 43, 0.18);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .story-scroll-thumb {
+      position: relative;
+      height: 100%;
+      background: #08142b;
+      border-radius: 999px;
+      transition: 0.15s linear;
+    }
+
+    .folklore-right {
+      overflow: hidden;
+      width: 110%;
+    }
+
+    .folklore-slider {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .folklore-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .story-card {
+      position: relative;
+      flex: 0 0 320px;
+      height: 520px;
+      overflow: hidden;
+      border-radius: 30px;
+      text-decoration: none;
+    }
+
+    .story-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8, 20, 43, 0.95) 0%,
+        rgba(8, 20, 43, 0.75) 35%,
+        rgba(8, 20, 43, 0.35) 60%,
+        rgba(8, 20, 43, 0) 85%
+      );
+    }
+
+    .story-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 28px;
+    }
+
+    .story-content h3 {
+      color: white;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    .story-content p {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+
+    .about-section {
+      background: #08142b;
+      padding: 120px 8%;
+    }
+
+    .about-title {
+      color: #ffffff;
+      font-size: 4rem;
+      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 70px;
+      letter-spacing: -1px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-brand {
+      text-align: center;
+    }
+
+    .about-brand img {
+      width: 220px;
+      display: block;
+      margin: 0 auto 25px;
+    }
+
+    .about-brand h3 {
+      color: #ffdf6b;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .about-description h4,
+    .feedback-section h4 {
+      color: #ffd700;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .about-description p {
+      color: #ffffff;
+      line-height: 2;
+      font-size: 1rem;
+    }
+
+    .feedback-section textarea {
+      width: 100%;
+      height: 180px;
+      border: none;
+      outline: none;
+      resize: none;
+      border-radius: 22px;
+      padding: 22px;
+      background: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: #08142b;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .feedback-section textarea::placeholder {
+      color: #8a8a8a;
+    }
+
+    .feedback-section button {
+      margin-top: 20px;
+      background: #d4af37;
+      color: #08142b;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 34px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .feedback-section button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(212, 175, 55, 0.35);
+    }
+
+    .cakraland-page {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      padding-top: 55px;
+      background: #08142b;
+    }
+
+    #cakralandMap {
+      width: 100%;
+      height: calc(100vh - 55px);
+    }
+
+    .provinsi-layer {
+      transition: all 0.25s ease;
+    }
+
+    .provinsi-layer path {
+      filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+      transition: all 0.25s ease;
+    }
+
+    .provinsi-layer:hover {
+      filter:
+        drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35))
+        drop-shadow(0 0 12px rgba(255, 215, 0, 0.35));
+    }
+
+    .provinsi-tooltip {
+      background: rgba(8, 20, 43, 0.95);
+      color: #ffd700;
+      border: 1px solid #ffd700;
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-weight: 600;
+      font-size: 13px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .leaflet-tooltip-top::before {
+      border-top-color: #ffd700 !important;
+    }
+
+    #sheetOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999998;
+    }
+
+    #sheetOverlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #cultureSheet {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      background: linear-gradient(
+        180deg,
+        #041633 0%,
+        #0b2550 20%,
+        #2b3f68 40%,
+        #8b6b2e 75%,
+        #d4af37 100%
+      );
+      border-radius: 28px 28px 0 0;
+      z-index: 999999;
+    }
+
+    #cultureSheet.active {
+      transform: translateY(0);
+    }
+
+    .sheet-handle {
+      width: 100px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px auto;
+      cursor: grab;
+    }
+
+    .sheet-handle::before {
+      content: "";
+      width: 80px;
+      height: 6px;
+      border-radius: 999px;
+      background: #ffffff;
+    }
+
+    .sheet-header {
+      padding: 10px 25px;
+    }
+
+    .sheet-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    .sheet-tabs {
+      display: flex;
+      gap: 25px;
+      overflow-x: auto;
+    }
+
+    .sheet-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sheet-tab {
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #ffffff;
+      font-weight: 600;
+      padding-bottom: 10px;
+      white-space: nowrap;
+    }
+
+    .sheet-tab.active {
+      border-bottom: 4px solid #ffffff;
+    }
+
+    .sheet-body {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 25px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .budaya-card {
+      height: 320px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .budaya-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .budaya-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8, 20, 43, 0.95),
+        rgba(8, 20, 43, 0.4),
+        transparent
+      );
+    }
+
+    .budaya-title {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .budaya-empty {
+      color: #ffffff;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .budaya-view {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #fffcf4 20%,
+        #f7e7a6 60%,
+        #d4af37 100%
+      );
+      padding: 100px 4% 80px;
+      color: #000;
+    }
+
+    .back-btn {
+      border: none;
+      background: #08142b;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      margin-bottom: 40px;
+    }
+
+    #budayaJudul {
+      font-size: 2.5rem;
+      color: #08142b;
+      margin-bottom: 40px;
+      font-family: 'Cinzel', serif;
+    }
+
+    #budayaIsi {
+      font-family: "Times New Roman", serif;
+      font-size: 12pt;
+      line-height: 2;
+      color: #111;
+    }
+
+    #budayaVideo {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 0 40px 0;
+    }
+
+    #budayaVideo iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .gold-bubbles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    .gold-bubbles span {
+      position: absolute;
+      bottom: -100px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 230, 140, 0.8) 30%,
+        rgba(212, 175, 55, 0.7) 70%,
+        rgba(212, 175, 55, 0.15) 100%
+      );
+      box-shadow:
+        0 0 12px rgba(212, 175, 55, 0.5),
+        0 0 25px rgba(255, 215, 0, 0.25);
+      animation: bubbleUp linear infinite;
+    }
+
+    .gold-bubbles span:nth-child(1) {
+      width: 18px;
+      height: 18px;
+      left: 8%;
+      animation-duration: 12s;
+    }
+
+    .gold-bubbles span:nth-child(2) {
+      width: 28px;
+      height: 28px;
+      left: 18%;
+      animation-duration: 16s;
+    }
+
+    .gold-bubbles span:nth-child(3) {
+      width: 14px;
+      height: 14px;
+      left: 32%;
+      animation-duration: 10s;
+    }
+
+    .gold-bubbles span:nth-child(4) {
+      width: 35px;
+      height: 35px;
+      left: 48%;
+      animation-duration: 18s;
+    }
+
+    .gold-bubbles span:nth-child(5) {
+      width: 20px;
+      height: 20px;
+      left: 63%;
+      animation-duration: 13s;
+    }
+
+    .gold-bubbles span:nth-child(6) {
+      width: 30px;
+      height: 30px;
+      left: 76%;
+      animation-duration: 17s;
+    }
+
+    .gold-bubbles span:nth-child(7) {
+      width: 16px;
+      height: 16px;
+      left: 88%;
+      animation-duration: 11s;
+    }
+
+    .gold-bubbles span:nth-child(8) {
+      width: 24px;
+      height: 24px;
+      left: 95%;
+      animation-duration: 15s;
+    }
+
+    @keyframes bubbleUp {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.6);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.8;
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: translateY(-45vh) translateX(25px) scale(1);
+      }
+
+      100% {
+        transform: translateY(-120vh) translateX(-25px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    #budayaJudul,
+    #budayaVideo,
+    #budayaIsi {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cakraswara-page {
+      position: relative;
+      min-height: 100vh;
+      padding: 105px 7% 90px;
+      color: #ffffff;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0.16)),
+        url('wallpaper.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .cakraswara-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(255, 232, 150, 0.22), transparent 38%),
+        linear-gradient(180deg, rgba(8, 20, 43, 0.58), rgba(8, 20, 43, 0.82));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cakraswara-shell {
+      position: relative;
+      z-index: 2;
+      max-width: 1450px;
+      margin: 0 auto;
+    }
+
+    .swara-search-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 26px;
+    }
+
+    .swara-search {
+      width: min(760px, 100%);
+      height: 58px;
+      padding: 0 28px;
+      border: 1px solid rgba(244, 215, 122, 0.45);
+      border-radius: 999px;
+      outline: none;
+      background: rgba(8, 20, 43, 0.72);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.98rem;
+      letter-spacing: 0.4px;
+      box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .swara-search::placeholder {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .swara-category-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 42px;
+    }
+
+    .swara-category-btn {
+      border: 1px solid rgba(244, 215, 122, 0.38);
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: rgba(8, 20, 43, 0.68);
+      color: #f4d77a;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
+
+    .swara-category-btn:hover,
+    .swara-category-btn.active {
+      background: linear-gradient(135deg, #d4af37, #f2d675);
+      color: #08142b;
+      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .swara-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+      gap: 24px;
+    }
+
+    .swara-card {
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+      border: 1px solid rgba(244, 215, 122, 0.22);
+      border-radius: 30px;
+      background: rgba(8, 20, 43, 0.75);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+      transition: 0.35s ease;
+    }
+
+    .swara-card:hover {
+      transform: translateY(-10px);
+      box-shadow:
+        0 28px 60px rgba(0, 0, 0, 0.34),
+        0 0 22px rgba(212, 175, 55, 0.22);
+    }
+
+    .swara-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.5s ease;
+    }
+
+    .swara-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .swara-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(3, 12, 30, 0.98) 0%,
+        rgba(8, 20, 43, 0.78) 35%,
+        rgba(8, 20, 43, 0.25) 65%,
+        transparent 100%
+      );
+    }
+
+    .swara-card-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 24px;
+    }
+
+    .swara-badge {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 12px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.92);
+      color: #08142b;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .swara-card-content h3 {
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 1.22rem;
+      line-height: 1.25;
+    }
+
+    .swara-card-content p {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .swara-empty {
+      grid-column: 1 / -1;
+      padding: 40px;
+      border-radius: 26px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(8, 20, 43, 0.72);
+      border: 1px solid rgba(244, 215, 122, 0.25);
+    }
+
+    #cakraswaraPlayerLayer {
+      position: fixed;
+      inset: 0;
+      z-index: 9999999999999;
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.16), transparent 36%),
+        linear-gradient(135deg, #020b1e 0%, #08142b 52%, #0b2550 100%);
+      color: #ffffff;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    #cakraswaraPlayerLayer.active {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    body.swara-player-open {
+      overflow: hidden;
+    }
+
+    .swara-player-layout {
+      height: 100vh;
+      padding: 78px 5% 42px;
+      display: grid;
+      grid-template-columns: 330px 1px 1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .swara-close-btn {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(244, 215, 122, 0.42);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      color: #f4d77a;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 3;
+    }
+
+    .swara-close-btn:hover {
+      background: #d4af37;
+      color: #08142b;
+      transform: rotate(90deg);
+    }
+
+    .swara-playlist {
+      height: 100%;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .swara-playlist::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .swara-playlist::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.7);
+      border-radius: 999px;
+    }
+
+    .swara-playlist-item {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.045);
+      color: #ffffff;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .swara-playlist-item:hover,
+    .swara-playlist-item.active {
+      background: rgba(212, 175, 55, 0.18);
+      border-color: rgba(244, 215, 122, 0.45);
+      transform: translateX(5px);
+    }
+
+    .swara-playlist-item img {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    .swara-playlist-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .swara-playlist-item span {
+      color: rgba(244, 215, 122, 0.9);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .swara-divider {
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(244, 215, 122, 0.38),
+        rgba(255, 255, 255, 0.16),
+        transparent
+      );
+    }
+
+    .swara-room {
+      min-width: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .swara-room-image-wrap {
+      width: min(520px, 100%);
+      aspect-ratio: 1 / 1;
+      padding: 14px;
+      border-radius: 38px;
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.42), rgba(255, 255, 255, 0.08)),
+        rgba(255, 255, 255, 0.045);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+    }
+
+    #swaraPlayerImage {
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      object-fit: cover;
+      display: block;
+    }
+
+    #swaraPlayerTitle {
+      margin-top: 28px;
+      margin-bottom: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 2.25rem;
+      line-height: 1.18;
+      color: #f4d77a;
+    }
+
+    #swaraPlayerCategory {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    #swaraAudioStatus {
+      min-height: 24px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.86rem;
+      margin-bottom: 20px;
+    }
+
+    .swara-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .swara-control-btn {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(244, 215, 122, 0.42);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      color: #f4d77a;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .swara-control-btn.main {
+      width: 62px;
+      height: 62px;
+      background: linear-gradient(135deg, #d4af37, #f2d675);
+      color: #08142b;
+      font-size: 1.2rem;
+    }
+
+    .swara-control-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(212, 175, 55, 0.22);
+    }
+
+    .swara-control-btn:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    .swara-progress-row {
+      width: min(760px, 100%);
+      display: grid;
+      grid-template-columns: 56px 1fr 56px;
+      gap: 14px;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    #swaraSeekBar {
+      width: 100%;
+      accent-color: #d4af37;
+      cursor: pointer;
+    }
+
+    .youtube-audio-holder {
+      position: fixed;
+      left: -9999px;
+      bottom: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 1400px) {
+      .culture-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     @media (max-width: 900px) {
-      .gold-content {
+      .gold-content,
+      .folklore-container,
+      .about-grid {
         grid-template-columns: 1fr;
         gap: 50px;
-      }
-
-      .gold-image {
-        justify-content: center;
-      }
-
-      .gold-text {
-        text-align: center;
-        align-items: center;
-      }
-
-      .gold-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
       }
 
       .gold-image {
@@ -511,6 +1629,11 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
         max-width: 420px;
       }
 
+      .gold-text {
+        text-align: center;
+        align-items: center;
+      }
+
       .gold-text h2 {
         font-size: 2.4rem;
       }
@@ -518,1382 +1641,1920 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       .stats-boxes {
         justify-content: center;
       }
+
+      .culture-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .folklore-right {
+        width: 100%;
+      }
     }
-/* =========================
-   PREMIUM STATIC WAVES
-========================= */
-
-.gold-section{
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 80px;
-}
-
-.wave-container{
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 220px;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.wave{
-  position: absolute;
-  left: 0;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-  background-size: cover;
-}
-
-/* Layer paling belakang */
-.wave-1{
-  bottom: 95px;
-  height: 70px;
-  opacity: 0.18;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,60 C180,10 360,110 540,60 C720,10 900,110 1080,60 C1260,10 1380,90 1440,60 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
-}
-
-.wave-2{
-  bottom: 72px;
-  height: 80px;
-  opacity: 0.3;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,70 C200,120 400,20 600,70 C800,120 1000,20 1200,70 C1320,95 1380,95 1440,70 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
-}
-
-.wave-3{
-  bottom: 48px;
-  height: 95px;
-  opacity: 0.5;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,65 C240,0 480,120 720,65 C960,10 1200,120 1440,65 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
-}
-
-.wave-4{
-  bottom: 22px;
-  height: 110px;
-  opacity: 0.75;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,80 C180,130 360,20 540,80 C720,130 900,20 1080,80 C1260,130 1380,20 1440,80 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
-}
-
-.wave-5{
-  bottom: 0;
-  height: 130px;
-  opacity: 1;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='white' d='M0,75 C180,130 360,20 540,75 C720,130 900,20 1080,75 C1260,130 1380,30 1440,75 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
-}
-.white-section{
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  padding:90px 8% 120px;
-
-  background: linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #fffaf0 15%,
-    #f8e9b0 40%,
-    #e7c96d 70%,
-    #d4af37 100%
-  );
-}
-
-.white-content{
-  max-width:1400px;
-  margin:auto;
-}
-
-.white-content h2{
-  text-align:center;
-  font-family:'Cinzel', serif;
-  font-size:4rem;
-  color:#08142b;
-  margin-bottom:70px;
-  letter-spacing:3px;
-}
-
-.section-heading{
-  text-align:center;
-  max-width:1200px;
-  margin:0 auto 50px;
-}
-
-.white-content h2{
-  font-family:'Cinzel', serif;
-  font-size:4rem;
-  color:#08142b;
-  letter-spacing:3px;
-  margin-bottom:12px; /* lebih rapat dengan tagline */
-}
 
-.culture-tagline{
-  width:100%;
-  max-width:900px;
-  margin:0 auto;
+    @media (max-width: 1100px) {
+      .swara-player-layout {
+        grid-template-columns: 280px 1px 1fr;
+        gap: 24px;
+        padding: 76px 4% 34px;
+      }
+
+      #swaraPlayerTitle {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cakraswara-page {
+        padding: 120px 5% 70px;
+      }
+
+      .swara-category-nav {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+
+      .swara-category-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .swara-card {
+        height: 340px;
+      }
+
+      .swara-player-layout {
+        height: 100vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 210px 1px 1fr;
+        gap: 18px;
+        padding: 76px 20px 28px;
+        overflow-y: auto;
+      }
+
+      .swara-playlist {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-right: 0;
+        padding-bottom: 8px;
+      }
+
+      .swara-playlist-item {
+        min-width: 250px;
+        margin-bottom: 0;
+      }
+
+      .swara-divider {
+        width: 100%;
+        height: 1px;
+      }
+
+      .swara-room {
+        padding: 0;
+        justify-content: flex-start;
+      }
+
+      .swara-room-image-wrap {
+        width: min(310px, 100%);
+      }
+
+      #swaraPlayerTitle {
+        font-size: 1.55rem;
+      }
+
+      .swara-progress-row {
+        grid-template-columns: 48px 1fr 48px;
+        gap: 8px;
+      }
+
+      header {
+        justify-content: center;
+        padding: 0;
+      }
+
+      .nav-box {
+        gap: 18px;
+        padding: 18px 22px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+        letter-spacing: 5px;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .culture-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #budayaVideo iframe {
+        height: 240px;
+      }
+    }
+
+    /* =========================
+       CAKRASWARA PREMIUM REVISI
+    ========================= */
+
+    .cakraswara-page {
+      position: relative;
+      min-height: 100vh;
+      padding: 104px 6% 88px;
+      color: #ffffff;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.48), rgba(242, 214, 117, 0.30), rgba(8, 20, 43, 0.24)),
+        url('wallpaper.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .cakraswara-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 236, 168, 0.42), transparent 34%),
+        radial-gradient(circle at 82% 28%, rgba(212, 175, 55, 0.28), transparent 30%),
+        linear-gradient(180deg, rgba(8, 20, 43, 0.30), rgba(8, 20, 43, 0.62));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .cakraswara-page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.32;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .cakraswara-shell {
+      position: relative;
+      z-index: 2;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .swara-search-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .swara-search {
+      width: min(700px, 100%);
+      height: 60px;
+      padding: 0 30px 0 56px;
+      border: 1px solid rgba(255, 232, 159, 0.62);
+      border-radius: 999px;
+      outline: none;
+      background:
+        linear-gradient(135deg, rgba(8, 20, 43, 0.86), rgba(12, 36, 78, 0.78));
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.98rem;
+      letter-spacing: 0.35px;
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.35),
+        0 0 0 5px rgba(212, 175, 55, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23f2d675' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(8, 20, 43, 0.86), rgba(12, 36, 78, 0.78));
+      background-repeat: no-repeat, no-repeat;
+      background-position: 24px center, center;
+    }
+
+    .swara-search:focus {
+      border-color: rgba(255, 245, 210, 0.92);
+      box-shadow:
+        0 20px 52px rgba(0, 0, 0, 0.38),
+        0 0 0 6px rgba(212, 175, 55, 0.16),
+        0 0 24px rgba(212, 175, 55, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    }
+
+    .swara-search::placeholder {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .swara-category-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 auto 38px;
+      padding: 11px;
+      width: fit-content;
+      max-width: 100%;
+      border: 1px solid rgba(255, 232, 159, 0.22);
+      border-radius: 999px;
+      background: rgba(8, 20, 43, 0.42);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(14px);
+    }
+
+    .swara-category-btn {
+      border: 1px solid rgba(244, 215, 122, 0.34);
+      border-radius: 999px;
+      padding: 11px 17px;
+      background: rgba(4, 17, 43, 0.52);
+      color: #fff3bf;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.55px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
+
+    .swara-category-btn:hover,
+    .swara-category-btn.active {
+      background: linear-gradient(135deg, #b8860b 0%, #d4af37 42%, #f7df8e 100%);
+      color: #071434;
+      box-shadow:
+        0 14px 30px rgba(212, 175, 55, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .swara-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 210px));
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .swara-card {
+      position: relative;
+      height: 365px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 232, 159, 0.30);
+      border-radius: 24px;
+      background: rgba(8, 20, 43, 0.78);
+      box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.30),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      transition: 0.35s ease;
+    }
+
+    .swara-card:hover {
+      transform: translateY(-9px) scale(1.015);
+      box-shadow:
+        0 30px 62px rgba(0, 0, 0, 0.38),
+        0 0 28px rgba(212, 175, 55, 0.24);
+    }
+
+    .swara-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.55s ease;
+    }
+
+    .swara-card:hover img {
+      transform: scale(1.07);
+    }
+
+    .swara-card::before {
+      content: "▶";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 3;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.92);
+      color: #071434;
+      font-size: 0.82rem;
+      font-weight: 800;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.24);
+    }
+
+    .swara-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(3, 12, 30, 0.98) 0%, rgba(8, 20, 43, 0.82) 38%, rgba(8, 20, 43, 0.20) 72%, transparent 100%);
+    }
+
+    .swara-card-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 18px;
+    }
+
+    .swara-badge {
+      display: inline-flex;
+      width: fit-content;
+      max-width: 100%;
+      margin-bottom: 10px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #d4af37, #f8e28f);
+      color: #08142b;
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.45px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .swara-card-content h3 {
+      margin-bottom: 7px;
+      color: #ffffff;
+      font-size: 1.02rem;
+      line-height: 1.25;
+    }
+
+    .swara-card-content p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.76rem;
+      line-height: 1.55;
+    }
+
+    .swara-empty {
+      grid-column: 1 / -1;
+      padding: 42px;
+      border-radius: 28px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(8, 20, 43, 0.74);
+      border: 1px solid rgba(244, 215, 122, 0.32);
+      backdrop-filter: blur(12px);
+    }
+
+    #cakraswaraPlayerLayer {
+      position: fixed;
+      inset: 0;
+      z-index: 999999999998;
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      background:
+        radial-gradient(circle at 74% 10%, rgba(212, 175, 55, 0.18), transparent 34%),
+        radial-gradient(circle at 18% 90%, rgba(242, 214, 117, 0.08), transparent 30%),
+        linear-gradient(135deg, #020817 0%, #07142f 48%, #0b2550 100%);
+      color: #ffffff;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      overflow: hidden;
+    }
+
+    #cakraswaraPlayerLayer.active {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    body.swara-player-open {
+      overflow: hidden;
+    }
+
+    .swara-player-topbar {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      padding: 84px 5% 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swara-player-search-wrap {
+      width: min(700px, 100%);
+      display: flex;
+      justify-content: center;
+    }
+
+    .swara-player-search {
+      width: 100%;
+      height: 56px;
+    }
+
+    .swara-close-btn {
+      position: absolute;
+      top: 86px;
+      right: 5%;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(244, 215, 122, 0.46);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+      color: #f4d77a;
+      font-size: 1.45rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: 0.3s ease;
+      z-index: 4;
+      backdrop-filter: blur(10px);
+    }
+
+    .swara-close-btn:hover {
+      background: #d4af37;
+      color: #08142b;
+      transform: rotate(90deg);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.24);
+    }
+
+    .swara-player-layout {
+      height: calc(100vh - 162px);
+      padding: 0 5% 38px;
+      display: grid;
+      grid-template-columns: minmax(250px, 320px) 1px minmax(0, 1fr);
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .swara-playlist-panel {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+      border: 1px solid rgba(244, 215, 122, 0.18);
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025)),
+        rgba(5, 17, 43, 0.70);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+      backdrop-filter: blur(14px);
+    }
+
+    .swara-playlist-heading {
+      padding: 2px 4px 16px;
+      border-bottom: 1px solid rgba(244, 215, 122, 0.16);
+      margin-bottom: 14px;
+    }
+
+    .swara-playlist-heading span {
+      display: block;
+      color: #f4d77a;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+
+    .swara-playlist-heading small {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.72rem;
+    }
+
+    .swara-playlist {
+      height: 100%;
+      min-height: 0;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .swara-playlist::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .swara-playlist::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.75);
+      border-radius: 999px;
+    }
+
+    .swara-playlist-item {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 13px;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      color: #ffffff;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.28s ease;
+    }
+
+    .swara-playlist-item:hover,
+    .swara-playlist-item.active {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.26), rgba(255,255,255,0.055));
+      border-color: rgba(244, 215, 122, 0.48);
+      transform: translateX(4px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.18);
+    }
+
+    .swara-playlist-item img {
+      width: 58px;
+      height: 78px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.24);
+    }
+
+    .swara-playlist-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.88rem;
+      line-height: 1.32;
+    }
+
+    .swara-playlist-item span {
+      color: rgba(244, 215, 122, 0.92);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .swara-playlist-empty {
+      padding: 22px;
+      border: 1px solid rgba(244, 215, 122, 0.18);
+      border-radius: 18px;
+      color: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.045);
+      font-size: 0.86rem;
+      line-height: 1.7;
+    }
+
+    .swara-divider {
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, rgba(244, 215, 122, 0.36), rgba(255,255,255,0.12), transparent);
+    }
+
+    .swara-room {
+      min-width: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      text-align: center;
+    }
+
+    .swara-room-card {
+      width: min(720px, 100%);
+      padding: 26px;
+      border: 1px solid rgba(244, 215, 122, 0.20);
+      border-radius: 34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.028)),
+        rgba(4, 18, 45, 0.60);
+      box-shadow:
+        0 28px 72px rgba(0,0,0,0.34),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .swara-room-image-wrap {
+      width: min(560px, 100%);
+      aspect-ratio: 4 / 3;
+      margin: 0 auto;
+      padding: 12px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.42), rgba(255, 255, 255, 0.08)),
+        rgba(255, 255, 255, 0.045);
+      box-shadow: 0 24px 54px rgba(0, 0, 0, 0.34);
+    }
+
+    #swaraPlayerImage {
+      width: 100%;
+      height: 100%;
+      border-radius: 22px;
+      object-fit: cover;
+      display: block;
+    }
+
+    #swaraPlayerTitle {
+      margin-top: 22px;
+      margin-bottom: 7px;
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      line-height: 1.18;
+      color: #f4d77a;
+      text-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    #swaraPlayerCategory {
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    #swaraAudioStatus {
+      min-height: 22px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+    }
+
+    .swara-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .swara-control-btn {
+      min-width: 50px;
+      height: 50px;
+      padding: 0 13px;
+      border: 1px solid rgba(244, 215, 122, 0.42);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #f4d77a;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .swara-control-btn.main {
+      width: 66px;
+      height: 66px;
+      min-width: 66px;
+      background: linear-gradient(135deg, #d4af37, #f2d675);
+      color: #08142b;
+      font-size: 1.24rem;
+      box-shadow: 0 16px 34px rgba(212, 175, 55, 0.28);
+    }
+
+    .swara-control-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(212, 175, 55, 0.22);
+    }
+
+    .swara-control-btn:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    .swara-progress-row {
+      width: min(660px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 56px 1fr 56px;
+      gap: 14px;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    #swaraSeekBar {
+      width: 100%;
+      height: 6px;
+      accent-color: #d4af37;
+      cursor: pointer;
+    }
+
+    .youtube-audio-holder {
+      position: fixed;
+      left: -9999px;
+      bottom: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 1100px) {
+      .swara-grid {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 200px));
+      }
+
+      .swara-player-layout {
+        grid-template-columns: 270px 1px 1fr;
+        gap: 24px;
+        padding-left: 4%;
+        padding-right: 4%;
+      }
+
+      .swara-room-card {
+        padding: 22px;
+      }
+
+      #swaraPlayerTitle {
+        font-size: 1.72rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cakraswara-page {
+        padding: 118px 5% 70px;
+      }
+
+      .swara-category-nav {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        width: 100%;
+        border-radius: 26px;
+        padding-bottom: 11px;
+      }
+
+      .swara-category-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .swara-grid {
+        grid-template-columns: repeat(2, minmax(145px, 1fr));
+        gap: 15px;
+      }
+
+      .swara-card {
+        height: 300px;
+        border-radius: 20px;
+      }
+
+      .swara-card-content {
+        padding: 15px;
+      }
+
+      .swara-card-content h3 {
+        font-size: 0.94rem;
+      }
+
+      .swara-card-content p {
+        font-size: 0.70rem;
+        -webkit-line-clamp: 2;
+      }
+
+      .swara-player-topbar {
+        padding: 112px 20px 18px;
+      }
+
+      .swara-close-btn {
+        top: 62px;
+        right: 18px;
+        width: 42px;
+        height: 42px;
+      }
+
+      .swara-player-layout {
+        height: calc(100vh - 186px);
+        grid-template-columns: 1fr;
+        grid-template-rows: 190px 1px minmax(0, 1fr);
+        gap: 16px;
+        padding: 0 20px 24px;
+        overflow-y: auto;
+      }
+
+      .swara-playlist-panel {
+        min-height: 0;
+        padding: 14px;
+        border-radius: 24px;
+      }
+
+      .swara-playlist-heading {
+        display: none;
+      }
+
+      .swara-playlist {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-right: 0;
+        padding-bottom: 6px;
+      }
+
+      .swara-playlist-item {
+        min-width: 240px;
+        margin-bottom: 0;
+      }
+
+      .swara-divider {
+        width: 100%;
+        height: 1px;
+      }
+
+      .swara-room {
+        align-items: flex-start;
+      }
+
+      .swara-room-card {
+        padding: 18px;
+        border-radius: 26px;
+      }
+
+      .swara-room-image-wrap {
+        width: min(360px, 100%);
+        border-radius: 24px;
+      }
+
+      #swaraPlayerTitle {
+        font-size: 1.38rem;
+      }
+
+      .swara-controls {
+        gap: 9px;
+        flex-wrap: wrap;
+      }
+
+      .swara-control-btn {
+        min-width: 46px;
+        height: 46px;
+      }
+
+      .swara-control-btn.main {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+      }
+
+      .swara-progress-row {
+        grid-template-columns: 48px 1fr 48px;
+        gap: 8px;
+      }
+    }
+
+
+    /* =========================================================
+       CAKRASWARA FINAL OVERRIDE - GOLD PREMIUM + OFFVIDEO PLAYER
+       Catatan: override ini diletakkan terakhir agar tidak kalah
+       oleh CSS Cakraswara versi sebelumnya.
+    ========================================================= */
+
+    :root {
+      --cakranusa-header-height: 54px;
+    }
+
+    .cakraswara-page {
+      padding: calc(var(--cakranusa-header-height) + 54px) 5.6% 92px !important;
+      background:
+        radial-gradient(circle at 50% -8%, rgba(255, 245, 190, 0.72), transparent 30%),
+        radial-gradient(circle at 84% 18%, rgba(255, 218, 95, 0.46), transparent 28%),
+        linear-gradient(135deg, rgba(218, 165, 32, 0.78), rgba(244, 205, 92, 0.55) 32%, rgba(8, 20, 43, 0.34) 72%),
+        url('wallpaper.png') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-attachment: fixed !important;
+    }
+
+    .cakraswara-page::before {
+      background:
+        linear-gradient(180deg, rgba(255, 223, 102, 0.26), rgba(153, 104, 13, 0.34) 38%, rgba(6, 16, 36, 0.68) 100%),
+        radial-gradient(circle at 20% 22%, rgba(255, 246, 210, 0.34), transparent 32%) !important;
+    }
+
+    .cakraswara-page::after {
+      background-image:
+        linear-gradient(rgba(255, 241, 191, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 241, 191, 0.08) 1px, transparent 1px) !important;
+      opacity: 0.42 !important;
+    }
+
+    .cakraswara-shell {
+      max-width: 1280px !important;
+    }
+
+    .swara-search-wrap {
+      margin-bottom: 20px !important;
+    }
+
+    .swara-search {
+      width: min(760px, 100%) !important;
+      height: 58px !important;
+      border: 1px solid rgba(255, 232, 150, 0.84) !important;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%23ffe59a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(6, 16, 39, 0.94), rgba(13, 38, 82, 0.88)) !important;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.36),
+        0 0 0 1px rgba(255, 245, 200, 0.08),
+        0 0 28px rgba(212, 175, 55, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+    }
+
+    .swara-search:focus {
+      border-color: #fff1b7 !important;
+      box-shadow:
+        0 22px 54px rgba(0, 0, 0, 0.40),
+        0 0 0 6px rgba(212, 175, 55, 0.20),
+        0 0 34px rgba(255, 215, 95, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+    }
+
+    .swara-category-nav {
+      margin-bottom: 40px !important;
+      border: 1px solid rgba(255, 232, 150, 0.34) !important;
+      background: linear-gradient(135deg, rgba(7, 18, 44, 0.78), rgba(91, 67, 19, 0.42)) !important;
+      box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+    }
+
+    .swara-category-btn {
+      background: rgba(5, 17, 42, 0.70) !important;
+      color: #ffe79f !important;
+      border-color: rgba(255, 232, 150, 0.46) !important;
+    }
+
+    .swara-category-btn:hover,
+    .swara-category-btn.active {
+      background: linear-gradient(135deg, #a96f09 0%, #d4af37 38%, #fff1ae 72%, #c6951f 100%) !important;
+      color: #06142e !important;
+      box-shadow:
+        0 16px 34px rgba(212, 175, 55, 0.40),
+        0 0 24px rgba(255, 218, 95, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.58) !important;
+    }
+
+    .swara-grid {
+      grid-template-columns: repeat(auto-fill, minmax(164px, 188px)) !important;
+      justify-content: center !important;
+      gap: 24px !important;
+    }
+
+    .swara-card {
+      height: 392px !important;
+      border-radius: 26px !important;
+      border: 1px solid rgba(255, 232, 150, 0.46) !important;
+      background:
+        linear-gradient(180deg, rgba(255, 220, 110, 0.14), rgba(6, 18, 43, 0.82)),
+        rgba(7, 20, 52, 0.86) !important;
+      box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 0 24px rgba(212, 175, 55, 0.18) !important;
+    }
+
+    .swara-card::before {
+      background: linear-gradient(135deg, #c08312, #f4d77a, #fff0b2) !important;
+      box-shadow:
+        0 10px 24px rgba(0,0,0,0.30),
+        0 0 18px rgba(255, 218, 95, 0.30) !important;
+    }
+
+    .swara-card::after {
+      background:
+        linear-gradient(to top, rgba(2, 8, 22, 0.98) 0%, rgba(8, 20, 43, 0.86) 36%, rgba(127, 88, 16, 0.18) 72%, transparent 100%) !important;
+    }
+
+    .swara-card:hover {
+      transform: translateY(-10px) scale(1.018) !important;
+      box-shadow:
+        0 32px 68px rgba(0, 0, 0, 0.42),
+        0 0 34px rgba(255, 218, 95, 0.32) !important;
+    }
+
+    .swara-badge {
+      background: linear-gradient(135deg, #b77b10, #e2bc48 42%, #fff0aa 100%) !important;
+      color: #06142e !important;
+    }
+
+    .swara-card-content h3 {
+      color: #fff8d8 !important;
+      font-size: 1rem !important;
+    }
+
+    .swara-card-content p {
+      font-size: 0.73rem !important;
+      color: rgba(255, 255, 255, 0.86) !important;
+    }
+
+    #cakraswaraPlayerLayer {
+      inset: var(--cakranusa-header-height) 0 0 0 !important;
+      z-index: 999999999990 !important;
+      background:
+        radial-gradient(circle at 76% 10%, rgba(255, 220, 102, 0.23), transparent 32%),
+        radial-gradient(circle at 18% 88%, rgba(212, 175, 55, 0.14), transparent 30%),
+        linear-gradient(135deg, #020817 0%, #07142f 46%, #0b2550 100%) !important;
+      overflow: hidden !important;
+    }
+
+    .swara-player-topbar {
+      padding: 22px 5% 18px !important;
+      background: linear-gradient(180deg, rgba(2, 8, 23, 0.58), rgba(2, 8, 23, 0)) !important;
+    }
+
+    .swara-player-search-wrap {
+      width: min(760px, 100%) !important;
+    }
+
+    .swara-player-search {
+      height: 54px !important;
+    }
+
+    .swara-close-btn {
+      top: 26px !important;
+      right: 5% !important;
+      background: rgba(5, 17, 43, 0.76) !important;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.28) !important;
+    }
+
+    .swara-player-layout {
+      height: calc(100% - 96px) !important;
+      padding: 0 5% 34px !important;
+      grid-template-columns: minmax(240px, 305px) 1px minmax(0, 1fr) !important;
+      gap: 30px !important;
+    }
+
+    .swara-playlist-panel {
+      border-color: rgba(255, 232, 150, 0.30) !important;
+      background:
+        linear-gradient(180deg, rgba(255, 225, 132, 0.11), rgba(255,255,255,0.026)),
+        rgba(4, 15, 38, 0.78) !important;
+      box-shadow:
+        0 22px 54px rgba(0,0,0,0.34),
+        0 0 24px rgba(212, 175, 55, 0.10) !important;
+    }
+
+    .swara-playlist-heading span {
+      color: #ffe28a !important;
+    }
+
+    .swara-playlist-item {
+      grid-template-columns: 54px 1fr !important;
+      border-color: rgba(255, 232, 150, 0.16) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(212, 175, 55, 0.045)) !important;
+    }
+
+    .swara-playlist-item:hover,
+    .swara-playlist-item.active {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.34), rgba(255,255,255,0.075)) !important;
+      border-color: rgba(255, 232, 150, 0.62) !important;
+    }
+
+    .swara-playlist-item img {
+      width: 54px !important;
+      height: 76px !important;
+      border: 1px solid rgba(255, 232, 150, 0.18) !important;
+    }
+
+    .swara-room {
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .swara-room-card {
+      width: min(760px, 100%) !important;
+      padding: 24px 26px 26px !important;
+      border-color: rgba(255, 232, 150, 0.30) !important;
+      background:
+        linear-gradient(180deg, rgba(255, 226, 137, 0.10), rgba(255,255,255,0.028)),
+        rgba(4, 18, 45, 0.68) !important;
+      box-shadow:
+        0 30px 78px rgba(0,0,0,0.38),
+        0 0 32px rgba(212, 175, 55, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.10) !important;
+    }
+
+    .swara-room-image-wrap {
+      width: min(620px, 100%) !important;
+      aspect-ratio: 4 / 3 !important;
+      padding: 10px !important;
+      border-radius: 28px !important;
+      background:
+        linear-gradient(135deg, rgba(174, 111, 8, 0.88), rgba(255, 224, 126, 0.66), rgba(255, 255, 255, 0.10)),
+        rgba(255, 255, 255, 0.045) !important;
+    }
+
+    #swaraPlayerImage {
+      border-radius: 20px !important;
+      object-fit: cover !important;
+    }
+
+    #swaraPlayerTitle {
+      margin-top: 18px !important;
+      font-size: clamp(1.35rem, 2.3vw, 2.05rem) !important;
+      color: #ffe28a !important;
+    }
+
+    #swaraAudioStatus {
+      margin-bottom: 16px !important;
+    }
+
+    .swara-controls {
+      gap: 12px !important;
+      margin-bottom: 18px !important;
+    }
+
+    .swara-control-btn {
+      min-width: 48px !important;
+      height: 48px !important;
+      border-color: rgba(255, 232, 150, 0.48) !important;
+      background: rgba(5, 17, 43, 0.70) !important;
+      color: #ffe28a !important;
+    }
+
+    .swara-control-btn.main {
+      width: 64px !important;
+      height: 64px !important;
+      min-width: 64px !important;
+      background: linear-gradient(135deg, #b77b10 0%, #d4af37 40%, #fff0aa 100%) !important;
+      color: #06142e !important;
+    }
+
+    .swara-progress-row {
+      width: min(650px, 100%) !important;
+    }
+
+    #swaraSeekBar {
+      accent-color: #f0c84f !important;
+    }
+
+    .youtube-audio-holder {
+      position: fixed !important;
+      left: -320px !important;
+      bottom: -240px !important;
+      width: 200px !important;
+      height: 160px !important;
+      opacity: 0.01 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+    }
+
+    .youtube-audio-holder iframe {
+      width: 200px !important;
+      height: 160px !important;
+    }
+
+    @media (max-width: 1100px) {
+      .swara-grid {
+        grid-template-columns: repeat(auto-fill, minmax(158px, 180px)) !important;
+      }
+
+      .swara-player-layout {
+        grid-template-columns: 270px 1px 1fr !important;
+        gap: 22px !important;
+        padding-left: 4% !important;
+        padding-right: 4% !important;
+      }
+
+      .swara-room-card {
+        width: min(700px, 100%) !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cakraswara-page {
+        padding: calc(var(--cakranusa-header-height) + 28px) 5% 70px !important;
+      }
+
+      .swara-grid {
+        grid-template-columns: repeat(2, minmax(138px, 1fr)) !important;
+        gap: 16px !important;
+      }
+
+      .swara-card {
+        height: 310px !important;
+      }
+
+      #cakraswaraPlayerLayer {
+        overflow-y: auto !important;
+      }
+
+      .swara-player-topbar {
+        padding: 18px 18px 14px !important;
+      }
+
+      .swara-close-btn {
+        top: 22px !important;
+        right: 18px !important;
+      }
+
+      .swara-player-layout {
+        height: auto !important;
+        min-height: calc(100% - 90px) !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 178px 1px auto !important;
+        gap: 14px !important;
+        padding: 0 18px 24px !important;
+        overflow: visible !important;
+      }
+
+      .swara-playlist-panel {
+        padding: 13px !important;
+        border-radius: 22px !important;
+      }
+
+      .swara-playlist {
+        display: flex !important;
+        gap: 12px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+      }
+
+      .swara-playlist-item {
+        min-width: 230px !important;
+      }
+
+      .swara-divider {
+        width: 100% !important;
+        height: 1px !important;
+      }
+
+      .swara-room-card {
+        padding: 16px !important;
+        border-radius: 24px !important;
+      }
+
+      .swara-room-image-wrap {
+        width: min(360px, 100%) !important;
+      }
+
+      .swara-controls {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+      }
+
+      .swara-control-btn {
+        min-width: 44px !important;
+        height: 44px !important;
+      }
+
+      .swara-control-btn.main {
+        width: 58px !important;
+        height: 58px !important;
+        min-width: 58px !important;
+      }
+    }
 
-  font-size:1.05rem;
-  line-height:1.8;
-
-  color:rgba(8,20,43,.75);
-  font-weight:500;
-}
-
-.culture-grid{
-  display:grid;
-  grid-template-columns:repeat(6,minmax(160px,1fr));
-  gap:18px;
-}
-
-.culture-card{
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-
-  border-radius:30px;
-
-  background:#ffffff;
-  box-shadow:0 12px 30px rgba(0,0,0,.08);
-
-  transition:.35s ease;
-}
-
-.culture-card{
-  text-decoration:none;
-}
-
-.culture-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 25px 50px rgba(0,0,0,.15);
-}
-
-.culture-card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  display:block;
-}
-
-
-.culture-name{
-  background: linear-gradient(
-    to right,
-    #b8860b,
-    #d4af37,
-    #f2d675,
-    #d4af37,
-    #b8860b
-  );
-
-  color:#ffffff;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-
-  min-height:70px; /* samakan tinggi semua */
-  padding:12px;
-
-  font-size:.95rem;
-  font-weight:700;
-  line-height:1.3;
-}
-@media(max-width:1400px){
-
-  .culture-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-}
-
-@media(max-width:900px){
-
-  .culture-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-@media(max-width:768px){
-
-  .culture-grid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-/* =========================
-   CERITA RAKYAT
-========================= */
-
-.folklore-section{
-  position:relative;
-  padding:120px 7%;
-
-  background:
-  linear-gradient(
-    rgba(212,175,55,.82),
-    rgba(212,175,55,.82)
-  ),
-  url("CERITA-RAKYAT.png");
-
-  background-size:cover;
-  background-position:center;
-}
-
-.folklore-container{
-  display:grid;
-  grid-template-columns:400px 1fr;
-  gap:60px;
-  align-items:center;
-}
-
-.spotlight-label{
-  color:#08142b;
-  font-size:.95rem;
-  letter-spacing:2px;
-  font-weight:600;
-}
-
-.folklore-left h2{
-  margin-top:10px;
-  margin-bottom:18px;
-
-  font-family:'Cinzel', serif;
-  font-size:4rem;
-  line-height:1.1;
-
-  color:#001f54;
-}
-
-.folklore-left p{
-  color:#08142b;
-  line-height:1.9;
-  margin-bottom:35px;
-}
-
-/* BUTTON */
-
-.story-scrollbar{
-  margin-top:35px;
-  width:100%;
-}
-
-.story-scroll-track{
-  width:100%;
-  height:4px;
-
-  background:rgba(8,20,43,.18);
-
-  border-radius:999px;
-  overflow:hidden;
-}
-
-.story-scroll-thumb{
-  position:relative;
-  height:100%;
-  background:#08142b;
-  border-radius:999px;
-  transition:.15s linear;
-}
-
-/* SLIDER */
-
-.folklore-slider{
-  display:flex;
-  gap:24px;
-
-  overflow-x:auto;
-  overflow-y:hidden;
-
-  scroll-behavior:smooth;
-
-  scrollbar-width:none;
-}
-
-.folklore-slider::-webkit-scrollbar{
-  display:none;
-}
-.folklore-right{
-  overflow:hidden;
-  width:110%;
-}
-.folklore-slider{
-  display:flex;
-  gap:24px;
-
-  overflow-x:auto;
-  overflow-y:hidden;
-
-  scroll-behavior:smooth;
-
-  scrollbar-width:none;
-}
-
-.folklore-slider::-webkit-scrollbar{
-  display:none;
-}
-
-/* CARD */
-
-.story-card{
-  position:relative;
-
-  flex:0 0 320px;
-  height:520px;
-
-  overflow:hidden;
-  border-radius:30px;
-
-  text-decoration:none;
-}
-
-.story-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* OVERLAY */
-
-.story-card::after{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:linear-gradient(
-    to top,
-    rgba(8,20,43,.95) 0%,
-    rgba(8,20,43,.75) 35%,
-    rgba(8,20,43,.35) 60%,
-    rgba(8,20,43,0) 85%
-  );
-}
-
-.story-content{
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  z-index:2;
-
-  padding:28px;
-}
-
-.story-content h3{
-  color:white;
-  margin-bottom:12px;
-  font-size:1.2rem;
-}
-
-.story-content p{
-  color:rgba(255,255,255,.92);
-  font-size:.92rem;
-  line-height:1.8;
-}
-/* =========================
-   ABOUT US
-========================= */
-
-.about-section{
-  background:#08142b;
-  padding:120px 8%;
-}
-
-.about-title{
-
-  color:#ffffff;
-
-  font-size:4rem;
-
-  font-weight:800;
-
-  font-family:'Poppins',sans-serif;
-
-  margin-bottom:70px;
-
-  letter-spacing:-1px;
-}
-
-/* GRID */
-
-.about-grid{
-
-  display:grid;
-
-  grid-template-columns:350px 1fr;
-
-  gap:80px;
-
-  align-items:start;
-}
-
-/* LOGO */
-
-.about-brand{
-
-  text-align:center;
-}
-
-.about-brand img{
-
-  width:220px;
-
-  display:block;
-
-  margin:0 auto 25px;
-}
-
-.about-brand h3{
-
-  color:#FFDF6B;
-
-  font-size:2rem;
-
-  font-weight:700;
-
-  letter-spacing:3px;
-}
-
-/* RIGHT SIDE */
-
-.about-content{
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:40px;
-}
-
-/* DESCRIPTION */
-
-.about-description h4{
-
-  color:#FFD700;
-
-  margin-bottom:15px;
-
-  font-size:1.1rem;
-
-  text-transform:uppercase;
-
-  letter-spacing:1px;
-}
-
-.about-description p{
-
-  color:#ffffff;
-
-  line-height:2;
-
-  font-size:1rem;
-}
-
-/* FEEDBACK */
-
-.feedback-section h4{
-
-  color:#FFD700;
-
-  font-size:1.05rem;
-
-  font-weight:600;
-
-  letter-spacing:1px;
-
-  margin-bottom:16px;
-
-  text-transform:uppercase;
-}
-
-.feedback-section textarea{
-
-  width:100%;
-
-  height:180px;
-
-  border:none;
-
-  outline:none;
-
-  resize:none;
-
-  border-radius:22px;
-
-  padding:22px;
-
-  background:#ffffff;
-
-  font-family:'Poppins',sans-serif;
-
-  font-size:1rem;
-
-  color:#08142b;
-
-  box-shadow:
-  0 15px 40px rgba(0,0,0,.15);
-}
-
-.feedback-section textarea::placeholder{
-
-  color:#8a8a8a;
-}
-
-.feedback-section button{
-
-  margin-top:20px;
-
-  background:#d4af37;
-
-  color:#08142b;
-
-  border:none;
-
-  border-radius:999px;
-
-  padding:14px 34px;
-
-  font-weight:700;
-
-  font-size:.95rem;
-
-  cursor:pointer;
-
-  transition:.3s;
-}
-
-.feedback-section button:hover{
-
-  transform:translateY(-3px);
-
-  box-shadow:
-  0 12px 25px rgba(212,175,55,.35);
-}
-
-.cakraland-page{
-  width:100%;
-  height:100vh;
-  margin:0;
-  padding-top:55px; /* tinggi navbar */
-  background:#08142b;
-}
-
-#cakralandMap{
-  width:100%;
-  height:calc(100vh - 55px);
-}
-/* SVG provinsi Leaflet */
-.provinsi-layer {
-  transition: all 0.25s ease;
-}
-
-/* default state */
-.provinsi-layer path {
-  filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
-  transition: all 0.25s ease;
-}
-
-/* hover state (timbul efek) */
-.provinsi-layer:hover {
-  filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.35))
-          drop-shadow(0px 0px 12px rgba(255, 215, 0, 0.35));
-}
-.provinsi-tooltip{
-  background: rgba(8,20,43,0.95);
-  color: #FFD700;
-  border: 1px solid #FFD700;
-  border-radius: 10px;
-  padding: 6px 10px;
-  font-weight: 600;
-  font-size: 13px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.leaflet-tooltip-top:before{
-  border-top-color: #FFD700 !important;
-}
-/* ===========================
-   CAKRANUSA BOTTOM SHEET
-=========================== */
-
-#cultureSheet{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:75vh;
-
-  display:flex;
-  flex-direction:column;
-
-  transform:translateY(100%);
-  transition:transform .3s ease;
-
-  background: linear-gradient(
-    180deg,
-    #041633 0%,
-    #0b2550 20%,
-    #2b3f68 40%,
-    #8b6b2e 75%,
-    #d4af37 100%
-  );
-
-  border-radius:28px 28px 0 0;
-  z-index:999999;
-}
-
-#cultureSheet.active{
-  transform:translateY(0);
-}
-
-.sheet-handle{
-  width:100px;
-  height:24px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  margin:8px auto;
-  cursor:grab;
-}
-
-.sheet-handle::before{
-  content:"";
-  width:80px;
-  height:6px;
-  border-radius:999px;
-  background:#ffffff;
-}
-
-.sheet-header{
-  padding:10px 25px;
-}
-
-.sheet-title{
-  font-size:2rem;
-  font-weight:700;
-  color:#ffffff;
-  margin-bottom:18px;
-}
-
-.sheet-tabs{
-  display:flex;
-  gap:25px;
-  overflow-x:auto;
-}
-
-.sheet-tabs::-webkit-scrollbar{
-  display:none;
-}
-
-.sheet-tab{
-  border:none;
-  background:none;
-  cursor:pointer;
-
-  color:#ffffff;
-  font-weight:600;
-
-  padding-bottom:10px;
-}
-
-.sheet-tab.active{
-  border-bottom:4px solid #ffffff;
-}
-
-.sheet-body{
-  flex:1;
-  overflow:auto;
-
-  padding:25px;
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(auto-fill,minmax(280px,1fr));
-
-  gap:25px;
-}
-
-
-/* kartu budaya */
-
-.budaya-card{
-  height:320px;
-
-  border-radius:20px;
-
-  overflow:hidden;
-
-  position:relative;
-
-  cursor:pointer;
-}
-
-.budaya-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.budaya-card::after{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:linear-gradient(
-    to top,
-    rgba(8,20,43,.95),
-    rgba(8,20,43,.4),
-    transparent
-  );
-}
-
-.budaya-title{
-  position:absolute;
-  left:20px;
-  right:20px;
-  bottom:20px;
-
-  z-index:2;
-
-  color:white;
-  font-size:1.2rem;
-  font-weight:700;
-}
-#sheetOverlay{
-  position:fixed;
-  inset:0;
-
-  background:rgba(0,0,0,.45);
-
-  opacity:0;
-  visibility:hidden;
-
-  transition:.3s;
-
-  z-index:999998;
-}
-
-#sheetOverlay.active{
-  opacity:1;
-  visibility:visible;
-}
-.sheet-body{
-  flex:1;
-
-  overflow-y:auto;
-  overflow-x:hidden;
-
-  padding:25px;
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(auto-fill,minmax(160px,1fr));
-
-  gap:20px;
-}
-.budaya-view{
-  position:relative;
-  overflow:hidden;
-
-  min-height:100vh;
-
-  background:linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #fffcf4 20%,
-    #f7e7a6 60%,
-    #d4af37 100%
-  );
-
-  padding:100px 4% 80px;
-  color:#000;
-}
-
-.back-btn{
-
-  border:none;
-
-  background:#08142b;
-
-  color:white;
-
-  padding:12px 24px;
-
-  border-radius:999px;
-
-  cursor:pointer;
-
-  margin-bottom:40px;
-}
-
-#budayaJudul{
-
-  font-size:2.5rem;
-
-  color:#08142b;
-
-  margin-bottom:40px;
-
-  font-family:'Cinzel',serif;
-}
-
-#budayaIsi{
-
-  font-family:
-  "Times New Roman",
-  serif;
-
-  font-size:12pt;
-
-  line-height:2;
-
-  color:#111;
-}
-#budayaVideo{
-  width:100%;
-  max-width:900px;
-  margin:0 0 40px 0;
-}
-
-#budayaVideo iframe{
-  width:100%;
-  height:500px;
-  border:none;
-  border-radius:20px;
-  box-shadow:0 15px 35px rgba(0,0,0,.15);
-}
-@media(max-width:768px){
-
-  #budayaVideo iframe{
-    height:240px;
-  }
-
-}
-.gold-bubbles{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:0;
-}
-
-.gold-bubbles span{
-  position:absolute;
-  bottom:-100px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255,255,255,.9),
-      rgba(255,230,140,.8) 30%,
-      rgba(212,175,55,.7) 70%,
-      rgba(212,175,55,.15) 100%
-    );
-
-  box-shadow:
-    0 0 12px rgba(212,175,55,.5),
-    0 0 25px rgba(255,215,0,.25);
-
-  animation:bubbleUp linear infinite;
-}
-
-/* ukuran berbeda */
-
-.gold-bubbles span:nth-child(1){
-  width:18px;
-  height:18px;
-  left:8%;
-  animation-duration:12s;
-}
-
-.gold-bubbles span:nth-child(2){
-  width:28px;
-  height:28px;
-  left:18%;
-  animation-duration:16s;
-}
-
-.gold-bubbles span:nth-child(3){
-  width:14px;
-  height:14px;
-  left:32%;
-  animation-duration:10s;
-}
-
-.gold-bubbles span:nth-child(4){
-  width:35px;
-  height:35px;
-  left:48%;
-  animation-duration:18s;
-}
-
-.gold-bubbles span:nth-child(5){
-  width:20px;
-  height:20px;
-  left:63%;
-  animation-duration:13s;
-}
-
-.gold-bubbles span:nth-child(6){
-  width:30px;
-  height:30px;
-  left:76%;
-  animation-duration:17s;
-}
-
-.gold-bubbles span:nth-child(7){
-  width:16px;
-  height:16px;
-  left:88%;
-  animation-duration:11s;
-}
-
-.gold-bubbles span:nth-child(8){
-  width:24px;
-  height:24px;
-  left:95%;
-  animation-duration:15s;
-}
-
-@keyframes bubbleUp{
-
-  0%{
-    transform:
-      translateY(0)
-      translateX(0)
-      scale(.6);
-
-    opacity:0;
-  }
-
-  15%{
-    opacity:.8;
-  }
-
-  50%{
-    opacity:.7;
-
-    transform:
-      translateY(-45vh)
-      translateX(25px)
-      scale(1);
-  }
-
-  100%{
-    transform:
-      translateY(-120vh)
-      translateX(-25px)
-      scale(1.2);
-
-    opacity:0;
-  }
-}
-.gold-bubbles{
-  mix-blend-mode:screen;
-}
-#budayaJudul,
-#budayaVideo,
-#budayaIsi{
-  position:relative;
-  z-index:2;
-}
   </style>
 </head>
+
 <body>
-
-
-  <script>
-    window.addEventListener('scroll', () => {
-      const gradient = document.querySelector('.fixed-gradient-layer');
-      const heroHeight = window.innerHeight;
-
-      if (window.scrollY > heroHeight - 50) {
-        gradient.style.opacity = '0';
-      } else {
-        gradient.style.opacity = '1';
-      }
-    });
-  </script>
-
   <div class="wrapper">
-
     <header id="fixed-header">
       <nav class="nav-box">
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="logo.png" alt="Logo" class="logo" />
 
-<div class="nav-links">
-  <a href="#" onclick="showPage('homePage')">BERANDA</a>
-  <a href="#" onclick="showPage('cakralandPage')">CAKRALAND</a>
-  <a href="#" onclick="showPage('cakraswaraPage')">CAKRASWARA</a>
-</div>
+        <div class="nav-links">
+          <a href="#" onclick="showPage('homePage')">BERANDA</a>
+          <a href="#" onclick="showPage('cakralandPage')">CAKRALAND</a>
+          <a href="#" onclick="showPage('cakraswaraPage')">CAKRASWARA</a>
+        </div>
       </nav>
     </header>
 
-<div id="homePage">
-  <div class="fixed-gradient-layer"></div>
-    <section class="hero">
-      <h1>CAKRANUSA</h1>
-      <p>Merangkai Cerita Nusantara dalam Satu Cakrawala.</p>
-    </section>
+    <div id="homePage">
+      <div class="fixed-gradient-layer"></div>
 
-  <!-- HALAMAN BARU DI BAWAH GRADASI -->
-  <section class="gold-section">
-    <div class="particles">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="gold-content">
+      <section class="hero">
+        <h1>CAKRANUSA</h1>
+        <p>Merangkai Cerita Nusantara dalam Satu Cakrawala.</p>
+      </section>
 
-      <div class="gold-image">
-        <img src="slide1.png" alt="Slide Image">
-      </div>
-
-      <div class="gold-text">
-        <h2>CAKRAWALA NUSANTARA</h2>
-        <p>
-          Dengan 38 provinsi dan lebih dari 1.340 suku bangsa, Indonesia menghadirkan keberagaman budaya yang kaya akan cerita, tradisi, bahasa, seni, dan warisan Nusantara yang terhubung dalam satu cakrawala budaya.
-        </p>
-
-        <div class="stats-boxes">
-
-          <div class="stat-card">
-            <div class="stat-number" data-target="38">0</div>
-            <div class="stat-label">JUMLAH PROVINSI</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-number" data-target="1340">0</div>
-            <div class="stat-label">JUMLAH SUKU</div>
-          </div>
-
+      <section class="gold-section">
+        <div class="particles">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+
+        <div class="gold-content">
+          <div class="gold-image">
+            <img src="slide1.png" alt="Slide Image" />
+          </div>
+
+          <div class="gold-text">
+            <h2>CAKRAWALA NUSANTARA</h2>
+            <p>
+              Dengan 38 provinsi dan lebih dari 1.340 suku bangsa, Indonesia menghadirkan keberagaman budaya yang kaya akan cerita, tradisi, bahasa, seni, dan warisan Nusantara yang terhubung dalam satu cakrawala budaya.
+            </p>
+
+            <div class="stats-boxes">
+              <div class="stat-card">
+                <div class="stat-number" data-target="38">0</div>
+                <div class="stat-label">JUMLAH PROVINSI</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-number" data-target="1340">0</div>
+                <div class="stat-label">JUMLAH SUKU</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wave-container">
+          <div class="wave wave-3"></div>
+          <div class="wave wave-4"></div>
+          <div class="wave wave-5"></div>
+        </div>
+      </section>
+
+      <section class="white-section">
+        <div class="white-content">
+          <div class="section-heading">
+            <h2>JENDELA BUDAYA</h2>
+            <p class="culture-tagline">
+              Sekilas pandang budaya Nusantara melalui warisan ikonik pada setiap wilayah Indonesia.
+            </p>
+          </div>
+
+          <div class="culture-grid">
+            <a href="#sumatra" class="culture-card">
+              <img src="RUMAH-GADANG.png" alt="Sumatra" />
+              <div class="culture-name">Pulau Sumatra</div>
+            </a>
+
+            <a href="#jawa" class="culture-card">
+              <img src="WAYANG-KULIT.png" alt="Jawa" />
+              <div class="culture-name">Pulau Jawa</div>
+            </a>
+
+            <a href="#kalimantan" class="culture-card">
+              <img src="RUMAH-BETANG.png" alt="Kalimantan" />
+              <div class="culture-name">Pulau Kalimantan</div>
+            </a>
+
+            <a href="#sulawesi" class="culture-card">
+              <img src="RUMAH-TONGKONAN.png" alt="Sulawesi" />
+              <div class="culture-name">Pulau Sulawesi</div>
+            </a>
+
+            <a href="#bali" class="culture-card">
+              <img src="TARI-KECAK.png" alt="Bali" />
+              <div class="culture-name">Pulau Bali & Nusa Tenggara</div>
+            </a>
+
+            <a href="#papua" class="culture-card">
+              <img src="HONAI.png" alt="Papua" />
+              <div class="culture-name">Pulau Papua</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="sumatra"></section>
+      <section id="jawa"></section>
+      <section id="kalimantan"></section>
+      <section id="sulawesi"></section>
+      <section id="bali"></section>
+      <section id="papua"></section>
+
+      <section class="folklore-section">
+        <div class="folklore-container">
+          <div class="folklore-left">
+            <h2>Cerita Rakyat<br />Nusantara</h2>
+            <p>Menjelajahi Nusantara melalui legenda dan cerita yang diwariskan sebagai budaya.</p>
+
+            <div class="story-scrollbar">
+              <div class="story-scroll-track">
+                <div class="story-scroll-thumb" id="storyThumb"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="folklore-right">
+            <div class="folklore-slider" id="folkloreSlider">
+              <a href="#malinkundang" class="story-card">
+                <img src="MALIN-KUNDANG.png" alt="Malin Kundang" />
+                <div class="story-content">
+                  <h3>Malin Kundang - Sumatra</h3>
+                  <p>Kisah seorang anak yang durhaka kepada ibunya dan dikutuk menjadi batu sebagai pelajaran tentang bakti kepada orang tua.</p>
+                </div>
+              </a>
+
+              <a href="#sangkuriang" class="story-card">
+                <img src="SANGKURIANG.png" alt="Sangkuriang" />
+                <div class="story-content">
+                  <h3>Sangkuriang - Jawa</h3>
+                  <p>Legenda asal-usul terbentuknya Gunung Tangkuban Perahu yang berawal dari kisah cinta tragis antara Sangkuriang dan Dayang Sumbi.</p>
+                </div>
+              </a>
+
+              <a href="#putrijunjungbuih" class="story-card">
+                <img src="PUTRI-JUNJUNG-BUIH.png" alt="Putri Junjung Buih" />
+                <div class="story-content">
+                  <h3>Putri Junjung Buih - Kalimantan</h3>
+                  <p>Cerita tentang seorang putri yang muncul dari buih sungai dan kelak menjadi tokoh penting dalam sejarah Kerajaan Banjar.</p>
+                </div>
+              </a>
+
+              <a href="#sawerigading" class="story-card">
+                <img src="SAWERIGADING.png" alt="Sawerigading" />
+                <div class="story-content">
+                  <h3>Sawerigading - Sulawesi</h3>
+                  <p>Epos kepahlawanan dari tanah Bugis yang mengisahkan perjalanan, keberanian, dan petualangan seorang pangeran legendaris.</p>
+                </div>
+              </a>
+
+              <a href="#manikangkeran" class="story-card">
+                <img src="MANIK-ANGKERAN.png" alt="Manik Angkeran" />
+                <div class="story-content">
+                  <h3>Manik Angkeran - Bali & Nusa Tenggara</h3>
+                  <p>Kisah seorang pemuda yang serakah dan pelajaran tentang pentingnya kejujuran serta penghormatan terhadap alam.</p>
+                </div>
+              </a>
+
+              <a href="#manarmakeri" class="story-card">
+                <img src="MANARMAKERI.png" alt="Manarmakeri" />
+                <div class="story-content">
+                  <h3>Manarmakeri - Papua</h3>
+                  <p>Legenda tokoh bijaksana dari Papua yang dipercaya membawa harapan, kemakmuran, dan pembaruan kehidupan.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <h2 class="about-title">TENTANG KAMI</h2>
+
+        <div class="about-grid">
+          <div class="about-brand">
+            <img src="logo.png" alt="CAKRANUSA" />
+            <h3>CAKRANUSA</h3>
+          </div>
+
+          <div class="about-content">
+            <div class="about-description">
+              <h4>Deskripsi</h4>
+              <p>
+                CAKRANUSA merupakan WebGIS budaya interaktif yang menghadirkan keberagaman budaya Nusantara melalui peta digital, cerita rakyat, serta informasi budaya daerah dalam satu platform yang informatif, modern, dan mudah diakses. Melalui CAKRANUSA, pengguna dapat menjelajahi warisan budaya Indonesia secara lebih menarik dan interaktif.
+              </p>
+            </div>
+
+            <div class="feedback-card">
+              <div class="feedback-section">
+                <h4>Kritik & Saran</h4>
+                <textarea id="feedbackMessage" placeholder="Tuliskan kritik, saran, atau masukan Anda..."></textarea>
+                <button onclick="sendWhatsappFeedback()">Kirim Pesan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="cakralandPage" style="display: none;">
+      <section class="cakraland-page">
+        <div id="cakralandMap"></div>
+      </section>
+
+      <div id="sheetOverlay"></div>
+
+      <div id="cultureSheet">
+        <div class="sheet-handle"></div>
+
+        <div class="sheet-header">
+          <div class="sheet-title" id="sheetProvince">PROVINSI</div>
+
+          <div class="sheet-tabs">
+            <button class="sheet-tab active">CERITA RAKYAT</button>
+            <button class="sheet-tab">ALAT MUSIK</button>
+            <button class="sheet-tab">BAJU ADAT</button>
+            <button class="sheet-tab">MAKANAN TRADISIONAL</button>
+            <button class="sheet-tab">SENI PERTUNJUKAN</button>
+            <button class="sheet-tab">RUMAH ADAT</button>
+          </div>
+        </div>
+
+        <div class="sheet-body" id="sheetBody"></div>
       </div>
-
     </div>
-<div class="wave-container">
-  <div class="wave wave-3"></div>
-  <div class="wave wave-4"></div>
-  <div class="wave wave-5"></div>
-</div>
-  </section>
 
-<section class="white-section">
+    <div id="cakraswaraPage" style="display: none;">
+      <section class="cakraswara-page">
+        <div class="cakraswara-shell">
+          <div class="swara-search-wrap">
+            <input
+              type="search"
+              id="swaraSearchInput"
+              class="swara-search"
+              placeholder="Cari cerita audio Nusantara..."
+              autocomplete="off"
+            />
+          </div>
 
-  <div class="white-content">
+          <div class="swara-category-nav" id="swaraCategoryNav">
+            <button class="swara-category-btn active" data-category="SEMUA">SEMUA</button>
+            <button class="swara-category-btn" data-category="LEGENDA">LEGENDA</button>
+            <button class="swara-category-btn" data-category="KERAJAAN & TOKOH SEJARAH">KERAJAAN & TOKOH SEJARAH</button>
+            <button class="swara-category-btn" data-category="DONGENG & FANTASI">DONGENG & FANTASI</button>
+            <button class="swara-category-btn" data-category="EPOS & KEPAHLAWANAN">EPOS & KEPAHLAWANAN</button>
+            <button class="swara-category-btn" data-category="MORAL & KEHIDUPAN">MORAL & KEHIDUPAN</button>
+          </div>
 
-<div class="section-heading">
-  <h2>JENDELA BUDAYA</h2>
+          <div class="swara-grid" id="swaraGrid"></div>
+        </div>
+      </section>
 
-  <p class="culture-tagline">
-    Sekilas pandang budaya Nusantara melalui warisan ikonik pada setiap wilayah Indonesia.
-  </p>
-</div>
-    <div class="culture-grid">
+      <section id="cakraswaraPlayerLayer" aria-hidden="true">
+        <div class="swara-player-topbar">
+          <div class="swara-player-search-wrap">
+            <input
+              type="search"
+              id="swaraPlayerSearchInput"
+              class="swara-search swara-player-search"
+              placeholder="Cari cerita audio Nusantara..."
+              autocomplete="off"
+            />
+          </div>
 
-      <a href="#sumatra" class="culture-card">
-        <img src="RUMAH-GADANG.png" alt="Sumatra">
-        <div class="culture-name">Pulau Sumatra</div>
-      </a>
+          <button class="swara-close-btn" type="button" onclick="closeCakraswaraPlayer()">×</button>
+        </div>
 
-      <a href="#jawa" class="culture-card">
-        <img src="WAYANG-KULIT.png" alt="Jawa">
-        <div class="culture-name">Pulau Jawa</div>
-      </a>
+        <div class="swara-player-layout">
+          <aside class="swara-playlist-panel">
+            <div class="swara-playlist-heading">
+              <span>Playlist Audio</span>
+              <small>Pilih cerita untuk diputar</small>
+            </div>
+            <div class="swara-playlist" id="swaraPlaylist"></div>
+          </aside>
 
-      <a href="#kalimantan" class="culture-card">
-        <img src="RUMAH-BETANG.png" alt="Kalimantan">
-        <div class="culture-name">Pulau Kalimantan</div>
-      </a>
+          <div class="swara-divider"></div>
 
-      <a href="#sulawesi" class="culture-card">
-        <img src="RUMAH-TONGKONAN.png" alt="Sulawesi">
-        <div class="culture-name">Pulau Sulawesi</div>
-      </a>
+          <div class="swara-room">
+            <div class="swara-room-card">
+              <div class="swara-room-image-wrap">
+                <img id="swaraPlayerImage" src="" alt="Audio Cerita" />
+              </div>
 
-      <a href="#bali" class="culture-card">
-        <img src="TARI-KECAK.png" alt="Bali">
-        <div class="culture-name">Pulau Bali & Nusa Tenggara</div>
-      </a>
+              <h2 id="swaraPlayerTitle"></h2>
+              <div id="swaraPlayerCategory"></div>
+              <div id="swaraAudioStatus">Pilih audio untuk mulai mendengarkan.</div>
 
-      <a href="#papua" class="culture-card">
-        <img src="HONAI.png" alt="Papua">
-        <div class="culture-name">Pulau Papua</div>
-      </a>
+              <div class="swara-controls">
+                <button class="swara-control-btn" type="button" id="swaraPrevBtn" aria-label="Playlist sebelumnya">⏮</button>
+                <button class="swara-control-btn" type="button" id="swaraBackBtn" aria-label="Mundur 10 detik">↺ 10</button>
+                <button class="swara-control-btn main" type="button" id="swaraPlayBtn" aria-label="Putar atau jeda">▶</button>
+                <button class="swara-control-btn" type="button" id="swaraStopBtn" aria-label="Berhenti">■</button>
+                <button class="swara-control-btn" type="button" id="swaraForwardBtn" aria-label="Maju 10 detik">10 ↻</button>
+                <button class="swara-control-btn" type="button" id="swaraNextBtn" aria-label="Playlist berikutnya">⏭</button>
+              </div>
 
+              <div class="swara-progress-row">
+                <span id="swaraCurrentTime">00:00</span>
+                <input type="range" id="swaraSeekBar" min="0" max="100" value="0" />
+                <span id="swaraDuration">00:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="youtube-audio-holder">
+          <div id="youtubeAudioPlayer"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="budayaPage" style="display: none;">
+      <section class="budaya-view">
+        <div class="gold-bubbles">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <h1 id="budayaJudul"></h1>
+        <div id="budayaVideo"></div>
+        <div id="budayaIsi"></div>
+      </section>
     </div>
   </div>
 
-</section>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<section id="sumatra"></section>
-<section id="jawa"></section>
-<section id="kalimantan"></section>
-<section id="sulawesi"></section>
-<section id="bali"></section>
-<section id="papua"></section>
-
-<section class="folklore-section">
-
-  <div class="folklore-container">
-
-    <div class="folklore-left">
-
-      <h2>
-        Cerita Rakyat<br>
-        Nusantara
-      </h2>
-
-      <p>
-        Menjelajahi Nusantara melalui legenda dan cerita yang diwariskan sebagai budaya.
-      </p>
-
-<div class="story-scrollbar">
-
-  <div class="story-scroll-track">
-
-    <div class="story-scroll-thumb" id="storyThumb"></div>
-
-  </div>
-
-</div>
-
-    </div>
-
-    <div class="folklore-right">
-
-      <div class="folklore-slider" id="folkloreSlider">
-
-        <a href="#malinkundang" class="story-card">
-          <img src="MALIN-KUNDANG.png">
-
-          <div class="story-content">
-            <h3>Malin Kundang - Sumatra</h3>
-            <p>
-              Kisah seorang anak yang durhaka kepada ibunya dan dikutuk menjadi batu sebagai pelajaran tentang bakti kepada orang tua.
-            </p>
-          </div>
-        </a>
-
-        <a href="#sangkuriang" class="story-card">
-          <img src="SANGKURIANG.png">
-
-          <div class="story-content">
-            <h3>Sangkuriang - Jawa</h3>
-            <p>
-              Legenda asal-usul terbentuknya Gunung Tangkuban Perahu yang berawal dari kisah cinta tragis antara Sangkuriang dan Dayang Sumbi.
-            </p>
-          </div>
-        </a>
-
-        <a href="#putrijunjungbuih" class="story-card">
-          <img src="PUTRI-JUNJUNG-BUIH.png">
-
-          <div class="story-content">
-            <h3>Putri Junjung Buih - Kalimantan</h3>
-            <p>
-              Cerita tentang seorang putri yang muncul dari buih sungai dan kelak menjadi tokoh penting dalam sejarah Kerajaan Banjar.
-            </p>
-          </div>
-        </a>
-
-        <a href="#sawerigading" class="story-card">
-          <img src="SAWERIGADING.png">
-
-          <div class="story-content">
-            <h3>Sawerigading - Sulawesi</h3>
-            <p>
-              Epos kepahlawanan dari tanah Bugis yang mengisahkan perjalanan, keberanian, dan petualangan seorang pangeran legendaris.
-            </p>
-          </div>
-        </a>
-
-        <a href="#manikangkeran" class="story-card">
-          <img src="MANIK-ANGKERAN.png">
-
-          <div class="story-content">
-            <h3>Manik Angkeran - Bali & Nusa Tenggara</h3>
-            <p>
-              Kisah seorang pemuda yang serakah dan pelajaran tentang pentingnya kejujuran serta penghormatan terhadap alam.
-            </p>
-          </div>
-        </a>
-
-        <a href="#manarmakeri" class="story-card">
-          <img src="MANARMAKERI.png">
-
-          <div class="story-content">
-            <h3>Manarmakeri - Papua</h3>
-            <p>
-              Legenda tokoh bijaksana dari Papua yang dipercaya membawa harapan, kemakmuran, dan pembaruan kehidupan.
-            </p>
-          </div>
-        </a>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-</section>
-
-<section class="about-section">
-
-  <h2 class="about-title">
-    TENTANG KAMI
-  </h2>
-
-  <div class="about-grid">
-
-    <!-- KIRI -->
-    <div class="about-brand">
-
-      <img src="logo.png" alt="CAKRANUSA">
-
-      <h3>CAKRANUSA</h3>
-
-    </div>
-
-    <!-- KANAN -->
-    <div class="about-content">
-
-      <div class="about-description">
-
-        <h4>Deskripsi</h4>
-
-        <p>
-          CAKRANUSA merupakan WebGIS budaya interaktif yang menghadirkan keberagaman budaya Nusantara melalui peta digital, cerita rakyat, serta informasi budaya daerah dalam satu platform yang informatif, modern, dan mudah diakses. Melalui CAKRANUSA, pengguna dapat menjelajahi warisan budaya Indonesia secara lebih menarik dan interaktif.
-        </p>
-
-      </div>
-
-      <div class="feedback-card">
-
-<div class="feedback-section">
-
-  <h4>Kritik & Saran</h4>
-
-  <textarea
-    id="feedbackMessage"
-    placeholder="Tuliskan kritik, saran, atau masukan Anda..."
-  ></textarea>
-
-  <button onclick="sendWhatsappFeedback()">
-    Kirim Pesan
-  </button>
-
-</div>
-
-    </div>
-
-  </div>
-
-</section>
-</div>
-
-<div id="cakralandPage" style="display:none;">
-
-  <section class="cakraland-page">
-
-    <div id="cakralandMap"></div>
-
-  </section>
-<div id="sheetOverlay"></div>
-<div id="cultureSheet">
-
-  <div class="sheet-handle"></div>
-
-  <div class="sheet-header">
-
-    <div class="sheet-title" id="sheetProvince">
-      PROVINSI
-    </div>
-
-    <div class="sheet-tabs">
-
-      <button class="sheet-tab active">CERITA RAKYAT</button>
-
-      <button class="sheet-tab">ALAT MUSIK</button>
-
-      <button class="sheet-tab">BAJU ADAT</button>
-
-      <button class="sheet-tab">MAKANAN TRADISIONAL</button>
-
-      <button class="sheet-tab">SENI PERTUNJUKAN</button>
-
-      <button class="sheet-tab">RUMAH ADAT</button>
-
-    </div>
-
-  </div>
-
-  <div class="sheet-body" id="sheetBody">
-
-  </div>
-
-</div>
-
-</div>
-
-<div id="budayaPage" style="display:none;">
-
-  <section class="budaya-view">
-
-<div class="gold-bubbles">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-    <h1 id="budayaJudul"></h1>
-
-    <div id="budayaVideo"></div>
-
-    <div id="budayaIsi"></div>
-
-  </section>
-
-</div>
   <script>
     const fixedHeader = document.getElementById('fixed-header');
+    const SHEET_EXPANDED = 0;
+    const SHEET_MIDDLE = 35;
+    const SHEET_HIDDEN = 100;
+
+    let cakralandMap = null;
+    let mapLoaded = false;
+    let batasProvinsi = null;
+    let currentState = SHEET_HIDDEN;
+    let startY = 0;
+    let currentY = 0;
+    let startTranslate = 0;
+    let dragging = false;
+
+    const sheet = document.getElementById('cultureSheet');
+    const overlay = document.getElementById('sheetOverlay');
+    const handle = document.querySelector('.sheet-handle');
+    const provinceText = document.getElementById('sheetProvince');
+    const sheetBody = document.getElementById('sheetBody');
+
+    const budayaData = [
+      {
+        nama: 'Sangkuriang',
+        provinsi: 'Jawa Barat',
+        kategori: 'CERITA RAKYAT',
+        gambar: 'SANGKURIANG.png',
+        gdoc: '1-DnFCOEyvUZIydW4MCIBlxzFcuw1HWEPD0FMlOvlokA',
+        youtube: 'X6IrY6aHGXo'
+      },
+      {
+        nama: 'Angklung',
+        provinsi: 'Jawa Barat',
+        kategori: 'ALAT MUSIK',
+        gambar: 'ANGKLUNG.png',
+        gdoc: '1XyZaBcDeFgHiJk'
+      },
+      {
+        nama: 'Kebaya Sunda',
+        provinsi: 'Jawa Barat',
+        kategori: 'BAJU ADAT',
+        gambar: 'KEBAYA-SUNDA.png',
+        gdoc: '1LmNoPqRsTuVwXy'
+      }
+    ];
+
+    let currentProvince = '';
 
     window.addEventListener('scroll', () => {
       fixedHeader.classList.add('header-fixed-active');
+
+      const gradient = document.querySelector('.fixed-gradient-layer');
+      const heroHeight = window.innerHeight;
+
+      if (!gradient) return;
+
+      gradient.style.opacity = window.scrollY > heroHeight - 50 ? '0' : '1';
     });
 
-    const counters = document.querySelectorAll('.stat-number');
+    function showPage(pageId) {
+      const pages = ['homePage', 'cakralandPage', 'cakraswaraPage', 'budayaPage'];
 
-    const runCounter = (counter) => {
+      pages.forEach(id => {
+        const page = document.getElementById(id);
+        if (page) page.style.display = 'none';
+      });
+
+      closeCultureSheet();
+
+      if (pageId !== 'cakraswaraPage') {
+        closeCakraswaraPlayer();
+      }
+
+      const targetPage = document.getElementById(pageId);
+      if (!targetPage) return;
+
+      targetPage.style.display = 'block';
+      window.scrollTo(0, 0);
+
+      if (pageId === 'cakralandPage') {
+        initMapOnce();
+
+        setTimeout(() => {
+          if (cakralandMap) cakralandMap.invalidateSize();
+        }, 200);
+      }
+    }
+
+    function initMapOnce() {
+      if (mapLoaded) return;
+
+      cakralandMap = L.map('cakralandMap').setView([-2.5, 118], 5);
+
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+      }).addTo(cakralandMap);
+
+      fetch('https://raw.githubusercontent.com/ardian28/GeoJson-Indonesia-38-Provinsi/main/Provinsi/38%20Provinsi%20Indonesia%20-%20Provinsi.json')
+        .then(response => response.json())
+        .then(data => {
+          batasProvinsi = L.geoJSON(data, {
+            style: getProvinceStyle,
+            onEachFeature: bindProvinceEvents
+          }).addTo(cakralandMap);
+
+          cakralandMap.fitBounds(batasProvinsi.getBounds());
+        })
+        .catch(error => {
+          console.error('Gagal memuat GeoJSON:', error);
+        });
+
+      mapLoaded = true;
+    }
+
+    function getProvinceStyle(feature) {
+      const colors = [
+        '#D4AF37',
+        '#C9A227',
+        '#B8860B',
+        '#E6C76E',
+        '#A67C00',
+        '#8B6B1F',
+        '#F2D675',
+        '#CFAF5A',
+        '#B89B45',
+        '#9C7A19'
+      ];
+
+      const provName =
+        feature.properties.Provinsi ||
+        feature.properties.PROVINSI ||
+        feature.properties.nama ||
+        '';
+
+      let colorIndex = 0;
+
+      for (let i = 0; i < provName.length; i++) {
+        colorIndex += provName.charCodeAt(i);
+      }
+
+      return {
+        color: '#ffffff',
+        weight: 1,
+        fillColor: colors[colorIndex % colors.length],
+        fillOpacity: 0.7
+      };
+    }
+
+    function bindProvinceEvents(feature, layer) {
+      const namaProvinsi =
+        feature.properties.Provinsi ||
+        feature.properties.PROVINSI ||
+        feature.properties.nama ||
+        feature.properties.NAME ||
+        'Provinsi';
+
+      layer.bindTooltip(namaProvinsi, {
+        permanent: false,
+        direction: 'top',
+        sticky: true,
+        opacity: 1,
+        className: 'provinsi-tooltip'
+      });
+
+      layer.on('click', () => {
+        openProvince(namaProvinsi);
+      });
+
+      layer.on('mouseover', e => {
+        const l = e.target;
+
+        l.setStyle({
+          weight: 1,
+          color: '#ffffff'
+        });
+
+        if (l._path) {
+          l._path.style.filter =
+            'drop-shadow(0px 8px 14px rgba(0,0,0,0.45)) drop-shadow(0px 0px 18px rgba(255,215,0,0.6))';
+          l._path.style.transform = 'scale(1.02)';
+          l._path.style.transformOrigin = 'center';
+        }
+      });
+
+      layer.on('mouseout', e => {
+        const l = e.target;
+
+        if (batasProvinsi) batasProvinsi.resetStyle(l);
+
+        if (l._path) {
+          l._path.style.filter = 'none';
+          l._path.style.transform = 'scale(1)';
+        }
+      });
+    }
+
+    function setSheetPosition(percent) {
+      if (!sheet || !overlay) return;
+
+      currentState = percent;
+      sheet.style.transition = 'transform .3s ease';
+      sheet.style.transform = `translateY(${percent}%)`;
+
+      if (percent === SHEET_HIDDEN) {
+        sheet.classList.remove('active');
+        overlay.classList.remove('active');
+      } else {
+        sheet.classList.add('active');
+        overlay.classList.add('active');
+      }
+    }
+
+    function closeCultureSheet() {
+      setSheetPosition(SHEET_HIDDEN);
+    }
+
+    function openProvince(namaProvinsi) {
+      currentProvince = namaProvinsi;
+      provinceText.innerHTML = namaProvinsi;
+      renderBudaya();
+      setSheetPosition(SHEET_MIDDLE);
+    }
+
+    function renderBudaya() {
+      sheetBody.innerHTML = '';
+
+      const activeTab = document.querySelector('.sheet-tab.active');
+      const kategoriAktif = activeTab ? activeTab.textContent.trim() : 'CERITA RAKYAT';
+
+      const hasil = budayaData.filter(item =>
+        item.provinsi === currentProvince && item.kategori === kategoriAktif
+      );
+
+      if (!hasil.length) {
+        sheetBody.innerHTML = '<div class="budaya-empty">Data belum tersedia.</div>';
+        return;
+      }
+
+      hasil.forEach(item => {
+        const youtube = item.youtube || '';
+
+        sheetBody.innerHTML += `
+          <div class="budaya-card" onclick="openBudaya('${item.gdoc}', '${item.nama}', '${youtube}')">
+            <img src="${item.gambar}" alt="${item.nama}">
+            <div class="budaya-title">${item.nama}</div>
+          </div>
+        `;
+      });
+    }
+
+    async function openBudaya(gdoc, nama, youtube) {
+      history.pushState({ page: 'budaya' }, '', '#budaya');
+      window.scrollTo(0, 0);
+
+      document.getElementById('cakralandPage').style.display = 'none';
+      document.getElementById('budayaPage').style.display = 'block';
+      document.getElementById('budayaJudul').innerText = nama;
+
+      document.getElementById('budayaVideo').innerHTML = youtube
+        ? `<iframe src="https://www.youtube.com/embed/${youtube}" allowfullscreen></iframe>`
+        : '';
+
+      document.getElementById('budayaIsi').innerHTML = 'Memuat konten...';
+
+      try {
+        const url = `https://corsproxy.io/?https://docs.google.com/document/d/${gdoc}/export?format=txt`;
+        const res = await fetch(url);
+
+        if (!res.ok) {
+          throw new Error('HTTP ' + res.status);
+        }
+
+        const html = await res.text();
+        document.getElementById('budayaIsi').innerHTML = html;
+      } catch (err) {
+        document.getElementById('budayaIsi').innerHTML = 'Gagal memuat dokumen.';
+      }
+    }
+
+    function sendWhatsappFeedback() {
+      const msg = document.getElementById('feedbackMessage').value;
+
+      if (msg.trim() === '') {
+        alert('Silakan isi pesan terlebih dahulu');
+        return;
+      }
+
+      const url = `https://wa.me/628979390425?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    function runCounter(counter) {
       const target = parseInt(counter.getAttribute('data-target'));
       const duration = 1200;
       const startTime = performance.now();
 
-      const animate = (currentTime) => {
+      function animate(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-
         const current = Math.floor(progress * target);
 
         counter.innerText = current.toLocaleString('id-ID');
@@ -1903,632 +3564,671 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
         } else {
           counter.innerText = target.toLocaleString('id-ID');
         }
-      };
+      }
 
       requestAnimationFrame(animate);
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-          entry.target.classList.add('counted');
-          runCounter(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.5
-    });
-
-    counters.forEach(counter => {
-      observer.observe(counter);
-    });
-  </script>
-
-<script>
-
-document.addEventListener('DOMContentLoaded',()=>{
-
-  const slider =
-    document.getElementById('folkloreSlider');
-
-  const thumb =
-    document.getElementById('storyThumb');
-
-function updateSlider(){
-
-  const maxScroll =
-    slider.scrollWidth - slider.clientWidth;
-
-  if(maxScroll <= 0) return;
-
-  const track =
-    document.querySelector('.story-scroll-track');
-
-  const trackWidth =
-    track.offsetWidth;
-
-  const thumbWidth =
-    (slider.clientWidth / slider.scrollWidth) * trackWidth;
-
-  const maxThumbMove =
-    trackWidth - thumbWidth;
-
-  const thumbPosition =
-    (slider.scrollLeft / maxScroll) * maxThumbMove;
-
-  thumb.style.width =
-    `${thumbWidth}px`;
-
-  thumb.style.transform =
-    `translateX(${thumbPosition}px)`;
-
-}
-  slider.addEventListener(
-    'scroll',
-    updateSlider
-  );
-
-  updateSlider();
-
-});
-
-</script>
-</script>
-<script>
-
-function sendWhatsappFeedback(){
-
-  const msg =
-  document.getElementById('feedbackMessage').value;
-
-  if(msg.trim()===''){
-    alert('Silakan isi pesan terlebih dahulu');
-    return;
-  }
-
-  const url =
-  `https://wa.me/628979390425?text=${encodeURIComponent(msg)}`;
-
-  window.open(url,'_blank');
-}
-
-</script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-
-let cakralandMap;
-let mapLoaded = false;
-let batasProvinsi;
-
-function closeCultureSheet(){
-
-  const sheet =
-  document.getElementById("cultureSheet");
-
-  const overlay =
-  document.getElementById("sheetOverlay");
-
-  sheet.classList.remove("active");
-  overlay.classList.remove("active");
-
-  sheet.style.transform =
-  "translateY(100%)";
-
-  currentState = 100;
-
-}
-
-function showPage(pageId){
-
-  document.getElementById('homePage').style.display='none';
-  document.getElementById('cakralandPage').style.display='none';
-  closeCultureSheet();
-
-  document.getElementById(pageId).style.display='block';
-const mapDiv = document.getElementById('cakralandMap');
-  mapDiv.style.display = 'none';
-
-  closeCultureSheet();
-
-  document.getElementById(pageId).style.display='block';
-
-  window.scrollTo(0,0);
-
-  if(pageId === 'cakralandPage'){
-
-      // tampilkan map lagi
-      mapDiv.style.display = 'block';
-
-      setTimeout(()=>{
-          if(cakralandMap){
-              cakralandMap.invalidateSize();
-          }
-      },200);
-
-  }
-
-
-  document.getElementById(pageId).style.display='block';
-
-  window.scrollTo(0,0);
-
-if(pageId === 'cakralandPage' && !mapLoaded){
-
-    cakralandMap = L.map('cakralandMap').setView(
-      [-2.5,118],
-      5
-    );
-
-    L.tileLayer(
-      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        attribution:'© OpenStreetMap'
-      }
-    ).addTo(cakralandMap);
-
-    /* =====================
-       GEOJSON PROVINSI
-    ===================== */
-
-fetch('https://raw.githubusercontent.com/ardian28/GeoJson-Indonesia-38-Provinsi/main/Provinsi/38%20Provinsi%20Indonesia%20-%20Provinsi.json')
-.then(response => response.json())
-.then(data => {
-
-batasProvinsi = L.geoJSON(data,{
-
-  style: function(feature){
-
-    const colors = [
-  	'#D4AF37', // Royal Gold
-  	'#C9A227', // Antique Gold
-  	'#B8860B', // Dark Goldenrod
-  	'#E6C76E', // Soft Gold
-  	'#A67C00', // Bronze Gold
-  	'#8B6B1F', // Deep Bronze
-  	'#F2D675', // Champagne Gold
-  	'#CFAF5A', // Elegant Gold
-  	'#B89B45', // Muted Gold
-  	'#9C7A19'  // Dark Gold
-    ];
-
-    const provName =
-      feature.properties.Provinsi ||
-      feature.properties.PROVINSI ||
-      feature.properties.nama ||
-      '';
-
-    let colorIndex = 0;
-
-    for(let i=0;i<provName.length;i++){
-      colorIndex += provName.charCodeAt(i);
     }
 
-    return {
-      color:'#ffffff',
-      weight:1,
-      fillColor: colors[colorIndex % colors.length],
-      fillOpacity:0.7
+    function initCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+            entry.target.classList.add('counted');
+            runCounter(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      counters.forEach(counter => observer.observe(counter));
+    }
+
+    function initStorySlider() {
+      const slider = document.getElementById('folkloreSlider');
+      const thumb = document.getElementById('storyThumb');
+      const track = document.querySelector('.story-scroll-track');
+
+      if (!slider || !thumb || !track) return;
+
+      function updateSlider() {
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (maxScroll <= 0) return;
+
+        const trackWidth = track.offsetWidth;
+        const thumbWidth = (slider.clientWidth / slider.scrollWidth) * trackWidth;
+        const maxThumbMove = trackWidth - thumbWidth;
+        const thumbPosition = (slider.scrollLeft / maxScroll) * maxThumbMove;
+
+        thumb.style.width = `${thumbWidth}px`;
+        thumb.style.transform = `translateX(${thumbPosition}px)`;
+      }
+
+      slider.addEventListener('scroll', updateSlider);
+      window.addEventListener('resize', updateSlider);
+      updateSlider();
+    }
+
+    function initSheetTabs() {
+      document.querySelectorAll('.sheet-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.sheet-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          renderBudaya();
+        });
+      });
+    }
+
+    function initSheetDrag() {
+      if (!handle || !sheet) return;
+
+      handle.addEventListener('mousedown', startDrag);
+      handle.addEventListener('touchstart', startDrag);
+
+      document.addEventListener('mousemove', dragSheet);
+      document.addEventListener('touchmove', dragSheet);
+
+      document.addEventListener('mouseup', stopDrag);
+      document.addEventListener('touchend', stopDrag);
+
+      overlay.addEventListener('click', () => {
+        setSheetPosition(SHEET_HIDDEN);
+      });
+    }
+
+    function startDrag(e) {
+      dragging = true;
+      startY = e.touches ? e.touches[0].clientY : e.clientY;
+      startTranslate = currentState;
+      sheet.style.transition = 'none';
+    }
+
+    function dragSheet(e) {
+      if (!dragging) return;
+
+      currentY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      const delta = currentY - startY;
+      const vh = window.innerHeight;
+      let newPos = startTranslate + (delta / vh * 100);
+
+      newPos = Math.max(0, Math.min(100, newPos));
+      sheet.style.transform = `translateY(${newPos}%)`;
+    }
+
+    function stopDrag() {
+      if (!dragging) return;
+
+      dragging = false;
+
+      const matrix = window.getComputedStyle(sheet).transform;
+      let translateY = 0;
+
+      if (matrix !== 'none') {
+        const values = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
+        translateY = parseFloat(values[5]);
+      }
+
+      const percent = (translateY / window.innerHeight) * 100;
+
+      if (percent < 18) {
+        setSheetPosition(SHEET_EXPANDED);
+      } else if (percent < 65) {
+        setSheetPosition(SHEET_MIDDLE);
+      } else {
+        setSheetPosition(SHEET_HIDDEN);
+      }
+    }
+
+
+    const cakraswaraData = [
+      {
+        judul: 'Malin Kundang',
+        daerah: 'Sumatra Barat',
+        kategori: 'MORAL & KEHIDUPAN',
+        gambar: 'MALIN-KUNDANG.png',
+        youtube: '',
+        deskripsi: 'Kisah bakti, penyesalan, dan akibat dari kedurhakaan kepada orang tua.'
+      },
+      {
+        judul: 'Sangkuriang',
+        daerah: 'Jawa Barat',
+        kategori: 'LEGENDA',
+        gambar: 'SANGKURIANG.png',
+        youtube: 'X6IrY6aHGXo',
+        deskripsi: 'Legenda asal-usul Tangkuban Perahu yang penuh konflik, siasat, dan takdir.'
+      },
+      {
+        judul: 'Putri Junjung Buih',
+        daerah: 'Kalimantan Selatan',
+        kategori: 'KERAJAAN & TOKOH SEJARAH',
+        gambar: 'PUTRI-JUNJUNG-BUIH.png',
+        youtube: '',
+        deskripsi: 'Cerita tokoh putri dari buih sungai yang berkaitan dengan tradisi kerajaan Banjar.'
+      },
+      {
+        judul: 'Sawerigading',
+        daerah: 'Sulawesi Selatan',
+        kategori: 'EPOS & KEPAHLAWANAN',
+        gambar: 'SAWERIGADING.png',
+        youtube: '',
+        deskripsi: 'Epos Bugis tentang perjalanan, keberanian, dan kepahlawanan seorang pangeran.'
+      },
+      {
+        judul: 'Manik Angkeran',
+        daerah: 'Bali & Nusa Tenggara',
+        kategori: 'MORAL & KEHIDUPAN',
+        gambar: 'MANIK-ANGKERAN.png',
+        youtube: '',
+        deskripsi: 'Kisah tentang keserakahan, kejujuran, dan konsekuensi dari tindakan manusia.'
+      },
+      {
+        judul: 'Manarmakeri',
+        daerah: 'Papua',
+        kategori: 'DONGENG & FANTASI',
+        gambar: 'MANARMAKERI.png',
+        youtube: '',
+        deskripsi: 'Legenda Papua tentang tokoh pembawa harapan, perubahan, dan kemakmuran.'
+      }
+    ];
+
+    let activeSwaraCategory = 'SEMUA';
+    let activeSwaraIndex = 0;
+    let activeSwaraPlaylist = [];
+    let swaraPlayer = null;
+    let swaraPlayerReady = false;
+    let swaraPendingVideoId = '';
+    let swaraProgressTimer = null;
+    let swaraIsPlaying = false;
+    let swaraUserWantsPlay = false;
+
+    function syncCakranusaHeaderHeight() {
+      const header = document.getElementById('fixed-header');
+      const height = header ? Math.ceil(header.getBoundingClientRect().height) : 54;
+      document.documentElement.style.setProperty('--cakranusa-header-height', `${height}px`);
+    }
+
+    function getFilteredCakraswaraData() {
+      const searchInput = document.getElementById('swaraSearchInput');
+      const keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+      return cakraswaraData
+        .map((item, index) => ({ item, index }))
+        .filter(({ item }) => {
+          const matchCategory =
+            activeSwaraCategory === 'SEMUA' || item.kategori === activeSwaraCategory;
+
+          const haystack = `${item.judul} ${item.daerah} ${item.kategori} ${item.deskripsi}`.toLowerCase();
+          const matchSearch = !keyword || haystack.includes(keyword);
+
+          return matchCategory && matchSearch;
+        });
+    }
+
+    function renderCakraswaraCards() {
+      const grid = document.getElementById('swaraGrid');
+      if (!grid) return;
+
+      const filtered = getFilteredCakraswaraData();
+      activeSwaraPlaylist = filtered;
+
+      if (!filtered.length) {
+        grid.innerHTML = '<div class="swara-empty">Data audio tidak ditemukan.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(({ item, index }) => `
+        <article class="swara-card" data-swara-index="${index}">
+          <img src="${item.gambar}" alt="${item.judul}">
+          <div class="swara-card-content">
+            <span class="swara-badge">${item.kategori}</span>
+            <h3>${item.judul}</h3>
+            <p>${item.daerah} · ${item.deskripsi}</p>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function initCakraswara() {
+      const searchInput = document.getElementById('swaraSearchInput');
+      const playerSearchInput = document.getElementById('swaraPlayerSearchInput');
+      const grid = document.getElementById('swaraGrid');
+
+      function refreshSwaraSearch(sourceInput) {
+        const value = sourceInput ? sourceInput.value : '';
+
+        if (searchInput && sourceInput !== searchInput) {
+          searchInput.value = value;
+        }
+
+        if (playerSearchInput && sourceInput !== playerSearchInput) {
+          playerSearchInput.value = value;
+        }
+
+        renderCakraswaraCards();
+
+        const layer = document.getElementById('cakraswaraPlayerLayer');
+        if (layer && layer.classList.contains('active')) {
+          activeSwaraPlaylist = getFilteredCakraswaraData();
+
+          if (activeSwaraPlaylist.length && activeSwaraIndex >= activeSwaraPlaylist.length) {
+            activeSwaraIndex = 0;
+          }
+
+          renderSwaraPlaylist();
+        }
+      }
+
+      document.querySelectorAll('.swara-category-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.swara-category-btn').forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          activeSwaraCategory = button.dataset.category || 'SEMUA';
+          renderCakraswaraCards();
+
+          const layer = document.getElementById('cakraswaraPlayerLayer');
+          if (layer && layer.classList.contains('active')) {
+            activeSwaraPlaylist = getFilteredCakraswaraData();
+            activeSwaraIndex = 0;
+            renderSwaraPlaylist();
+          }
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', () => refreshSwaraSearch(searchInput));
+      }
+
+      if (playerSearchInput) {
+        playerSearchInput.addEventListener('input', () => refreshSwaraSearch(playerSearchInput));
+      }
+
+      if (grid) {
+        grid.addEventListener('click', event => {
+          const card = event.target.closest('.swara-card');
+          if (!card) return;
+
+          const index = Number(card.dataset.swaraIndex);
+          openCakraswaraPlayer(index);
+        });
+      }
+
+      const prevBtn = document.getElementById('swaraPrevBtn');
+      const playBtn = document.getElementById('swaraPlayBtn');
+      const stopBtn = document.getElementById('swaraStopBtn');
+      const backBtn = document.getElementById('swaraBackBtn');
+      const forwardBtn = document.getElementById('swaraForwardBtn');
+      const nextBtn = document.getElementById('swaraNextBtn');
+      const seekBar = document.getElementById('swaraSeekBar');
+
+      if (prevBtn) prevBtn.addEventListener('click', () => changeSwaraTrack(-1));
+      if (playBtn) playBtn.addEventListener('click', toggleSwaraPlayback);
+      if (stopBtn) stopBtn.addEventListener('click', stopSwaraPlayback);
+      if (backBtn) backBtn.addEventListener('click', () => seekSwaraBy(-10));
+      if (forwardBtn) forwardBtn.addEventListener('click', () => seekSwaraBy(10));
+      if (nextBtn) nextBtn.addEventListener('click', () => changeSwaraTrack(1));
+
+      if (seekBar) {
+        seekBar.addEventListener('input', () => {
+          if (!swaraPlayer || !swaraPlayerReady) return;
+
+          const duration = swaraPlayer.getDuration ? swaraPlayer.getDuration() : 0;
+          if (!duration) return;
+
+          const targetTime = (Number(seekBar.value) / 100) * duration;
+          swaraPlayer.seekTo(targetTime, true);
+          updateSwaraProgress();
+        });
+      }
+
+      renderCakraswaraCards();
+    }
+
+    function openCakraswaraPlayer(index) {
+      const layer = document.getElementById('cakraswaraPlayerLayer');
+      if (!layer) return;
+
+      syncCakranusaHeaderHeight();
+
+      const filtered = getFilteredCakraswaraData();
+      activeSwaraPlaylist = filtered.length ? filtered : cakraswaraData.map((item, i) => ({ item, index: i }));
+
+      const playlistIndex = activeSwaraPlaylist.findIndex(entry => entry.index === index);
+      activeSwaraIndex = playlistIndex >= 0 ? playlistIndex : 0;
+
+      layer.classList.add('active');
+      layer.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('swara-player-open');
+
+      if (history.state?.page !== 'cakraswara-audio') {
+        history.pushState({ page: 'cakraswara-audio' }, '', '#cakraswara-audio');
+      }
+
+      const mainSearch = document.getElementById('swaraSearchInput');
+      const playerSearch = document.getElementById('swaraPlayerSearchInput');
+
+      if (mainSearch && playerSearch) {
+        playerSearch.value = mainSearch.value;
+      }
+
+      renderSwaraPlaylist();
+      loadSwaraItem(activeSwaraIndex, false);
+    }
+
+    function closeCakraswaraPlayer() {
+      const layer = document.getElementById('cakraswaraPlayerLayer');
+      if (!layer) return;
+
+      layer.classList.remove('active');
+      layer.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('swara-player-open');
+
+      stopSwaraPlayback();
+    }
+
+    function renderSwaraPlaylist() {
+      const playlist = document.getElementById('swaraPlaylist');
+      if (!playlist) return;
+
+      if (!activeSwaraPlaylist.length) {
+        playlist.innerHTML = '<div class="swara-playlist-empty">Tidak ada audio yang cocok dengan pencarian.</div>';
+        return;
+      }
+
+      playlist.innerHTML = activeSwaraPlaylist.map(({ item }, playlistIndex) => `
+        <button class="swara-playlist-item ${playlistIndex === activeSwaraIndex ? 'active' : ''}" type="button" data-playlist-index="${playlistIndex}">
+          <img src="${item.gambar}" alt="${item.judul}">
+          <div>
+            <strong>${item.judul}</strong>
+            <span>${item.kategori}</span>
+          </div>
+        </button>
+      `).join('');
+
+      playlist.querySelectorAll('.swara-playlist-item').forEach(button => {
+        button.addEventListener('click', () => {
+          loadSwaraItem(Number(button.dataset.playlistIndex), true);
+        });
+      });
+    }
+
+    function loadSwaraItem(playlistIndex, autoplay) {
+      if (!activeSwaraPlaylist[playlistIndex]) return;
+
+      activeSwaraIndex = playlistIndex;
+      const item = activeSwaraPlaylist[activeSwaraIndex].item;
+
+      document.getElementById('swaraPlayerImage').src = item.gambar;
+      document.getElementById('swaraPlayerImage').alt = item.judul;
+      document.getElementById('swaraPlayerTitle').innerText = item.judul;
+      document.getElementById('swaraPlayerCategory').innerText = `${item.kategori} · ${item.daerah}`;
+
+      resetSwaraProgress();
+      renderSwaraPlaylist();
+
+      const hasYoutubeId = Boolean(item.youtube && item.youtube.trim());
+      setSwaraControlsDisabled(!hasYoutubeId);
+
+      if (!hasYoutubeId) {
+        document.getElementById('swaraAudioStatus').innerText =
+          'ID YouTube belum diisi pada data audio ini. Tambahkan video ID agar suara bisa keluar.';
+        swaraPendingVideoId = '';
+        swaraUserWantsPlay = false;
+        stopSwaraPlayback();
+        return;
+      }
+
+      document.getElementById('swaraAudioStatus').innerText = autoplay
+        ? 'Memutar dari YouTube...'
+        : 'Audio siap. Tekan play untuk memutar dari YouTube.';
+
+      prepareSwaraYoutubePlayer(item.youtube.trim(), autoplay);
+    }
+
+    function prepareSwaraYoutubePlayer(videoId, autoplay) {
+      swaraPendingVideoId = videoId;
+      swaraUserWantsPlay = Boolean(autoplay || swaraUserWantsPlay);
+
+      if (!window.YT || !window.YT.Player) {
+        document.getElementById('swaraAudioStatus').innerText =
+          'Memuat pemutar YouTube...';
+        return;
+      }
+
+      if (!swaraPlayer) {
+        swaraPlayerReady = false;
+
+        swaraPlayer = new YT.Player('youtubeAudioPlayer', {
+          width: '200',
+          height: '160',
+          videoId,
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            disablekb: 1,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1
+          },
+          events: {
+            onReady: event => {
+              swaraPlayerReady = true;
+              const iframe = event.target.getIframe ? event.target.getIframe() : null;
+              if (iframe) iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+              if (swaraUserWantsPlay) {
+                event.target.loadVideoById(videoId);
+                event.target.playVideo();
+              } else {
+                event.target.cueVideoById(videoId);
+              }
+              setSwaraControlsDisabled(false);
+              updateSwaraProgress();
+            },
+            onStateChange: event => {
+              handleSwaraPlayerState(event.data);
+            },
+            onError: () => {
+              swaraIsPlaying = false;
+              swaraUserWantsPlay = false;
+              document.getElementById('swaraPlayBtn').innerText = '▶';
+              document.getElementById('swaraAudioStatus').innerText =
+                'Video YouTube tidak bisa diputar. Periksa ID video, privasi, atau izin embed.';
+              stopSwaraProgressTimer();
+            }
+          }
+        });
+
+        return;
+      }
+
+      if (swaraPlayerReady) {
+        if (autoplay || swaraUserWantsPlay) {
+          swaraPlayer.loadVideoById(videoId);
+          swaraPlayer.playVideo();
+        } else {
+          swaraPlayer.cueVideoById(videoId);
+        }
+        updateSwaraProgress();
+      }
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      if (swaraPendingVideoId) {
+        prepareSwaraYoutubePlayer(swaraPendingVideoId, swaraUserWantsPlay);
+      }
     };
 
-  },
+    function handleSwaraPlayerState(state) {
+      if (!window.YT) return;
 
-onEachFeature: function(feature, layer) {
+      if (state === YT.PlayerState.PLAYING) {
+        swaraIsPlaying = true;
+        document.getElementById('swaraPlayBtn').innerText = '❚❚';
+        document.getElementById('swaraAudioStatus').innerText = 'Sedang memutar audio.';
+        startSwaraProgressTimer();
+      } else {
+        swaraIsPlaying = false;
+        document.getElementById('swaraPlayBtn').innerText = '▶';
 
-  const namaProvinsi =
-    feature.properties.Provinsi ||
-    feature.properties.PROVINSI ||
-    feature.properties.nama ||
-    feature.properties.NAME ||
-    'Provinsi';
+        if (state === YT.PlayerState.ENDED) {
+          document.getElementById('swaraAudioStatus').innerText = 'Audio selesai. Memutar playlist berikutnya...';
+          stopSwaraProgressTimer();
+          if (activeSwaraPlaylist.length > 1) {
+            setTimeout(() => changeSwaraTrack(1), 600);
+          }
+        }
+      }
+    }
 
-  // nama muncul saat hover
-  layer.bindTooltip(namaProvinsi, {
-    permanent: false,
-    direction: 'top',
-    sticky: true,
-    opacity: 1,
-    className: 'provinsi-tooltip'
-  });
+    function toggleSwaraPlayback() {
+      const currentEntry = activeSwaraPlaylist[activeSwaraIndex];
+      const currentVideoId = currentEntry?.item?.youtube?.trim();
 
-layer.on('click', function(){
+      if (!currentVideoId) {
+        document.getElementById('swaraAudioStatus').innerText =
+          'ID YouTube belum diisi pada data audio ini.';
+        return;
+      }
 
-  if(typeof openProvince === "function"){
-    openProvince(namaProvinsi);
-  }
+      if (!swaraPlayer || !swaraPlayerReady) {
+        swaraUserWantsPlay = true;
+        document.getElementById('swaraAudioStatus').innerText =
+          'Menyiapkan YouTube, audio akan diputar setelah siap...';
+        prepareSwaraYoutubePlayer(currentVideoId, true);
+        return;
+      }
 
-});
+      if (swaraIsPlaying) {
+        swaraUserWantsPlay = false;
+        swaraPlayer.pauseVideo();
+        document.getElementById('swaraAudioStatus').innerText = 'Audio dijeda.';
+      } else {
+        swaraUserWantsPlay = true;
+        swaraPlayer.playVideo();
+      }
+    }
 
-    // 🔥 HOVER EFFECT
-layer.on('mouseover', function (e) {
+    function stopSwaraPlayback() {
+      swaraUserWantsPlay = false;
 
-  const l = e.target;
+      if (swaraPlayer && swaraPlayerReady && swaraPlayer.stopVideo) {
+        swaraPlayer.stopVideo();
+      }
 
-  l.setStyle({
-    weight: 1,
-    color: '#ffffff'
-  });
+      swaraIsPlaying = false;
+      stopSwaraProgressTimer();
 
-  if (l._path) {
-    l._path.style.filter =
-      "drop-shadow(0px 8px 14px rgba(0,0,0,0.45)) drop-shadow(0px 0px 18px rgba(255,215,0,0.6))";
-    l._path.style.transform = "scale(1.02)";
-    l._path.style.transformOrigin = "center";
-  }
+      const playBtn = document.getElementById('swaraPlayBtn');
+      if (playBtn) playBtn.innerText = '▶';
+
+      resetSwaraProgress();
+    }
+
+    function changeSwaraTrack(direction) {
+      if (!activeSwaraPlaylist.length) return;
+
+      const nextIndex = (activeSwaraIndex + direction + activeSwaraPlaylist.length) % activeSwaraPlaylist.length;
+      loadSwaraItem(nextIndex, true);
+    }
+
+    function seekSwaraBy(seconds) {
+      if (!swaraPlayer || !swaraPlayerReady) return;
+
+      const current = swaraPlayer.getCurrentTime ? swaraPlayer.getCurrentTime() : 0;
+      const duration = swaraPlayer.getDuration ? swaraPlayer.getDuration() : 0;
+      const target = Math.max(0, Math.min(duration || current + seconds, current + seconds));
+
+      swaraPlayer.seekTo(target, true);
+      updateSwaraProgress();
+    }
+
+    function startSwaraProgressTimer() {
+      stopSwaraProgressTimer();
+      swaraProgressTimer = setInterval(updateSwaraProgress, 500);
+    }
+
+    function stopSwaraProgressTimer() {
+      if (swaraProgressTimer) {
+        clearInterval(swaraProgressTimer);
+        swaraProgressTimer = null;
+      }
+    }
+
+    function updateSwaraProgress() {
+      if (!swaraPlayer || !swaraPlayerReady) return;
+
+      const current = swaraPlayer.getCurrentTime ? swaraPlayer.getCurrentTime() : 0;
+      const duration = swaraPlayer.getDuration ? swaraPlayer.getDuration() : 0;
+      const seekBar = document.getElementById('swaraSeekBar');
+
+      document.getElementById('swaraCurrentTime').innerText = formatSwaraTime(current);
+      document.getElementById('swaraDuration').innerText = formatSwaraTime(duration);
+
+      if (seekBar && duration > 0) {
+        seekBar.value = String((current / duration) * 100);
+      }
+    }
+
+    function resetSwaraProgress() {
+      const seekBar = document.getElementById('swaraSeekBar');
+      const currentTime = document.getElementById('swaraCurrentTime');
+      const duration = document.getElementById('swaraDuration');
+
+      if (seekBar) seekBar.value = '0';
+      if (currentTime) currentTime.innerText = '00:00';
+      if (duration) duration.innerText = '00:00';
+    }
+
+    function setSwaraControlsDisabled(disabled) {
+      ['swaraPlayBtn', 'swaraStopBtn', 'swaraBackBtn', 'swaraForwardBtn', 'swaraSeekBar']
+        .forEach(id => {
+          const element = document.getElementById(id);
+          if (element) element.disabled = disabled;
+        });
+    }
+
+    function formatSwaraTime(seconds) {
+      if (!Number.isFinite(seconds) || seconds <= 0) return '00:00';
+
+      const total = Math.floor(seconds);
+      const minutes = Math.floor(total / 60);
+      const remainingSeconds = total % 60;
+
+      return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
+
+
+    window.addEventListener('popstate', () => {
+      const swaraLayer = document.getElementById('cakraswaraPlayerLayer');
+
+      if (swaraLayer && swaraLayer.classList.contains('active')) {
+        closeCakraswaraPlayer();
+        return;
+      }
+
+      if (document.getElementById('budayaPage').style.display === 'block') {
+        document.getElementById('budayaPage').style.display = 'none';
+        document.getElementById('cakralandPage').style.display = 'block';
+        window.scrollTo(0, 0);
+
+        setTimeout(() => {
+          if (cakralandMap) cakralandMap.invalidateSize();
+        }, 200);
+      }
     });
 
-layer.on('mouseout', function (e) {
-  const l = e.target;
-
-  batasProvinsi.resetStyle(l);
-
-  if (l._path) {
-    l._path.style.filter = "none";
-    l._path.style.transform = "scale(1)";
-  }
-});
-  }
-
-}).addTo(cakralandMap);
-
-    cakralandMap.fitBounds(
-      batasProvinsi.getBounds()
-    );
-
-});
-
-    mapLoaded = true;
-
-}
-
-  if(pageId === 'cakralandPage'){
-
-      setTimeout(()=>{
-          cakralandMap.invalidateSize();
-      },200);
-
-  }
-
-}
-</script>
-
-<script>
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-const sheet =
-document.getElementById("cultureSheet");
-
-const provinceText =
-document.getElementById("sheetProvince");
-
-const sheetBody =
-document.getElementById("sheetBody");
-
-const budayaData = [
-
-{
-  nama:"Sangkuriang",
-  provinsi:"Jawa Barat",
-  kategori:"CERITA RAKYAT",
-  gambar:"SANGKURIANG.png",
-  gdoc:"1-DnFCOEyvUZIydW4MCIBlxzFcuw1HWEPD0FMlOvlokA",
-  youtube:"X6IrY6aHGXo"
-},
-
-{
-  nama:"Angklung",
-  provinsi:"Jawa Barat",
-  kategori:"ALAT MUSIK",
-  gambar:"ANGKLUNG.png",
-  gdoc:"1XyZaBcDeFgHiJk"
-},
-
-{
-  nama:"Kebaya Sunda",
-  provinsi:"Jawa Barat",
-  kategori:"BAJU ADAT",
-  gambar:"KEBAYA-SUNDA.png",
-  gdoc:"1LmNoPqRsTuVwXy"
-}
-
-];
-
-let currentProvince = "";
-
-if(!sheet || !provinceText || !sheetBody){
-  console.log("Culture Sheet belum ditemukan");
-  return;
-}
-
-window.openProvince = function(namaProvinsi){
-
-  currentProvince = namaProvinsi;
-
-  provinceText.innerHTML =
-  namaProvinsi;
-
-  renderBudaya();
-
-  setSheetPosition(SHEET_MIDDLE);
-
-}
-
-function renderBudaya(){
-
-  sheetBody.innerHTML = '';
-
-  const kategoriAktif =
-    document.querySelector('.sheet-tab.active')
-    .textContent
-    .trim();
-
-  const hasil = budayaData.filter(item =>
-    item.provinsi === currentProvince &&
-    item.kategori === kategoriAktif
-  );
-
-  hasil.forEach(item => {
-
-    sheetBody.innerHTML += `
-      <div
-        class="budaya-card"
-        onclick="openBudaya('${item.gdoc}','${item.nama}','${item.youtube || ""}')"
-      >
-
-        <img src="${item.gambar}">
-
-        <div class="budaya-title">
-          ${item.nama}
-        </div>
-
-      </div>
-    `;
-
-  });
-
-}
-window.openBudaya = async function(gdoc,nama,youtube){
-history.pushState(
-  { page: "budaya" },
-  "",
-  "#budaya"
-);
-window.scrollTo(0,0);
-
-  document.getElementById('cakralandPage').style.display='none';
-
-  document.getElementById('budayaPage').style.display='block';
-
-  document.getElementById('budayaJudul').innerText =
-  nama;
-
-if(youtube){
-
-  document.getElementById('budayaVideo').innerHTML = `
-    <iframe
-      src="https://www.youtube.com/embed/${youtube}"
-      allowfullscreen>
-    </iframe>
-  `;
-
-}else{
-
-  document.getElementById('budayaVideo').innerHTML = '';
-
-}
-  document.getElementById('budayaIsi').innerHTML =
-  "Memuat konten...";
-
-  try{
-
-const url =
-`https://corsproxy.io/?https://docs.google.com/document/d/${gdoc}/export?format=txt`;
-
-const res = await fetch(
-  `https://corsproxy.io/?https://docs.google.com/document/d/${gdoc}/export?format=txt`
-);
-
-console.log(res.status);
-
-if(!res.ok){
-  throw new Error("HTTP "+res.status);
-}
-
-const html = await res.text();
-
-document.getElementById('budayaIsi').innerHTML = html;
-
-  }catch(err){
-
-    document.getElementById('budayaIsi').innerHTML =
-    "Gagal memuat dokumen.";
-
-  }
-
-}
-
-document
-.querySelectorAll(".sheet-tab")
-.forEach(tab=>{
-
-  tab.addEventListener("click",()=>{
-
-    document
-    .querySelectorAll(".sheet-tab")
-    .forEach(t=>t.classList.remove("active"));
-
-    tab.classList.add("active");
-
-    renderBudaya();
-
-  });
-
-});
-
-});
-
-</script>
-
-<script>
-const sheet =
-document.getElementById("cultureSheet");
-
-const overlay =
-document.getElementById("sheetOverlay");
-
-const handle =
-document.querySelector(".sheet-handle");
-
-let startY = 0;
-let currentY = 0;
-let startTranslate = 0;
-let dragging = false;
-
-const SHEET_EXPANDED = 0;
-const SHEET_MIDDLE = 35;
-const SHEET_HIDDEN = 100;
-
-let currentState = SHEET_HIDDEN;
-
-function setSheetPosition(percent){
-
-  currentState = percent;
-
-  sheet.style.transition =
-  "transform .3s ease";
-
-  sheet.style.transform =
-  `translateY(${percent}%)`;
-
-  if(percent === SHEET_HIDDEN){
-
-    sheet.classList.remove("active");
-    overlay.classList.remove("active");
-
-  }else{
-
-    sheet.classList.add("active");
-    overlay.classList.add("active");
-
-  }
-
-}
-
-handle.addEventListener("mousedown",startDrag);
-handle.addEventListener("touchstart",startDrag);
-
-function startDrag(e){
-
-  dragging = true;
-
-  startY = e.touches
-    ? e.touches[0].clientY
-    : e.clientY;
-
-  startTranslate = currentState;
-
-  sheet.style.transition = "none";
-
-}
-
-document.addEventListener("mousemove",dragSheet);
-document.addEventListener("touchmove",dragSheet);
-
-function dragSheet(e){
-
-  if(!dragging) return;
-
-  currentY = e.touches
-    ? e.touches[0].clientY
-    : e.clientY;
-
-  const delta =
-  currentY - startY;
-
-  const vh =
-  window.innerHeight;
-
-  let newPos =
-  startTranslate + (delta / vh * 100);
-
-  newPos =
-  Math.max(0, Math.min(100,newPos));
-
-  sheet.style.transform =
-  `translateY(${newPos}%)`;
-
-}
-
-document.addEventListener("mouseup",stopDrag);
-document.addEventListener("touchend",stopDrag);
-
-function stopDrag(){
-
-  if(!dragging) return;
-
-  dragging = false;
-
-  const matrix =
-  window.getComputedStyle(sheet).transform;
-
-  let translateY = 0;
-
-  if(matrix !== "none"){
-
-    const values =
-    matrix.match(/matrix.*\((.+)\)/)[1]
-    .split(", ");
-
-    translateY =
-    parseFloat(values[5]);
-
-  }
-
-  const percent =
-  (translateY / window.innerHeight) * 100;
-
-  if(percent < 18){
-
-    setSheetPosition(SHEET_EXPANDED);
-
-  }else if(percent < 65){
-
-    setSheetPosition(SHEET_MIDDLE);
-
-  }else{
-
-    setSheetPosition(SHEET_HIDDEN);
-
-  }
-
-}
-overlay.addEventListener("click",()=>{
-
-  setSheetPosition(100);
-
-});
-window.addEventListener("popstate", function(){
-
-  if(
-    document.getElementById("budayaPage").style.display === "block"
-  ){
-
-    document.getElementById("budayaPage").style.display = "none";
-
-    document.getElementById("cakralandPage").style.display = "block";
-
-    window.scrollTo(0,0);
-
-    setTimeout(()=>{
-      if(cakralandMap){
-        cakralandMap.invalidateSize();
-      }
-    },200);
-
-    return;
-  }
-
-});
-</script>
+    document.addEventListener('DOMContentLoaded', () => {
+      syncCakranusaHeaderHeight();
+      window.addEventListener('resize', syncCakranusaHeaderHeight);
+      initCounters();
+      initStorySlider();
+      initSheetTabs();
+      initSheetDrag();
+      initCakraswara();
+    });
+  </script>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
