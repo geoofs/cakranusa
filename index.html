@@ -5402,14 +5402,14 @@
       if (state === YT.PlayerState.PLAYING) {
         swaraIsPlaying = true;
         document.getElementById('swaraPlayBtn').innerText = '❚❚';
-        document.getElementById('swaraAudioStatus').innerText = 'Sedang memutar audio.';
+        document.getElementById('swaraAudioStatus').innerText = 'Selamat Mendengarkan Cerita Nusantara Bangsa Indonesia.';
         startSwaraProgressTimer();
       } else {
         swaraIsPlaying = false;
         document.getElementById('swaraPlayBtn').innerText = '▶';
 
         if (state === YT.PlayerState.ENDED) {
-          document.getElementById('swaraAudioStatus').innerText = 'Audio selesai. Memutar playlist berikutnya...';
+          document.getElementById('swaraAudioStatus').innerText = 'Cerita Nusantara Telah Berakhir. Memutar playlist berikutnya...';
           stopSwaraProgressTimer();
           if (activeSwaraPlaylist.length > 1) {
             setTimeout(() => changeSwaraTrack(1), 600);
@@ -5439,7 +5439,7 @@
       if (swaraIsPlaying) {
         swaraUserWantsPlay = false;
         swaraPlayer.pauseVideo();
-        document.getElementById('swaraAudioStatus').innerText = 'Audio dijeda.';
+        document.getElementById('swaraAudioStatus').innerText = 'Cerita Nusantara dijeda.';
       } else {
         swaraUserWantsPlay = true;
         swaraPlayer.playVideo();
