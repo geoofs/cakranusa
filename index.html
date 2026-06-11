@@ -3628,6 +3628,74 @@
       }
     }
 
+
+    /* =========================
+       CAKRASWARA PLAYER FINAL TWEAK
+       - Tombol stop/kotak dihapus dari markup.
+       - Foto player desktop dibuat sedikit lebih kecil.
+       - Tombol X dipindahkan ke dalam card player.
+    ========================= */
+
+    .swara-room-card {
+      position: relative !important;
+    }
+
+    .swara-card-close-btn {
+      display: inline-grid !important;
+      place-items: center !important;
+      position: absolute !important;
+      top: clamp(16px, 2vh, 24px) !important;
+      right: clamp(16px, 2vw, 26px) !important;
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(244, 215, 122, 0.48) !important;
+      background: rgba(5, 17, 43, 0.72) !important;
+      color: #f4d77a !important;
+      font-size: 1.35rem !important;
+      line-height: 1 !important;
+      cursor: pointer !important;
+      z-index: 10 !important;
+      backdrop-filter: blur(10px) !important;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22) !important;
+    }
+
+    .swara-card-close-btn:hover {
+      background: linear-gradient(135deg, #d4af37, #f2d675) !important;
+      color: #071434 !important;
+      transform: rotate(90deg) !important;
+    }
+
+    @media (min-width: 769px) {
+      .swara-room-card {
+        padding-top: clamp(42px, 5.2vh, 58px) !important;
+      }
+
+      .swara-room-image-wrap {
+        width: min(470px, 50dvh, 47dvw) !important;
+      }
+
+      .swara-controls {
+        gap: clamp(14px, 1.4vw, 20px) !important;
+      }
+    }
+
+    @media (min-width: 769px) and (max-height: 760px) {
+      .swara-room-card {
+        padding-top: 38px !important;
+      }
+
+      .swara-room-image-wrap {
+        width: min(370px, 42dvh, 40dvw) !important;
+      }
+    }
+
+    @media (min-width: 769px) and (min-height: 900px) {
+      .swara-room-image-wrap {
+        width: min(520px, 50dvh, 48dvw) !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -3904,8 +3972,6 @@
               autocomplete="off"
             />
           </div>
-
-          <button class="swara-close-btn" type="button" onclick="closeCakraswaraPlayer()">×</button>
         </div>
 
         <div class="swara-player-layout">
@@ -3921,6 +3987,7 @@
 
           <div class="swara-room">
             <div class="swara-room-card">
+              <button class="swara-close-btn swara-card-close-btn" type="button" onclick="closeCakraswaraPlayer()" aria-label="Tutup player">×</button>
               <div class="swara-room-image-wrap">
                 <img id="swaraPlayerImage" src="" alt="Audio Cerita" />
               </div>
@@ -3933,7 +4000,6 @@
                 <button class="swara-control-btn" type="button" id="swaraPrevBtn" aria-label="Playlist sebelumnya">⏮</button>
                 <button class="swara-control-btn" type="button" id="swaraBackBtn" aria-label="Mundur 10 detik">↺ 10</button>
                 <button class="swara-control-btn main" type="button" id="swaraPlayBtn" aria-label="Putar atau jeda">▶</button>
-                <button class="swara-control-btn" type="button" id="swaraStopBtn" aria-label="Berhenti">■</button>
                 <button class="swara-control-btn" type="button" id="swaraForwardBtn" aria-label="Maju 10 detik">10 ↻</button>
                 <button class="swara-control-btn" type="button" id="swaraNextBtn" aria-label="Playlist berikutnya">⏭</button>
               </div>
