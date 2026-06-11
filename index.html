@@ -3696,6 +3696,127 @@
       }
     }
 
+
+
+    /* =========================
+       CAKRALAND GDOC LANGUAGE NAV + SMART TEXT FORMAT
+    ========================= */
+
+    .budaya-lang-nav {
+      position: relative;
+      z-index: 2;
+      width: fit-content;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 34px;
+      padding: 7px;
+      border: 1px solid rgba(8, 20, 43, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 12px 28px rgba(8, 20, 43, 0.10);
+      backdrop-filter: blur(12px);
+    }
+
+    .budaya-lang-btn {
+      border: none;
+      outline: none;
+      border-radius: 999px;
+      padding: 11px 22px;
+      background: transparent;
+      color: rgba(8, 20, 43, 0.72);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.35px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .budaya-lang-btn:hover,
+    .budaya-lang-btn.active {
+      background: linear-gradient(135deg, #08142b, #0b2550);
+      color: #f8e28f;
+      box-shadow: 0 10px 22px rgba(8, 20, 43, 0.18);
+    }
+
+    .budaya-lang-btn:disabled {
+      opacity: 0.55;
+      cursor: wait;
+      box-shadow: none;
+    }
+
+    .budaya-doc-content {
+      position: relative;
+      z-index: 2;
+      width: min(920px, 100%);
+      color: #101010;
+      font-family: "Times New Roman", serif;
+      font-size: 12pt;
+      line-height: 1.92;
+    }
+
+    .budaya-doc-content p {
+      margin: 0 0 18px;
+      text-align: justify;
+    }
+
+    .budaya-doc-heading {
+      margin: 34px 0 16px;
+      font-family: 'Cinzel', serif;
+      color: #08142b;
+      font-size: 1.45rem;
+      line-height: 1.35;
+      letter-spacing: 0.4px;
+    }
+
+    .budaya-doc-heading:first-child {
+      margin-top: 0;
+    }
+
+    .budaya-doc-list {
+      margin: 0 0 20px 24px;
+      padding-left: 18px;
+    }
+
+    .budaya-doc-list li {
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+
+    .budaya-doc-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: rgba(8, 20, 43, 0.08);
+      color: #08142b;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .budaya-lang-nav {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 26px;
+      }
+
+      .budaya-lang-btn {
+        flex: 1;
+        padding: 10px 12px;
+        font-size: 0.74rem;
+      }
+
+      .budaya-doc-heading {
+        font-size: 1.18rem;
+      }
+    }
+
 </style>
 </head>
 
@@ -4034,7 +4155,13 @@
 
         <h1 id="budayaJudul"></h1>
         <div id="budayaVideo"></div>
-        <div id="budayaIsi"></div>
+
+        <div id="budayaLangNav" class="budaya-lang-nav" style="display: none;">
+          <button type="button" class="budaya-lang-btn active" id="budayaLangIdBtn" onclick="switchBudayaLanguage('id')">Bahasa Indonesia</button>
+          <button type="button" class="budaya-lang-btn" id="budayaLangEnBtn" onclick="switchBudayaLanguage('en')">Bahasa Inggris</button>
+        </div>
+
+        <div id="budayaIsi" class="budaya-doc-content"></div>
       </section>
     </div>
   </div>
@@ -4291,9 +4418,184 @@
       });
     }
 
+    let currentBudayaTextId = '';
+    let currentBudayaIndonesianText = '';
+    let currentBudayaEnglishText = '';
+    let currentBudayaLanguage = 'id';
+
+    function escapeHTML(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function isPotentialHeading(lines, blockIndex) {
+      if (lines.length !== 1) return false;
+
+      const line = lines[0].trim();
+      if (!line || line.length > 86) return false;
+
+      const endsLikeSentence = /[.,;:!?]$/.test(line);
+      const startsLikeNumberedList = /^(\d+|[a-zA-Z])[\.)]\s+/.test(line);
+      const startsLikeBullet = /^[-•*]\s+/.test(line);
+      const isUpperHeavy = line.length > 3 && line === line.toUpperCase();
+      const isTitleCaseShort = blockIndex === 0 || (!endsLikeSentence && line.split(/\s+/).length <= 8);
+
+      return !startsLikeNumberedList && !startsLikeBullet && (isUpperHeavy || isTitleCaseShort);
+    }
+
+    function formatGdocText(rawText) {
+      const text = String(rawText || '')
+        .replace(/\r\n/g, '\n')
+        .replace(/\r/g, '\n')
+        .replace(/[\t ]+\n/g, '\n')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+
+      if (!text) {
+        return '<div class="budaya-doc-status">Konten dokumen belum tersedia.</div>';
+      }
+
+      const blocks = text.split(/\n\s*\n/);
+
+      return blocks.map((block, blockIndex) => {
+        const lines = block
+          .split('\n')
+          .map(line => line.trim())
+          .filter(Boolean);
+
+        if (!lines.length) return '';
+
+        if (isPotentialHeading(lines, blockIndex)) {
+          return `<h2 class="budaya-doc-heading">${escapeHTML(lines[0])}</h2>`;
+        }
+
+        const bulletLines = lines.every(line => /^[-•*]\s+/.test(line));
+        const numberedLines = lines.every(line => /^\d+[\.)]\s+/.test(line));
+
+        if (bulletLines || numberedLines) {
+          const tag = numberedLines ? 'ol' : 'ul';
+          const items = lines.map(line => {
+            const clean = line.replace(/^[-•*]\s+/, '').replace(/^\d+[\.)]\s+/, '');
+            return `<li>${escapeHTML(clean)}</li>`;
+          }).join('');
+
+          return `<${tag} class="budaya-doc-list">${items}</${tag}>`;
+        }
+
+        return `<p>${lines.map(escapeHTML).join('<br>')}</p>`;
+      }).join('');
+    }
+
+    function renderBudayaText(text) {
+      document.getElementById('budayaIsi').innerHTML = formatGdocText(text);
+    }
+
+    function setBudayaLanguageButton(activeLanguage, loading = false) {
+      const idButton = document.getElementById('budayaLangIdBtn');
+      const enButton = document.getElementById('budayaLangEnBtn');
+
+      if (!idButton || !enButton) return;
+
+      idButton.classList.toggle('active', activeLanguage === 'id');
+      enButton.classList.toggle('active', activeLanguage === 'en');
+      idButton.disabled = loading;
+      enButton.disabled = loading;
+      enButton.textContent = loading ? 'Menerjemahkan...' : 'Bahasa Inggris';
+    }
+
+    function chunkTextForTranslation(text, maxLength = 4200) {
+      const paragraphs = String(text || '').split(/(\n\s*\n)/);
+      const chunks = [];
+      let current = '';
+
+      paragraphs.forEach(part => {
+        if ((current + part).length > maxLength && current.trim()) {
+          chunks.push(current);
+          current = part;
+        } else {
+          current += part;
+        }
+      });
+
+      if (current.trim()) chunks.push(current);
+      return chunks;
+    }
+
+    async function translateChunkToEnglish(text) {
+      const directUrl = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=id&tl=en&dt=t&q=' + encodeURIComponent(text);
+
+      async function requestTranslation(url) {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error('Translation HTTP ' + response.status);
+        }
+
+        const data = await response.json();
+        return (data[0] || []).map(part => part[0]).join('');
+      }
+
+      try {
+        return await requestTranslation(directUrl);
+      } catch (directError) {
+        const proxyUrl = 'https://corsproxy.io/?' + directUrl;
+        return await requestTranslation(proxyUrl);
+      }
+    }
+
+    async function translateTextToEnglish(text) {
+      const chunks = chunkTextForTranslation(text);
+      const translatedChunks = [];
+
+      for (const chunk of chunks) {
+        translatedChunks.push(await translateChunkToEnglish(chunk));
+      }
+
+      return translatedChunks.join('');
+    }
+
+    async function switchBudayaLanguage(language) {
+      currentBudayaLanguage = language;
+
+      if (language === 'id') {
+        setBudayaLanguageButton('id', false);
+        renderBudayaText(currentBudayaIndonesianText);
+        return;
+      }
+
+      setBudayaLanguageButton('en', Boolean(!currentBudayaEnglishText));
+
+      if (currentBudayaEnglishText) {
+        renderBudayaText(currentBudayaEnglishText);
+        return;
+      }
+
+      document.getElementById('budayaIsi').innerHTML = '<div class="budaya-doc-status">Menerjemahkan dokumen ke Bahasa Inggris...</div>';
+
+      try {
+        currentBudayaEnglishText = await translateTextToEnglish(currentBudayaIndonesianText);
+        setBudayaLanguageButton('en', false);
+        renderBudayaText(currentBudayaEnglishText);
+      } catch (err) {
+        console.error('Gagal menerjemahkan dokumen:', err);
+        setBudayaLanguageButton('id', false);
+        currentBudayaLanguage = 'id';
+        document.getElementById('budayaIsi').innerHTML = '<div class="budaya-doc-status">Terjemahan otomatis gagal dimuat. Periksa koneksi internet atau izin akses browser, lalu coba lagi.</div>';
+      }
+    }
+
     async function openBudaya(gdoc, nama, youtube) {
       history.pushState({ page: 'budaya' }, '', '#budaya');
       window.scrollTo(0, 0);
+
+      currentBudayaTextId = gdoc;
+      currentBudayaIndonesianText = '';
+      currentBudayaEnglishText = '';
+      currentBudayaLanguage = 'id';
 
       document.getElementById('cakralandPage').style.display = 'none';
       document.getElementById('budayaPage').style.display = 'block';
@@ -4303,7 +4605,10 @@
         ? `<iframe src="https://www.youtube.com/embed/${youtube}" allowfullscreen></iframe>`
         : '';
 
-      document.getElementById('budayaIsi').innerHTML = 'Memuat konten...';
+      const langNav = document.getElementById('budayaLangNav');
+      if (langNav) langNav.style.display = 'flex';
+      setBudayaLanguageButton('id', false);
+      document.getElementById('budayaIsi').innerHTML = '<div class="budaya-doc-status">Memuat konten dokumen...</div>';
 
       try {
         const url = `https://corsproxy.io/?https://docs.google.com/document/d/${gdoc}/export?format=txt`;
@@ -4313,10 +4618,15 @@
           throw new Error('HTTP ' + res.status);
         }
 
-        const html = await res.text();
-        document.getElementById('budayaIsi').innerHTML = html;
+        const text = await res.text();
+
+        if (currentBudayaTextId !== gdoc) return;
+
+        currentBudayaIndonesianText = text;
+        renderBudayaText(currentBudayaIndonesianText);
       } catch (err) {
-        document.getElementById('budayaIsi').innerHTML = 'Gagal memuat dokumen.';
+        console.error('Gagal memuat dokumen:', err);
+        document.getElementById('budayaIsi').innerHTML = '<div class="budaya-doc-status">Gagal memuat dokumen.</div>';
       }
     }
 
