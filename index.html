@@ -4749,6 +4749,10 @@
     function showPage(pageId) {
       const pages = ['homePage', 'cakralandPage', 'cakraswaraPage', 'budayaPage'];
 
+      if (pageId !== 'budayaPage') {
+        stopBudayaVideo();
+      }
+
       pages.forEach(id => {
         const page = document.getElementById(id);
         if (page) page.style.display = 'none';
@@ -5119,7 +5123,63 @@
       }
     }
 
+
+    function stopBudayaVideo() {
+      const videoBox = document.getElementById('budayaVideo');
+      if (!videoBox) return;
+
+      const iframe = videoBox.querySelector('iframe');
+      if (iframe) {
+        try {
+          iframe.contentWindow?.postMessage(JSON.stringify({
+            event: 'command',
+            func: 'pauseVideo',
+            args: []
+          }), '*');
+
+          iframe.contentWindow?.postMessage(JSON.stringify({
+            event: 'command',
+            func: 'stopVideo',
+            args: []
+          }), '*');
+        } catch (err) {
+          console.warn('Video budaya tidak bisa dipause lewat postMessage:', err);
+        }
+
+        iframe.src = 'about:blank';
+      }
+
+      videoBox.innerHTML = '';
+    }
+
+    function closeBudayaView() {
+      stopBudayaVideo();
+
+      currentBudayaTextId = '';
+      currentBudayaIndonesianText = '';
+      currentBudayaEnglishText = '';
+      currentBudayaLanguage = 'id';
+
+      const budayaPage = document.getElementById('budayaPage');
+      const cakralandPage = document.getElementById('cakralandPage');
+      const langNav = document.getElementById('budayaLangNav');
+      const budayaIsi = document.getElementById('budayaIsi');
+
+      if (budayaPage) budayaPage.style.display = 'none';
+      if (cakralandPage) cakralandPage.style.display = 'block';
+      if (langNav) langNav.style.display = 'none';
+      if (budayaIsi) budayaIsi.innerHTML = '';
+
+      window.scrollTo(0, 0);
+
+      setTimeout(() => {
+        if (cakralandMap) cakralandMap.invalidateSize();
+      }, 200);
+    }
+
     async function openBudaya(gdoc, nama, youtube) {
+      stopBudayaVideo();
+
       history.pushState({ page: 'budaya' }, '', '#budaya');
       window.scrollTo(0, 0);
 
@@ -5133,7 +5193,7 @@
       document.getElementById('budayaJudul').innerText = nama;
 
       document.getElementById('budayaVideo').innerHTML = youtube
-        ? `<iframe src="https://www.youtube.com/embed/${youtube}" allowfullscreen></iframe>`
+        ? `<iframe src="https://www.youtube.com/embed/${youtube}?enablejsapi=1&playsinline=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
         : '';
 
       const langNav = document.getElementById('budayaLangNav');
@@ -5835,15 +5895,11 @@
       }
 
       if (document.getElementById('budayaPage').style.display === 'block') {
-        document.getElementById('budayaPage').style.display = 'none';
-        document.getElementById('cakralandPage').style.display = 'block';
-        window.scrollTo(0, 0);
-
-        setTimeout(() => {
-          if (cakralandMap) cakralandMap.invalidateSize();
-        }, 200);
+        closeBudayaView();
       }
     });
+
+    window.addEventListener('pagehide', stopBudayaVideo);
 
     document.addEventListener('DOMContentLoaded', () => {
       syncCakranusaHeaderHeight();
