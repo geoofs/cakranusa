@@ -5575,8 +5575,8 @@
         kategori: 'ALAT MUSIK',
         gambar: 'ANGKLUNG.png',
         mediaGambar: 'ANGKLUNG-DETAIL.png',
-        audioYoutube: '9yeEBoiQaN4',
-        gdoc: '1XyZaBcDeFgHiJk'
+        audioYoutube: 'XjV6cbCOiao',
+        gdoc: '1ZiHauBEzsUNfknTV4hMS3ZQLminkG8B8gR5C3OkWEFA'
       },
       {
         nama: 'Kebaya Sunda',
@@ -6083,7 +6083,7 @@
                 ${disabled ? 'disabled' : ''}
               >▶</button>
               <div class="budaya-audio-status" id="budayaAudioStatus">
-                ${disabled ? 'ID YouTube alat musik belum diisi pada data.' : 'Audio alat musik siap diputar.'}
+                ${disabled ? 'ID YouTube alat musik belum diisi pada data.' : 'Putar untuk mendengarkan alunan musiknya'}
               </div>
             </div>
           ` : ''}
@@ -6530,7 +6530,7 @@
       if (state === YT.PlayerState.PLAYING) {
         budayaAudioIsPlaying = true;
         if (playButton) playButton.innerText = '❚❚';
-        if (status) status.innerText = 'Audio alat musik sedang diputar.';
+        if (status) status.innerText = 'Selamat menikmati.';
         return;
       }
 
