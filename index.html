@@ -4424,7 +4424,524 @@
     }
 
 
-  </style>
+
+    /* =========================
+       CAKRALAND MEDIA DETAIL + TEMPORARY FOCUS FIX
+       Revisi: highlight card bottom sheet hanya sementara,
+       media kategori budaya mendukung image/detail khusus,
+       audio alat musik berbasis YouTube tanpa menampilkan video.
+    ========================= */
+
+    .budaya-card.budaya-card-highlight {
+      animation: budayaCardFocusPulse 1.35s ease-in-out 1 !important;
+    }
+
+    #budayaVideo.budaya-media-slot {
+      position: relative !important;
+      z-index: 2 !important;
+      width: min(1080px, 100%) !important;
+      max-width: 1080px !important;
+      margin: 0 auto 38px !important;
+    }
+
+    .budaya-detail-media {
+      position: relative;
+      width: 100%;
+      min-height: clamp(260px, 34vw, 430px);
+      display: grid;
+      align-items: center;
+      gap: clamp(20px, 3vw, 44px);
+      padding: clamp(20px, 3vw, 34px);
+      border: 1px solid rgba(244, 215, 122, 0.22);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(244, 215, 122, 0.16), transparent 35%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028)),
+        rgba(4, 18, 45, 0.58);
+      box-shadow:
+        0 28px 72px rgba(8, 20, 43, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(16px) saturate(120%);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      overflow: hidden;
+    }
+
+    .budaya-detail-media::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(244, 215, 122, 0.10);
+      border-radius: 26px;
+      pointer-events: none;
+    }
+
+    .budaya-detail-media-image-only {
+      grid-template-columns: 1fr;
+    }
+
+    .budaya-detail-media-audio {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .budaya-detail-image-stage {
+      position: relative;
+      z-index: 1;
+      width: min(620px, 100%);
+      margin: 0 auto;
+      aspect-ratio: 16 / 10;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(212, 175, 55, 0.34), rgba(255, 255, 255, 0.08)),
+        rgba(255, 255, 255, 0.045);
+      box-shadow:
+        0 22px 54px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+      overflow: hidden;
+    }
+
+    .budaya-detail-image {
+      width: 92%;
+      height: 92%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 22px 28px rgba(0, 0, 0, 0.28));
+      animation: budayaMediaFloat 5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes budayaMediaFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-16px);
+      }
+    }
+
+    .budaya-audio-side {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      min-width: clamp(118px, 12vw, 158px);
+      padding: 16px;
+    }
+
+    .budaya-audio-play-btn {
+      width: clamp(78px, 8vw, 104px);
+      height: clamp(78px, 8vw, 104px);
+      border: 1px solid rgba(255, 243, 191, 0.56);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #b8860b 0%, #d4af37 48%, #f7df8e 100%);
+      color: #071434;
+      font-size: clamp(1.45rem, 2.2vw, 2rem);
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.28),
+        0 0 24px rgba(212, 175, 55, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.46);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    }
+
+    .budaya-audio-play-btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.32),
+        0 0 32px rgba(212, 175, 55, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.50);
+    }
+
+    .budaya-audio-play-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      filter: grayscale(0.4);
+    }
+
+    .budaya-audio-status {
+      max-width: 180px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.78rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .budaya-youtube-audio-holder {
+      position: fixed;
+      left: -9999px;
+      bottom: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .budaya-detail-media,
+      .budaya-detail-media-audio {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 18px;
+        border-radius: 26px;
+      }
+
+      .budaya-detail-image-stage {
+        aspect-ratio: 4 / 3;
+      }
+
+      .budaya-audio-side {
+        min-width: 0;
+        padding: 2px 0 6px;
+      }
+    }
+
+
+  
+
+    /* =========================
+       CAKRALAND CLEAN MEDIA + VISIBLE TEMPORARY HIGHLIGHT FINAL
+       Revisi: media detail tanpa card/background, floating image bersih,
+       tombol play alat musik kecil di kiri bawah, highlight hanya saat baru dibuka.
+    ========================= */
+
+    #sheetBody .budaya-card.budaya-card-highlight {
+      border: 3px solid rgba(255, 245, 210, 0.98) !important;
+      box-shadow:
+        0 0 0 7px rgba(212, 175, 55, 0.24),
+        0 24px 56px rgba(8, 20, 43, 0.38),
+        0 0 36px rgba(255, 230, 140, 0.62) !important;
+      transform: translateY(-6px) scale(1.035) !important;
+      animation: budayaCardOpenFocusFinal 3.8s ease-in-out 1 !important;
+    }
+
+    @keyframes budayaCardOpenFocusFinal {
+      0% {
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 0 0 0 rgba(212, 175, 55, 0),
+          0 14px 30px rgba(8, 20, 43, 0.20),
+          0 0 0 rgba(255, 230, 140, 0);
+      }
+      18%, 78% {
+        transform: translateY(-6px) scale(1.035);
+        box-shadow:
+          0 0 0 7px rgba(212, 175, 55, 0.24),
+          0 24px 56px rgba(8, 20, 43, 0.38),
+          0 0 36px rgba(255, 230, 140, 0.62);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 12px 28px rgba(8, 20, 43, 0.20),
+          0 0 0 rgba(255, 230, 140, 0);
+      }
+    }
+
+    #budayaVideo.budaya-media-slot {
+      position: relative !important;
+      z-index: 2 !important;
+      width: min(880px, 100%) !important;
+      max-width: 880px !important;
+      margin: -8px 0 42px 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    #budayaVideo.budaya-media-slot:empty {
+      display: none !important;
+    }
+
+    .budaya-detail-media,
+    .budaya-detail-media.budaya-detail-media-audio,
+    .budaya-detail-media.budaya-detail-media-image-only {
+      position: relative !important;
+      width: 100% !important;
+      min-height: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      gap: 10px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      overflow: visible !important;
+    }
+
+    .budaya-detail-media::before,
+    .budaya-detail-media::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    .budaya-detail-image-stage {
+      position: relative !important;
+      z-index: 1 !important;
+      width: min(520px, 82vw) !important;
+      max-width: 100% !important;
+      height: auto !important;
+      aspect-ratio: auto !important;
+      display: block !important;
+      place-items: unset !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+    }
+
+    .budaya-detail-image {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 420px !important;
+      object-fit: contain !important;
+      display: block !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      filter: drop-shadow(0 20px 24px rgba(8, 20, 43, 0.20)) !important;
+      animation: budayaMediaFloatCleanFinal 5.2s ease-in-out infinite !important;
+      will-change: transform !important;
+    }
+
+    @keyframes budayaMediaFloatCleanFinal {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    .budaya-audio-side {
+      position: relative !important;
+      z-index: 2 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 8px !important;
+      width: auto !important;
+      min-width: 0 !important;
+      margin: 2px 0 0 4px !important;
+      padding: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .budaya-audio-play-btn {
+      width: 30px !important;
+      height: 30px !important;
+      min-width: 30px !important;
+      min-height: 30px !important;
+      border: 1px solid rgba(8, 20, 43, 0.22) !important;
+      border-radius: 50% !important;
+      display: grid !important;
+      place-items: center !important;
+      padding: 0 !important;
+      background: linear-gradient(135deg, #b8860b 0%, #d4af37 55%, #f7df8e 100%) !important;
+      color: #071434 !important;
+      font-size: 0.66rem !important;
+      font-weight: 900 !important;
+      line-height: 1 !important;
+      cursor: pointer !important;
+      box-shadow: 0 8px 16px rgba(8, 20, 43, 0.18) !important;
+      transform: none !important;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease !important;
+    }
+
+    .budaya-audio-play-btn:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.04) !important;
+      box-shadow: 0 10px 20px rgba(8, 20, 43, 0.24) !important;
+    }
+
+    .budaya-audio-play-btn:disabled {
+      opacity: 0.45 !important;
+      cursor: not-allowed !important;
+      filter: grayscale(0.45) !important;
+    }
+
+    .budaya-audio-status {
+      max-width: 260px !important;
+      color: rgba(8, 20, 43, 0.72) !important;
+      font-size: 0.66rem !important;
+      line-height: 1.4 !important;
+      text-align: left !important;
+      font-weight: 600 !important;
+    }
+
+    @media (max-width: 768px) {
+      #budayaVideo.budaya-media-slot {
+        width: 100% !important;
+        margin: -4px 0 32px 0 !important;
+      }
+
+      .budaya-detail-image-stage {
+        width: min(360px, 92vw) !important;
+      }
+
+      .budaya-detail-image {
+        max-height: 330px !important;
+      }
+    }
+
+
+    /* =========================
+       FIX FINAL: HIGHLIGHT CARD BOTTOM SHEET DARI BERANDA
+       Fokus: card target di bottom sheet harus terlihat jelas selama 3 detik.
+    ========================= */
+
+    #sheetBody.home-shortcut-focus .budaya-card {
+      opacity: 0.34 !important;
+      filter: grayscale(0.45) brightness(0.55) blur(0.4px) !important;
+      transform: scale(0.965) !important;
+      transition: opacity 0.28s ease, filter 0.28s ease, transform 0.28s ease !important;
+    }
+
+    #sheetBody.home-shortcut-focus .budaya-card.budaya-card-highlight,
+    #sheetBody .budaya-card.budaya-card-highlight,
+    #sheetBody.home-shortcut-focus .budaya-card.budaya-card-highlight-out,
+    #sheetBody .budaya-card.budaya-card-highlight-out {
+      opacity: 1 !important;
+      filter: none !important;
+      position: relative !important;
+      z-index: 9999 !important;
+      border: 5px solid #fff8c9 !important;
+      outline: 7px solid rgba(255, 214, 80, 0.48) !important;
+      outline-offset: 5px !important;
+      transform: scale(1.075) translateY(-10px) !important;
+      box-shadow:
+        0 0 0 13px rgba(212, 175, 55, 0.26),
+        0 0 42px 16px rgba(255, 239, 143, 0.92),
+        0 0 82px 30px rgba(212, 175, 55, 0.72),
+        0 34px 72px rgba(0, 0, 0, 0.52) !important;
+      transition:
+        opacity 0.85s ease,
+        filter 0.85s ease,
+        transform 0.85s cubic-bezier(.22, .61, .36, 1),
+        box-shadow 0.85s ease,
+        border-color 0.85s ease,
+        outline-color 0.85s ease !important;
+      animation: homeBottomSheetTargetFlash 3s ease-in-out 1 !important;
+    }
+
+    #sheetBody .budaya-card.budaya-card-highlight::before,
+    #sheetBody .budaya-card.budaya-card-highlight-out::before {
+      content: none !important;
+      display: none !important;
+    }
+
+    #sheetBody .budaya-card.budaya-card-highlight::after {
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255, 247, 194, 0.12), transparent 38%),
+        linear-gradient(to top, rgba(2, 8, 24, 0.95), rgba(8, 20, 43, 0.24), transparent) !important;
+    }
+
+    #sheetBody .budaya-card.budaya-card-highlight .budaya-title {
+      z-index: 31 !important;
+      color: #fff8c9 !important;
+      text-shadow:
+        0 0 10px rgba(255, 247, 196, 0.95),
+        0 4px 14px rgba(0, 0, 0, 0.95) !important;
+    }
+
+    #sheetBody .budaya-card.budaya-card-highlight-out {
+      animation: homeBottomSheetTargetFadeOut 0.95s cubic-bezier(.22, .61, .36, 1) forwards !important;
+    }
+
+    #sheetBody .budaya-card.budaya-card-highlight-out .budaya-title {
+      z-index: 31 !important;
+      color: #fff8c9 !important;
+      text-shadow:
+        0 0 8px rgba(255, 247, 196, 0.72),
+        0 4px 14px rgba(0, 0, 0, 0.88) !important;
+      transition: color 0.95s ease, text-shadow 0.95s ease !important;
+    }
+
+    @keyframes homeBottomSheetTargetFadeOut {
+      0% {
+        opacity: 1;
+        filter: none;
+        border-color: #fff8c9;
+        outline-color: rgba(255, 214, 80, 0.48);
+        transform: scale(1.075) translateY(-10px);
+        box-shadow:
+          0 0 0 13px rgba(212, 175, 55, 0.26),
+          0 0 42px 16px rgba(255, 239, 143, 0.92),
+          0 0 82px 30px rgba(212, 175, 55, 0.72),
+          0 34px 72px rgba(0, 0, 0, 0.52);
+      }
+      100% {
+        opacity: 1;
+        filter: none;
+        border-color: rgba(244, 215, 122, 0.18);
+        outline-color: rgba(255, 214, 80, 0);
+        transform: scale(1) translateY(0);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.20);
+      }
+    }
+
+    @keyframes homeBottomSheetTargetFlash {
+      0% {
+        transform: scale(0.98) translateY(0);
+        box-shadow:
+          0 0 0 0 rgba(255, 248, 201, 0.0),
+          0 20px 45px rgba(0, 0, 0, 0.36);
+      }
+      16%, 52% {
+        transform: scale(1.085) translateY(-12px);
+        box-shadow:
+          0 0 0 16px rgba(255, 248, 201, 0.28),
+          0 0 52px 20px rgba(255, 239, 143, 0.95),
+          0 0 92px 36px rgba(212, 175, 55, 0.72),
+          0 36px 78px rgba(0, 0, 0, 0.55);
+      }
+      78% {
+        transform: scale(1.045) translateY(-6px);
+        box-shadow:
+          0 0 0 9px rgba(255, 248, 201, 0.18),
+          0 0 34px 11px rgba(255, 239, 143, 0.70),
+          0 24px 58px rgba(0, 0, 0, 0.46);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+        box-shadow:
+          0 12px 30px rgba(0, 0, 0, 0.24);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #sheetBody.home-shortcut-focus .budaya-card.budaya-card-highlight,
+      #sheetBody .budaya-card.budaya-card-highlight,
+      #sheetBody.home-shortcut-focus .budaya-card.budaya-card-highlight-out,
+      #sheetBody .budaya-card.budaya-card-highlight-out {
+        transform: scale(1.035) translateY(-6px) !important;
+        outline-width: 5px !important;
+        outline-offset: 4px !important;
+      }
+    }
+</style>
 </head>
 
 <body>
@@ -4761,7 +5278,10 @@
         </div>
 
         <h1 id="budayaJudul"></h1>
-        <div id="budayaVideo"></div>
+        <div id="budayaVideo" class="budaya-media-slot"></div>
+        <div class="budaya-youtube-audio-holder" aria-hidden="true">
+          <div id="budayaAudioPlayer"></div>
+        </div>
 
         <div class="budaya-binder-reader">
           <div id="budayaLangNav" class="budaya-lang-nav" style="display: none;">
@@ -4816,41 +5336,20 @@
         youtube: 'CeOAeI6A6rE'
       },
       {
-        nama: 'Ciung Wanara',
-        provinsi: 'Jawa Barat',
-        kategori: 'CERITA RAKYAT',
-        gambar: 'CIUNG-WANARA.png',
-        gdoc: '11AAp4ZtSQif0FDmn1dtjq2DUwGMedo9V-pPAEEgpVpE',
-        youtube: '3xgBuTvuTTE'
-      },
-      {
-        nama: 'Mundinglaya Dikusumah',
-        provinsi: 'Jawa Barat',
-        kategori: 'CERITA RAKYAT',
-        gambar: 'MUNDINGLAYA-DIKUSUMAH.png',
-        gdoc: '11_zM4Jb7DmMZ5glrFpK9Yu8NLegb5QOKZ3gUOs0aZ_c',
-        youtube: 'uW-9eeRYFrc'
-      },
-      {
-        nama: 'Nyi Roro Kidul',
-        provinsi: 'Jawa Barat',
-        kategori: 'CERITA RAKYAT',
-        gambar: 'RORO-KIDUL.png',
-        gdoc: '1vL0tvq9vQFMThkyaaDCQF3Z1TkhD5RxV7JsmVByFnJc',
-        youtube: 'q8gD2Bq51ss'
-      },
-      {
         nama: 'Angklung',
         provinsi: 'Jawa Barat',
         kategori: 'ALAT MUSIK',
         gambar: 'ANGKLUNG.png',
-        gdoc: '1ZiHauBEzsUNfknTV4hMS3ZQLminkG8B8gR5C3OkWEFA'
+        mediaGambar: 'ANGKLUNG-DETAIL.png',
+        audioYoutube: '',
+        gdoc: '1XyZaBcDeFgHiJk'
       },
       {
         nama: 'Kebaya Sunda',
         provinsi: 'Jawa Barat',
         kategori: 'BAJU ADAT',
         gambar: 'KEBAYA-SUNDA.png',
+        mediaGambar: 'KEBAYA-SUNDA-DETAIL.png',
         gdoc: '1LmNoPqRsTuVwXy'
       }
     ];
@@ -4953,7 +5452,21 @@
       });
     }
 
+    let budayaHighlightTimer = null;
+
+    function clearBudayaCardHighlights() {
+      document.querySelectorAll('#sheetBody .budaya-card-highlight').forEach(card => {
+        card.classList.remove('budaya-card-highlight');
+      });
+
+      if (budayaHighlightTimer) {
+        clearTimeout(budayaHighlightTimer);
+        budayaHighlightTimer = null;
+      }
+    }
+
     function focusBudayaCardInSheet(focusName) {
+      clearBudayaCardHighlights();
       if (!focusName) return;
 
       const normalizedFocus = normalizeBudayaName(focusName);
@@ -4972,6 +5485,12 @@
           inline: 'nearest'
         });
       }, 220);
+
+      budayaHighlightTimer = setTimeout(() => {
+        targetCard.classList.remove('budaya-card-highlight');
+        pendingHomeShortcutName = '';
+        budayaHighlightTimer = null;
+      }, 2600);
     }
 
     function openProvinceFromHome(provinceName, categoryName, options = {}) {
@@ -5194,6 +5713,8 @@
       if (percent === SHEET_HIDDEN) {
         sheet.classList.remove('active');
         overlay.classList.remove('active');
+        clearBudayaCardHighlights();
+        pendingHomeShortcutName = '';
       } else {
         sheet.classList.add('active');
         overlay.classList.add('active');
@@ -5231,16 +5752,14 @@
       }
 
       hasil.forEach(item => {
-        const youtube = item.youtube || '';
-        const isFocused = pendingHomeShortcutName &&
-          normalizeBudayaName(item.nama) === normalizeBudayaName(pendingHomeShortcutName);
+        const itemIndex = budayaData.indexOf(item);
 
         sheetBody.innerHTML += `
           <div
-            class="budaya-card ${isFocused ? 'budaya-card-highlight' : ''}"
+            class="budaya-card"
             data-budaya-name="${escapeHTML(item.nama)}"
             data-budaya-category="${escapeHTML(item.kategori)}"
-            onclick="openBudaya('${item.gdoc}', '${item.nama}', '${youtube}')"
+            onclick="openBudayaByIndex(${itemIndex})"
           >
             <img src="${item.gambar}" alt="${item.nama}">
             <div class="budaya-title">${item.nama}</div>
@@ -5253,6 +5772,13 @@
     let currentBudayaIndonesianText = '';
     let currentBudayaEnglishText = '';
     let currentBudayaLanguage = 'id';
+    let currentBudayaItem = null;
+    let budayaAudioPlayer = null;
+    let budayaAudioPlayerReady = false;
+    let budayaPendingAudioId = '';
+    let budayaCurrentAudioId = '';
+    let budayaAudioUserWantsPlay = false;
+    let budayaAudioIsPlaying = false;
 
     function escapeHTML(value) {
       return String(value)
@@ -5261,6 +5787,97 @@
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
+    }
+
+    function openBudayaByIndex(index) {
+      const item = budayaData[Number(index)];
+      if (!item) return;
+      openBudaya(item);
+    }
+
+    function getBudayaDetailImage(item) {
+      if (!item) return 'slide1.png';
+      return item.mediaGambar || item.detailImage || item.gambarDetail || item.gambar || 'slide1.png';
+    }
+
+    function getBudayaAudioYoutubeId(item) {
+      if (!item) return '';
+      return String(item.audioYoutube || item.youtube || '').trim();
+    }
+
+    function isBudayaImageOnlyCategory(kategori) {
+      return ['BAJU ADAT', 'RUMAH ADAT', 'MAKANAN', 'MAKANAN TRADISIONAL'].includes(String(kategori || '').toUpperCase());
+    }
+
+    function isBudayaAudioCategory(kategori) {
+      return String(kategori || '').toUpperCase() === 'ALAT MUSIK';
+    }
+
+    function renderBudayaImageMedia(item, withAudioButton = false) {
+      const image = getBudayaDetailImage(item);
+      const fallback = item.gambar || 'slide1.png';
+      const audioId = getBudayaAudioYoutubeId(item);
+      const disabled = withAudioButton && !audioId;
+
+      return `
+        <div class="budaya-detail-media ${withAudioButton ? 'budaya-detail-media-audio' : 'budaya-detail-media-image-only'}">
+          <div class="budaya-detail-image-stage">
+            <img
+              class="budaya-detail-image"
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(item.nama || 'Media budaya')}"
+              onerror="this.onerror=null; this.src='${escapeHTML(fallback)}';"
+            >
+          </div>
+          ${withAudioButton ? `
+            <div class="budaya-audio-side">
+              <button
+                type="button"
+                id="budayaAudioPlayBtn"
+                class="budaya-audio-play-btn"
+                aria-label="Putar audio YouTube alat musik"
+                onclick="toggleBudayaAudioPlayback()"
+                ${disabled ? 'disabled' : ''}
+              >▶</button>
+              <div class="budaya-audio-status" id="budayaAudioStatus">
+                ${disabled ? 'ID YouTube alat musik belum diisi pada data.' : 'Audio alat musik siap diputar.'}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function renderBudayaMedia(item) {
+      const videoBox = document.getElementById('budayaVideo');
+      if (!videoBox) return;
+
+      stopBudayaAudioOnly();
+      videoBox.className = 'budaya-media-slot';
+      videoBox.innerHTML = '';
+
+      if (!item) return;
+
+      if (isBudayaAudioCategory(item.kategori)) {
+        budayaCurrentAudioId = getBudayaAudioYoutubeId(item);
+        videoBox.innerHTML = renderBudayaImageMedia(item, true);
+        return;
+      }
+
+      if (isBudayaImageOnlyCategory(item.kategori)) {
+        budayaCurrentAudioId = '';
+        videoBox.innerHTML = renderBudayaImageMedia(item, false);
+        return;
+      }
+
+      budayaCurrentAudioId = '';
+      const youtube = String(item.youtube || '').trim();
+
+      if (youtube) {
+        videoBox.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtube}?enablejsapi=1&playsinline=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      } else if (item.mediaGambar || item.detailImage || item.gambarDetail) {
+        videoBox.innerHTML = renderBudayaImageMedia(item, false);
+      }
     }
 
     function isPotentialHeading(lines, blockIndex) {
@@ -5432,7 +6049,30 @@
     }
 
 
+    function stopBudayaAudioOnly() {
+      budayaAudioUserWantsPlay = false;
+      budayaAudioIsPlaying = false;
+      budayaPendingAudioId = '';
+
+      const playButton = document.getElementById('budayaAudioPlayBtn');
+      const status = document.getElementById('budayaAudioStatus');
+
+      if (playButton) playButton.innerText = '▶';
+      if (status && budayaCurrentAudioId) status.innerText = 'Audio alat musik siap diputar.';
+
+      if (budayaAudioPlayer && budayaAudioPlayerReady) {
+        try {
+          budayaAudioPlayer.pauseVideo();
+          budayaAudioPlayer.stopVideo();
+        } catch (err) {
+          console.warn('Audio alat musik tidak bisa dihentikan:', err);
+        }
+      }
+    }
+
     function stopBudayaVideo() {
+      stopBudayaAudioOnly();
+
       const videoBox = document.getElementById('budayaVideo');
       if (!videoBox) return;
 
@@ -5467,6 +6107,7 @@
       currentBudayaIndonesianText = '';
       currentBudayaEnglishText = '';
       currentBudayaLanguage = 'id';
+      currentBudayaItem = null;
 
       const budayaPage = document.getElementById('budayaPage');
       const cakralandPage = document.getElementById('cakralandPage');
@@ -5485,8 +6126,22 @@
       }, 200);
     }
 
-    async function openBudaya(gdoc, nama, youtube) {
+    async function openBudaya(itemOrGdoc, nama = '', youtube = '') {
       stopBudayaVideo();
+
+      const item = typeof itemOrGdoc === 'object'
+        ? itemOrGdoc
+        : (budayaData.find(entry => entry.gdoc === itemOrGdoc && (!nama || entry.nama === nama)) || {
+            gdoc: itemOrGdoc,
+            nama,
+            youtube,
+            kategori: '',
+            gambar: '',
+            mediaGambar: ''
+          });
+
+      const gdoc = item.gdoc || '';
+      currentBudayaItem = item;
 
       history.pushState({ page: 'budaya' }, '', '#budaya');
       window.scrollTo(0, 0);
@@ -5498,11 +6153,9 @@
 
       document.getElementById('cakralandPage').style.display = 'none';
       document.getElementById('budayaPage').style.display = 'block';
-      document.getElementById('budayaJudul').innerText = nama;
+      document.getElementById('budayaJudul').innerText = item.nama || nama;
 
-      document.getElementById('budayaVideo').innerHTML = youtube
-        ? `<iframe src="https://www.youtube.com/embed/${youtube}?enablejsapi=1&playsinline=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
-        : '';
+      renderBudayaMedia(item);
 
       const langNav = document.getElementById('budayaLangNav');
       if (langNav) langNav.style.display = 'flex';
@@ -5526,6 +6179,125 @@
       } catch (err) {
         console.error('Gagal memuat dokumen:', err);
         document.getElementById('budayaIsi').innerHTML = '<div class="budaya-doc-status">Gagal memuat dokumen.</div>';
+      }
+    }
+
+    function prepareBudayaAudioPlayer(videoId, autoplay = false) {
+      budayaPendingAudioId = videoId;
+      budayaAudioUserWantsPlay = Boolean(autoplay || budayaAudioUserWantsPlay);
+
+      const status = document.getElementById('budayaAudioStatus');
+
+      if (!window.YT || !window.YT.Player) {
+        if (status) status.innerText = 'Memuat pemutar YouTube...';
+        return;
+      }
+
+      if (!budayaAudioPlayer) {
+        budayaAudioPlayerReady = false;
+
+        budayaAudioPlayer = new YT.Player('budayaAudioPlayer', {
+          width: '200',
+          height: '160',
+          videoId,
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            disablekb: 1,
+            modestbranding: 1,
+            rel: 0,
+            playsinline: 1
+          },
+          events: {
+            onReady: event => {
+              budayaAudioPlayerReady = true;
+              const iframe = event.target.getIframe ? event.target.getIframe() : null;
+              if (iframe) iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+
+              if (budayaAudioUserWantsPlay) {
+                event.target.loadVideoById(videoId);
+                event.target.playVideo();
+              } else {
+                event.target.cueVideoById(videoId);
+              }
+            },
+            onStateChange: event => {
+              handleBudayaAudioState(event.data);
+            },
+            onError: () => {
+              budayaAudioIsPlaying = false;
+              budayaAudioUserWantsPlay = false;
+              const playButton = document.getElementById('budayaAudioPlayBtn');
+              const status = document.getElementById('budayaAudioStatus');
+              if (playButton) playButton.innerText = '▶';
+              if (status) status.innerText = 'Audio YouTube tidak bisa diputar. Periksa ID video atau izin embed.';
+            }
+          }
+        });
+
+        return;
+      }
+
+      if (budayaAudioPlayerReady) {
+        if (autoplay || budayaAudioUserWantsPlay) {
+          budayaAudioPlayer.loadVideoById(videoId);
+          budayaAudioPlayer.playVideo();
+        } else {
+          budayaAudioPlayer.cueVideoById(videoId);
+        }
+      }
+    }
+
+    function toggleBudayaAudioPlayback() {
+      const videoId = budayaCurrentAudioId;
+      const status = document.getElementById('budayaAudioStatus');
+
+      if (!videoId) {
+        if (status) status.innerText = 'ID YouTube alat musik belum diisi pada data.';
+        return;
+      }
+
+      budayaAudioUserWantsPlay = true;
+
+      if (!budayaAudioPlayer || !budayaAudioPlayerReady) {
+        if (status) status.innerText = 'Menyiapkan audio YouTube...';
+        prepareBudayaAudioPlayer(videoId, true);
+        return;
+      }
+
+      try {
+        if (budayaAudioIsPlaying) {
+          budayaAudioPlayer.pauseVideo();
+        } else {
+          budayaAudioPlayer.loadVideoById(videoId);
+          budayaAudioPlayer.playVideo();
+        }
+      } catch (err) {
+        console.warn('Gagal mengontrol audio alat musik:', err);
+        if (status) status.innerText = 'Audio belum bisa dikontrol. Coba tekan play lagi.';
+      }
+    }
+
+    function handleBudayaAudioState(state) {
+      if (!window.YT) return;
+
+      const playButton = document.getElementById('budayaAudioPlayBtn');
+      const status = document.getElementById('budayaAudioStatus');
+
+      if (state === YT.PlayerState.PLAYING) {
+        budayaAudioIsPlaying = true;
+        if (playButton) playButton.innerText = '❚❚';
+        if (status) status.innerText = 'Audio alat musik sedang diputar.';
+        return;
+      }
+
+      budayaAudioIsPlaying = false;
+      if (playButton) playButton.innerText = '▶';
+
+      if (state === YT.PlayerState.ENDED) {
+        if (status) status.innerText = 'Audio alat musik telah selesai.';
+      } else if (status && budayaCurrentAudioId) {
+        status.innerText = 'Audio alat musik siap diputar.';
       }
     }
 
@@ -5608,6 +6380,8 @@
     function initSheetTabs() {
       document.querySelectorAll('.sheet-tab').forEach(tab => {
         tab.addEventListener('click', () => {
+          clearBudayaCardHighlights();
+          pendingHomeShortcutName = '';
           document.querySelectorAll('.sheet-tab').forEach(t => t.classList.remove('active'));
           tab.classList.add('active');
           renderBudaya();
@@ -6052,6 +6826,10 @@
       if (swaraPendingVideoId) {
         prepareSwaraYoutubePlayer(swaraPendingVideoId, swaraUserWantsPlay);
       }
+
+      if (budayaPendingAudioId) {
+        prepareBudayaAudioPlayer(budayaPendingAudioId, budayaAudioUserWantsPlay);
+      }
     };
 
     function handleSwaraPlayerState(state) {
@@ -6249,6 +7027,400 @@
 
       revealTargets.forEach(element => observer.observe(element));
     }
+
+
+
+    /* =========================
+       CAKRALAND CLEAN MEDIA DATA + BEHAVIOR FINAL
+    ========================= */
+
+    (function setupCleanMediaDummyDataFinal() {
+      const fallbackDetailImage = 'slide1.png';
+      const dummyAudioId = 'X6IrY6aHGXo';
+      const dummyDocId = '1-DnFCOEyvUZIydW4MCIBlxzFcuw1HWEPD0FMlOvlokA';
+
+      const existingAngklung = budayaData.find(item => item.provinsi === 'Jawa Barat' && item.kategori === 'ALAT MUSIK' && normalizeBudayaName(item.nama) === 'angklung');
+      if (existingAngklung) {
+        existingAngklung.mediaGambar = existingAngklung.mediaGambar || fallbackDetailImage;
+        existingAngklung.detailImage = fallbackDetailImage;
+        existingAngklung.audioYoutube = existingAngklung.audioYoutube || dummyAudioId;
+        existingAngklung.gdoc = existingAngklung.gdoc || dummyDocId;
+      }
+
+      const existingKebaya = budayaData.find(item => item.provinsi === 'Jawa Barat' && item.kategori === 'BAJU ADAT' && normalizeBudayaName(item.nama).includes('kebaya'));
+      if (existingKebaya) {
+        existingKebaya.mediaGambar = existingKebaya.mediaGambar || fallbackDetailImage;
+        existingKebaya.detailImage = fallbackDetailImage;
+        existingKebaya.gdoc = existingKebaya.gdoc || dummyDocId;
+      }
+
+      const dummyItems = [
+        {
+          nama: 'Rumah Adat Jawa Barat',
+          provinsi: 'Jawa Barat',
+          kategori: 'RUMAH ADAT',
+          gambar: 'RUMAH-GADANG.png',
+          mediaGambar: fallbackDetailImage,
+          detailImage: fallbackDetailImage,
+          gdoc: dummyDocId
+        },
+        {
+          nama: 'Makanan Tradisional Jawa Barat',
+          provinsi: 'Jawa Barat',
+          kategori: 'MAKANAN TRADISIONAL',
+          gambar: 'MALIN-KUNDANG.png',
+          mediaGambar: fallbackDetailImage,
+          detailImage: fallbackDetailImage,
+          gdoc: dummyDocId
+        },
+        {
+          nama: 'Seni Pertunjukan Jawa Barat',
+          provinsi: 'Jawa Barat',
+          kategori: 'SENI PERTUNJUKAN',
+          gambar: 'WAYANG-KULIT.png',
+          mediaGambar: fallbackDetailImage,
+          detailImage: fallbackDetailImage,
+          gdoc: dummyDocId,
+          youtube: dummyAudioId
+        }
+      ];
+
+      dummyItems.forEach(dummy => {
+        const exists = budayaData.some(item =>
+          item.provinsi === dummy.provinsi &&
+          item.kategori === dummy.kategori &&
+          normalizeBudayaName(item.nama) === normalizeBudayaName(dummy.nama)
+        );
+
+        if (!exists) budayaData.push(dummy);
+      });
+    })();
+
+    function focusBudayaCardInSheet(focusName) {
+      clearBudayaCardHighlights();
+      if (!focusName) return;
+
+      const normalizedFocus = normalizeBudayaName(focusName);
+      const targetCard = Array.from(document.querySelectorAll('#sheetBody .budaya-card')).find(card =>
+        normalizeBudayaName(card.dataset.budayaName || '') === normalizedFocus
+      );
+
+      if (!targetCard) return;
+
+      setTimeout(() => {
+        targetCard.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'nearest'
+        });
+      }, 120);
+
+      setTimeout(() => {
+        targetCard.classList.remove('budaya-card-highlight');
+        void targetCard.offsetWidth;
+        targetCard.classList.add('budaya-card-highlight');
+      }, 260);
+
+      budayaHighlightTimer = setTimeout(() => {
+        targetCard.classList.remove('budaya-card-highlight');
+        pendingHomeShortcutName = '';
+        budayaHighlightTimer = null;
+      }, 4300);
+    }
+
+    const originalSetSheetPositionCleanMediaFinal = setSheetPosition;
+    setSheetPosition = function(percent) {
+      if (percent === SHEET_HIDDEN) {
+        clearBudayaCardHighlights();
+        pendingHomeShortcutName = '';
+      }
+      return originalSetSheetPositionCleanMediaFinal(percent);
+    };
+
+    const originalOpenBudayaByIndexCleanMediaFinal = openBudayaByIndex;
+    openBudayaByIndex = function(index) {
+      clearBudayaCardHighlights();
+      pendingHomeShortcutName = '';
+      return originalOpenBudayaByIndexCleanMediaFinal(index);
+    };
+
+    const originalOpenProvinceCleanMediaFinal = openProvince;
+    openProvince = function(namaProvinsi) {
+      clearBudayaCardHighlights();
+      return originalOpenProvinceCleanMediaFinal(namaProvinsi);
+    };
+
+    function getBudayaDetailImage(item) {
+      if (!item) return 'slide1.png';
+      return item.detailImage || item.mediaGambar || item.gambarDetail || item.gambar || 'slide1.png';
+    }
+
+    function renderBudayaImageMedia(item, withAudioButton = false) {
+      const image = getBudayaDetailImage(item);
+      const fallback = item.gambar || 'slide1.png';
+      const audioId = getBudayaAudioYoutubeId(item);
+      const disabled = withAudioButton && !audioId;
+
+      return `
+        <div class="budaya-detail-media ${withAudioButton ? 'budaya-detail-media-audio' : 'budaya-detail-media-image-only'}">
+          <div class="budaya-detail-image-stage">
+            <img
+              class="budaya-detail-image"
+              src="${escapeHTML(image)}"
+              alt="${escapeHTML(item.nama || 'Media budaya')}"
+              onerror="this.onerror=null; this.src='${escapeHTML(fallback)}';"
+            >
+          </div>
+          ${withAudioButton ? `
+            <div class="budaya-audio-side">
+              <button
+                type="button"
+                id="budayaAudioPlayBtn"
+                class="budaya-audio-play-btn"
+                aria-label="Putar audio YouTube alat musik"
+                onclick="toggleBudayaAudioPlayback()"
+                ${disabled ? 'disabled' : ''}
+              >▶</button>
+              <div class="budaya-audio-status" id="budayaAudioStatus">
+                ${disabled ? 'ID YouTube belum diisi.' : 'Putar untuk mendengarkan alunan musiknya'}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+
+
+    /* =========================
+       FIX FINAL: Beranda → Cakraland bottom sheet selected-card highlight
+       - Menjaga nama target agar tidak hilang saat showPage menutup sheet lama.
+       - Menambahkan dummy card target bila datanya belum ada, supaya highlight selalu punya card tujuan.
+       - Highlight aktif 3 detik hanya pada card bottom sheet yang cocok.
+    ========================= */
+    (function() {
+      const HOME_HIGHLIGHT_DURATION = 3000;
+      const HOME_HIGHLIGHT_FADE_DURATION = 950;
+      let homeBottomHighlightTimer = null;
+      let homeBottomHighlightFadeTimer = null;
+
+      const homeTargetMedia = {
+        'Rumah Gadang': {
+          province: 'Sumatra Barat',
+          category: 'RUMAH ADAT',
+          gambar: 'RUMAH-GADANG.png'
+        },
+        'Wayang Kulit': {
+          province: 'Jawa Tengah',
+          category: 'SENI PERTUNJUKAN',
+          gambar: 'WAYANG-KULIT.png',
+          youtube: ''
+        },
+        'Rumah Betang': {
+          province: 'Kalimantan Barat',
+          category: 'RUMAH ADAT',
+          gambar: 'RUMAH-BETANG.png'
+        },
+        'Rumah Tongkonan': {
+          province: 'Sulawesi Selatan',
+          category: 'RUMAH ADAT',
+          gambar: 'RUMAH-TONGKONAN.png'
+        },
+        'Tari Kecak': {
+          province: 'Bali',
+          category: 'SENI PERTUNJUKAN',
+          gambar: 'TARI-KECAK.png',
+          youtube: ''
+        },
+        'Honai': {
+          province: 'Papua',
+          category: 'RUMAH ADAT',
+          gambar: 'HONAI.png'
+        },
+        'Malin Kundang': {
+          province: 'Sumatra Barat',
+          category: 'CERITA RAKYAT',
+          gambar: 'MALIN-KUNDANG.png',
+          youtube: ''
+        },
+        'Sangkuriang': {
+          province: 'Jawa Barat',
+          category: 'CERITA RAKYAT',
+          gambar: 'SANGKURIANG.png',
+          youtube: 'X6IrY6aHGXo'
+        },
+        'Putri Junjung Buih': {
+          province: 'Kalimantan Selatan',
+          category: 'CERITA RAKYAT',
+          gambar: 'PUTRI-JUNJUNG-BUIH.png',
+          youtube: ''
+        },
+        'Sawerigading': {
+          province: 'Sulawesi Selatan',
+          category: 'CERITA RAKYAT',
+          gambar: 'SAWERIGADING.png',
+          youtube: ''
+        },
+        'Manik Angkeran': {
+          province: 'Bali',
+          category: 'CERITA RAKYAT',
+          gambar: 'MANIK-ANGKERAN.png',
+          youtube: ''
+        },
+        'Manarmakeri': {
+          province: 'Papua',
+          category: 'CERITA RAKYAT',
+          gambar: 'MANARMAKERI.png',
+          youtube: ''
+        }
+      };
+
+      function stopHomeBottomHighlight() {
+        if (homeBottomHighlightTimer) {
+          clearTimeout(homeBottomHighlightTimer);
+          homeBottomHighlightTimer = null;
+        }
+
+        if (homeBottomHighlightFadeTimer) {
+          clearTimeout(homeBottomHighlightFadeTimer);
+          homeBottomHighlightFadeTimer = null;
+        }
+
+        if (sheetBody) {
+          sheetBody.classList.remove('home-shortcut-focus');
+        }
+
+        document.querySelectorAll('#sheetBody .budaya-card-highlight, #sheetBody .budaya-card-highlight-out').forEach(card => {
+          card.classList.remove('budaya-card-highlight', 'budaya-card-highlight-out');
+        });
+      }
+
+      function ensureHomeShortcutTargetItem(provinceName, categoryName, focusName) {
+        const name = String(focusName || '').trim();
+        if (!name) return;
+
+        const exists = budayaData.some(item =>
+          normalizeBudayaName(item.nama) === normalizeBudayaName(name) &&
+          String(item.provinsi || '') === String(provinceName || '') &&
+          String(item.kategori || '') === String(categoryName || '')
+        );
+
+        if (exists) return;
+
+        const media = homeTargetMedia[name] || {};
+        budayaData.push({
+          nama: name,
+          provinsi: provinceName || media.province || '',
+          kategori: categoryName || media.category || 'CERITA RAKYAT',
+          gambar: media.gambar || 'slide1.png',
+          mediaGambar: media.mediaGambar || media.gambar || 'slide1.png',
+          detailImage: media.detailImage || media.mediaGambar || media.gambar || 'slide1.png',
+          gdoc: media.gdoc || '',
+          youtube: media.youtube || ''
+        });
+      }
+
+      function findHomeBottomSheetCard(focusName) {
+        const normalizedFocus = normalizeBudayaName(focusName);
+        const cards = Array.from(document.querySelectorAll('#sheetBody .budaya-card'));
+
+        return cards.find(card => normalizeBudayaName(card.dataset.budayaName || '') === normalizedFocus) ||
+          cards.find(card => normalizeBudayaName(card.textContent || '').includes(normalizedFocus)) ||
+          null;
+      }
+
+      function showHomeBottomSheetHighlight(focusName) {
+        stopHomeBottomHighlight();
+        if (!focusName || !sheetBody) return;
+
+        const targetCard = findHomeBottomSheetCard(focusName);
+        if (!targetCard) return;
+
+        sheetBody.classList.add('home-shortcut-focus');
+        targetCard.classList.remove('budaya-card-highlight');
+        void targetCard.offsetWidth;
+        targetCard.classList.add('budaya-card-highlight');
+
+        setTimeout(() => {
+          targetCard.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+        }, 80);
+
+        homeBottomHighlightTimer = setTimeout(() => {
+          targetCard.classList.remove('budaya-card-highlight');
+          targetCard.classList.add('budaya-card-highlight-out');
+          homeBottomHighlightTimer = null;
+
+          homeBottomHighlightFadeTimer = setTimeout(() => {
+            targetCard.classList.remove('budaya-card-highlight-out');
+            if (sheetBody) sheetBody.classList.remove('home-shortcut-focus');
+            pendingHomeShortcutName = '';
+            homeBottomHighlightFadeTimer = null;
+          }, HOME_HIGHLIGHT_FADE_DURATION);
+        }, HOME_HIGHLIGHT_DURATION);
+      }
+
+      const previousClearBudayaCardHighlights = clearBudayaCardHighlights;
+      clearBudayaCardHighlights = function() {
+        stopHomeBottomHighlight();
+        if (typeof previousClearBudayaCardHighlights === 'function') {
+          previousClearBudayaCardHighlights();
+        }
+      };
+
+      focusBudayaCardInSheet = function(focusName) {
+        showHomeBottomSheetHighlight(focusName);
+      };
+
+      openProvinceFromHome = function(provinceName, categoryName, options = {}) {
+        const targetCategory = categoryName || 'CERITA RAKYAT';
+        const targetFocusName = options.focusName || '';
+
+        ensureHomeShortcutTargetItem(provinceName, targetCategory, targetFocusName);
+
+        showPage('cakralandPage');
+        pendingHomeShortcutName = targetFocusName;
+        setSheetActiveCategory(targetCategory);
+
+        setTimeout(() => {
+          pendingHomeShortcutName = targetFocusName;
+          openProvince(provinceName);
+          pendingHomeShortcutName = targetFocusName;
+          setSheetActiveCategory(targetCategory);
+          renderBudaya();
+          setSheetPosition(SHEET_EXPANDED);
+
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              showHomeBottomSheetHighlight(targetFocusName);
+            }, 380);
+          });
+
+          if (cakralandMap) {
+            cakralandMap.invalidateSize();
+          }
+        }, 280);
+      };
+
+      const previousSetSheetPositionForHomeHighlight = setSheetPosition;
+      setSheetPosition = function(percent) {
+        if (percent === SHEET_HIDDEN) {
+          stopHomeBottomHighlight();
+          pendingHomeShortcutName = '';
+        }
+        return previousSetSheetPositionForHomeHighlight(percent);
+      };
+
+      const previousOpenBudayaByIndexForHomeHighlight = openBudayaByIndex;
+      openBudayaByIndex = function(index) {
+        stopHomeBottomHighlight();
+        pendingHomeShortcutName = '';
+        return previousOpenBudayaByIndexForHomeHighlight(index);
+      };
+    })();
 
     document.addEventListener('DOMContentLoaded', () => {
       syncCakranusaHeaderHeight();
